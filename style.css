@@ -173,6 +173,9 @@ a {
     display: flex;
     flex-direction: column;
     background-color: var(--sec);
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid var(--pri);
 }
 
 .btn_options_cont {
@@ -189,9 +192,11 @@ a {
     font-weight: bold;
     cursor: pointer;
     transition: .1s ease;
+    width: 20px;
+    text-align: center;
 }
 
 .btn_options_cont a:hover {
-    background-color: var(--pri);
+    background-color: var(--pri);    
     color: #FFF;
 }
