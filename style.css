@@ -113,6 +113,11 @@ body {
     font-family: 'Arvo', serif;
 }
 
+a, p, input {
+    font-family: 'Lato', sans-serif;
+
+}
+
 *,
 *::before,
 *::after {
@@ -166,7 +171,7 @@ a {
 
 .main_section_left,
 .main_section_right {
-    height: calc(100vh - 36px);
+    height: calc(100vh - 50px); 
 }
 
 .main_section_left {
@@ -185,7 +190,7 @@ a {
 }
 
 .main_section_right_bottom {
-    height: calc(100% - 100px);
+    height: calc(100% - 100px);    
 }
 
 .main_build_section {
@@ -203,10 +208,14 @@ a {
     width: fit-content;
 }
 
+.salmon {
+    background-color: salmon;
+}
+
 .fish_variation_cont {
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 20px;
 }
 
 .btn_options_cont {
@@ -222,32 +231,40 @@ a {
     font-weight: bold;
     cursor: pointer;
     transition: .1s ease;
-    width: 25px;
+    width: 30px;
     height: 25px;
     justify-content: center;
     align-items: center;
 }
 
 .btn_options_cont a:hover {
-    background-color: var(--pri);    
+    background-color: var(--sec);    
     color: #FFF;
 }
 
 .item_selection_cont {
     display: flex;
-    flex-direction: column;
     gap: 15px;
     margin-top: 5px;
 }
 
 .item_selection {
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
     justify-content: space-between;
-    gap: 5px;
-    width: 300px;;
+    padding-right: 20px;
+}
+
+.item_selection:not(:last-child) {
+    border-right: 1px solid var(--but);
+}
+
+.item_selection:first-child {
+    margin-left: 10px;
 }
 
 .item_selection input {
-        width: 50px;   
+    width: 50px;   
+    margin: 0 5px;
 }
