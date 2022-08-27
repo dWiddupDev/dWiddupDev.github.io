@@ -98,8 +98,12 @@ h1 {
 }
 
 h2 {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     font-weight: bold;
+}
+
+h3 {
+    font-size: 1.2rem;
 }
 
 h3,
@@ -113,9 +117,10 @@ body {
     font-family: 'Arvo', serif;
 }
 
-a, p, input {
+a,
+p,
+input {
     font-family: 'Lato', sans-serif;
-
 }
 
 *,
@@ -171,7 +176,7 @@ a {
 
 .main_section_left,
 .main_section_right {
-    height: calc(100vh - 50px); 
+    height: calc(100vh - 50px);
 }
 
 .main_section_left {
@@ -190,7 +195,7 @@ a {
 }
 
 .main_section_right_bottom {
-    height: calc(100% - 100px);    
+    height: calc(100% - 100px);
 }
 
 .main_build_section {
@@ -206,6 +211,12 @@ a {
     border-radius: 5px;
     border: 1px solid var(--pri);
     width: fit-content;
+}
+
+.section_title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .salmon {
@@ -238,7 +249,7 @@ a {
 }
 
 .btn_options_cont a:hover {
-    background-color: var(--sec);    
+    background-color: var(--sec);
     color: #FFF;
 }
 
@@ -265,6 +276,6 @@ a {
 }
 
 .item_selection input {
-    width: 50px;   
+    width: 50px;
     margin: 0 5px;
 }
