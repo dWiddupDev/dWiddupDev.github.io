@@ -33,7 +33,7 @@
                         <div class="section_title">
                             <h3>Salmon</h3>
 
-                            <div style="font-size: 30px; font-weight:bold">+</div>
+                            <div onclick="togglePanel(this)" class="panel_expand_icon">+</div>
                         </div>
 
                         <div class="fish_variation_cont">
@@ -45,8 +45,8 @@
                                     <div class="item_selection">
                                         <span>Sides:</span>
                                         <div>
-                                            <a>1/2</a>
-                                            <a>1</a>
+                                            <a onclick="addSidesToLocal(this, 'salmon')">1/2</a>
+                                            <a onclick="addSidesToLocal(this, 'salmon')">1</a>
                                             <input type="number" id="salmonSidesCustomNoSkin" />
                                         </div>
                                     </div>
@@ -137,7 +137,7 @@
 
         </div>
 
-        <div class="main_section_right">
+        <!-- <div class="main_section_right">
             <div class="main_section_right_top">
                 <h2>Just Added</h2>
             </div>
@@ -145,7 +145,7 @@
                 <h3>Added So Far</h3>
             </div>
 
-        </div>
+        </div> -->
     </main>
 
     <script src="script.js" async defer></script>

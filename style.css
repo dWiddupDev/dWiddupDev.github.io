@@ -210,7 +210,7 @@ a {
     padding: 10px;
     border-radius: 5px;
     border: 1px solid var(--pri);
-    width: fit-content;
+    width: 100%;
 }
 
 .section_title {
@@ -278,4 +278,10 @@ a {
 .item_selection input {
     width: 50px;
     margin: 0 5px;
+}
+
+.panel_expand_icon {
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
 }
