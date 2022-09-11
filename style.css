@@ -224,7 +224,7 @@ a {
 }
 
 .fish_variation_cont {
-    display: flex;
+    display: none;
     flex-direction: column;
     gap: 20px;
 }

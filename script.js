@@ -8,13 +8,14 @@ function togglePanel(el) {
         el.innerText = "+";
 
     } else {
-        panelSection.style.display = "block";
+        panelSection.style.display = "flex";
         el.innerText = "-";
     }
 }
 
 function addSidesToLocal(el, fish) {
     var value = el.innerText == "1/2" ? "0.5 " : "1 ";
+
     if (localStorage.getItem("fish") == null) {
         var local = value;
         localStorage.setItem(`${fish}`, local);
@@ -29,4 +30,8 @@ function addSidesToLocal(el, fish) {
     //CHANGING THE FISH PASSED IN WILL SAVE THE NEW FISH TO LOCAL STORAGE
     // split the local storage into the array
     //localStorage.salmon.trim().split(",");
+}
+
+function customAddSides(inputId, fish) {
+
 }
