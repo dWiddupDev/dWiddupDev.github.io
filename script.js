@@ -16,10 +16,11 @@ function togglePanel(el) {
 function addSidesToLocal(el, fish) {
     var value = el.innerText == "1/2" ? "0.5 " : "1 ";
 
-    if (localStorage.getItem("fish") == null) {
+    if (localStorage.getItem(fish) == null) {
         var local = value;
         localStorage.setItem(`${fish}`, local);
     } else {
+        debugger;
         var local = localStorage.getItem(fish);
         local = local.split(" ");
         local += value;
