@@ -13,14 +13,11 @@ function togglePanel(el) {
     }
 }
 
-function addSidesToLocal(el, fish) {
-    var value = el.innerText == "1/2" ? "0.5 " : "1 ";
-
+function addSelectionToLocal(fish, value) {
     if (localStorage.getItem(fish) == null) {
         var local = value;
-        localStorage.setItem(`${fish}`, local);
+        localStorage.setItem(fish, local);
     } else {
-        debugger;
         var local = localStorage.getItem(fish);
         local = local.split(" ");
         local += value;
@@ -33,6 +30,14 @@ function addSidesToLocal(el, fish) {
     //localStorage.salmon.trim().split(",");
 }
 
-function customAddSides(inputId, fish) {
+function addSidesToLocal(count, fish) {
+    var value = count + " "; // add space to split
 
+    addSelectionToLocal(fish, value);
+}
+
+function customAddSides(inputId, fish) {
+    var value = document.getElementById(`${inputId}`).value + " ";
+    addSelectionToLocal(fish, value);
+    document.getElementById(`${inputId}`).value = "";
 }

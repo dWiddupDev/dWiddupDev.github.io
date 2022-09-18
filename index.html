@@ -19,8 +19,11 @@
 
 <body>
     <nav>
-        <h1>AO Prep List builder</h1>
-        <span style="font-size: smaller">NOTES: Maybe make them dropdowns</span>
+        <div>
+            <h1>AO Prep List builder</h1>
+            <span style="font-size: smaller">NOTES: Maybe make them dropdowns</span>
+        </div>
+        <a onclick="done()">Done</a>
     </nav>
 
     <main>
@@ -29,14 +32,14 @@
                 <h2>Prep Options</h2>
 
                 <div class="main_cont">
-                    <div class="section_type_main salmon">
+                    <div class="section_type_main">
                         <div class="section_title">
                             <h3>Salmon</h3>
 
                             <div onclick="togglePanel(this)" class="panel_expand_icon">+</div>
                         </div>
 
-                        <div class="fish_variation_cont">
+                        <div class="fish_variation_cont" style="display: none;">
 
                             <div class="btn_options_cont">
                                 <h4>FSP</h4>
@@ -45,9 +48,11 @@
                                     <div class="item_selection">
                                         <span>Sides:</span>
                                         <div>
-                                            <a onclick="addSidesToLocal(this, 'salmon')">1/2</a>
-                                            <a onclick="addSidesToLocal(this, 'salmon')">1</a>
-                                            <input onclick="customAddSides('salmonSidesCustomNoSkin', 'salmon')" type="number" id="salmonSidesCustomNoSkin" />
+                                            <a onclick="addSidesToLocal('0.5', 'salmon')">1/2</a>
+                                            <a onclick="addSidesToLocal('1', 'salmon')">1</a>
+
+                                            <input type="number" id="salmonSidesCustomNoSkin" />
+                                            <a onclick="customAddSides('salmonSidesCustomNoSkin', 'salmon')">Confirm Custom</a>
                                         </div>
                                     </div>
 

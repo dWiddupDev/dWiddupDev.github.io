@@ -157,6 +157,19 @@ nav {
     padding: 10px;
     color: #FFF;
     font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+nav a {
+    margin-right: 80px;
+    background-color: #FFF;
+    cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: 1px solid var(--border);
+    color: var(--pri)
 }
 
 main {
@@ -172,6 +185,11 @@ a {
     text-decoration: none;
     box-sizing: content-box;
     display: inline-flex;
+}
+
+a:hover {
+    background-color: var(--but-hov);
+    color: #FFF;
 }
 
 .main_section_left,
@@ -206,7 +224,7 @@ a {
 .section_type_main {
     display: flex;
     flex-direction: column;
-    background-color: var(--sec);
+    background-color: #FFF;
     padding: 5px 10px;
     border-radius: 5px;
     border: 1px solid var(--pri);
@@ -225,10 +243,6 @@ a {
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-
-.salmon {
-    background-color: salmon;
 }
 
 .fish_variation_cont {
