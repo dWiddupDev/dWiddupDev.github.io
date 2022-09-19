@@ -22,7 +22,6 @@
     <nav>
         <div>
             <h1>AO Prep List builder</h1>
-            <span style="font-size: smaller">NOTES: Maybe make them dropdowns</span>
         </div>
         <a onclick="done()">Done</a>
     </nav>
@@ -76,25 +75,157 @@
 
                     <div class="selection_cont">
                         <div class="selection_item_choices">
-                            <h5>FSP</h5>
-                            <div>
-                                <p>Sides:</p>
-                                <div class="selection_buttons">
-                                    <a href="">1/2</a>
-                                    <a href="">1</a>
-                                    <input type="number" />
+                            <div class="cut_choice_container">
+                                <div class="fish_selection_cuts">
+                                    <p>Skin on/off?</p>
+                                    <select id="salmon-skin-select" class="spec_select">
+                                        <option value="on">F+Ps</option>
+                                        <option value="off">FSP</option>
+                                    </select>
+                                </div>
+
+                                <div class="fish_selection_cuts">
+                                    <p>Sides:</p>
+                                    <div class="selection_buttons">
+                                        <a href="">1/2</a>
+                                        <a href="">1</a>
+
+                                        <div class="custom_selection">
+                                            <label for="">Custom:</label>
+                                            <input type="number" />
+                                        </div>
+
+                                        <div class="complete_btn_cont">
+                                            <a href="">+ Add</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="fish_selection_cuts">
+                                    <p>Portions:</p>
+                                    <div class="selection_buttons">
+                                        <select name="portion_weight" id="salmon-portion-weight">
+                                            <option value="6oz">6oz</option>
+                                            <option value="7oz">7oz</option>
+                                            <option value="8oz">8oz</option>
+                                            <option value="9oz">9oz</option>
+                                            <option value="10oz">10oz</option>
+                                            <option value="5oz">5oz</option>
+                                            <option value="4oz">4oz</option>
+                                        </select>
+
+                                        <select class="spec_select" id="salmon-extra-options">
+                                            <option value="normal">Normal</option>
+                                            <option value="square">Square</option>
+                                            <option value="salted">Salted</option>
+                                            <option value="delice">Delice</option>
+                                            <option value="loin">Loin</option>
+                                            <option value="tail">Tail</option>
+                                        </select>
+
+                                        <a href="">5</a>
+                                        <a href="">10</a>
+                                        <a href="">15</a>
+                                        <a href="">20</a>
+
+                                        <div class="custom_selection">
+                                            <label for="">Custom:</label>
+                                            <input type="number" />
+                                        </div>
+
+                                        <div class="complete_btn_cont">
+                                            <a href="">+ Add</a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
 
+            </div>
+
+            <div class="selection_item_outer">
+                <div class="selection_item_inner">
+                    <div class="selection_item_header">
+                        <h4>Sea Bass</h4>
+                        <a class="close_button">
+                            <i class="fa-solid fa-circle-xmark"></i>
+                        </a>
+                    </div>
+
+                    <div class="selection_cont">
                         <div class="selection_item_choices">
-                            <h5>F+Ps</h5>
+                            <div class="cut_choice_container">
+                                <div class="fish_selection_cuts">
+                                    <p>Skin on/off?</p>
+                                    <select id="salmon-skin-select" class="spec_select">
+                                        <option value="on">F+Ps</option>
+                                        <option value="off">FSP</option>
+                                    </select>
+                                </div>
+
+                                <div class="fish_selection_cuts">
+                                    <p>Sides:</p>
+                                    <div class="selection_buttons">
+                                        <a href="">1/2</a>
+                                        <a href="">1</a>
+
+                                        <div class="custom_selection">
+                                            <label for="">Custom:</label>
+                                            <input type="number" />
+                                        </div>
+
+                                        <div class="complete_btn_cont">
+                                            <a href="">+ Add</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="fish_selection_cuts">
+                                    <p>Portions:</p>
+                                    <div class="selection_buttons">
+                                        <select name="portion_weight" id="salmon-portion-weight">
+                                            <option value="6oz">6oz</option>
+                                            <option value="7oz">7oz</option>
+                                            <option value="8oz">8oz</option>
+                                            <option value="9oz">9oz</option>
+                                            <option value="10oz">10oz</option>
+                                            <option value="5oz">5oz</option>
+                                            <option value="4oz">4oz</option>
+                                        </select>
+
+                                        <select class="spec_select" id="salmon-extra-options">
+                                            <option value="normal">Normal</option>
+                                            <option value="square">Square</option>
+                                            <option value="salted">Salted</option>
+                                            <option value="delice">Delice</option>
+                                            <option value="loin">Loin</option>
+                                            <option value="tail">Tail</option>
+                                        </select>
+
+                                        <a href="">5</a>
+                                        <a href="">10</a>
+                                        <a href="">15</a>
+                                        <a href="">20</a>
+
+                                        <div class="custom_selection">
+                                            <label for="">Custom:</label>
+                                            <input type="number" />
+                                        </div>
+
+                                        <div class="complete_btn_cont">
+                                            <a href="">+ Add</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
-
     </main>
 
     <script src="script.js" async defer></script>

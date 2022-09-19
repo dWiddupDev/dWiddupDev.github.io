@@ -139,16 +139,28 @@ a {
     display: inline-flex;
 }
 
-input {
-    width: 50px;
-    border: 1px solid var(--pri);
-    height: 23px;
-    border-radius: 4px;
+label {
+    font-size: small;
 }
 
-input:focus {
+input,
+select {
+    width: 50px;
+    border: 1px solid var(--pri);
+    height: 32px;
+    border-radius: 4px;
+    padding: 0;
+    font-family: 'Arvo', serif;
+}
+
+input:focus,
+select:focus {
     outline: var(--pri) solid 2px;
     background: #FFF;
+}
+
+select.spec_select {
+    width: fit-content;
 }
 
 
@@ -187,7 +199,7 @@ nav a {
 
 main {
     display: flex;
-    height: calc(100vh - 69px);
+    height: calc(100vh - 61px);
 }
 
 .main_cont {
@@ -199,11 +211,11 @@ main {
 .sidebar {
     background-color: #FFF;
     width: 250px;
-    height: calc(100vh - 69px);
+    height: calc(100vh - 61px);
     border-right: 1px solid var(--border);
     position: fixed;
     left: 0;
-    top: 69px;
+    top: 61px;
     overflow-y: scroll;
 }
 
@@ -315,6 +327,9 @@ a.close_button:hover {
 
 .selection_item_choices {
     padding: 5px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .selection_item_choices h5 {
@@ -323,4 +338,48 @@ a.close_button:hover {
     text-decoration-color: var(--border);
 }
 
-.selection_buttons {}
+.cut_choice_container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.selection_buttons {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.selection_buttons a {
+    line-height: 2;
+    padding: 0 10px;
+    border: 1px solid var(--border);
+    border-radius: 5px;
+}
+
+.fish_selection_cuts {
+    padding: 5px;
+    background: #F5F5F7;
+    width: fit-content;
+    border-radius: 5px;
+}
+
+.custom_selection,
+.complete_btn_cont {
+    border-left: 1px solid var(--border);
+    padding-left: 10px;
+    margin-left: 5px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.complete_btn_cont a {
+    background-color: var(--pri);
+    color: #FFF;
+    font-weight: bold;
+}
+
+.complete_btn_cont a:hover {
+    background-color: var(--sec);
+}
