@@ -37,7 +37,7 @@ function addSidesToLocal(count, fish) {
 }
 
 function customAddSides(inputId, fish) {
-    var value = document.getElementById(`${inputId}`).value + " ";
+    var value = document.getElementById(`${inputId}`).value + " "; // add space so there it can be split
     addSelectionToLocal(fish, value);
     document.getElementById(`${inputId}`).value = "";
 }

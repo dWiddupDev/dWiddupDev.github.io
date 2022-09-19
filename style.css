@@ -129,6 +129,12 @@ input {
     box-sizing: content-box;
 }
 
+a {
+    text-decoration: none;
+    box-sizing: content-box;
+    display: inline-flex;
+}
+
 input {
     width: 50px;
     border: 1px solid var(--pri);
@@ -163,7 +169,7 @@ nav {
 }
 
 nav a {
-    margin-right: 80px;
+    margin-right: 15px;
     background-color: #FFF;
     cursor: pointer;
     padding: 10px 20px;
@@ -174,17 +180,79 @@ nav a {
 
 main {
     display: flex;
+    height: calc(100vh - 69px);
 }
 
 .main_cont {
     padding: 10px;
     width: 100%;
+    display: flex;
 }
 
-a {
-    text-decoration: none;
-    box-sizing: content-box;
-    display: inline-flex;
+.sidebar {
+    background-color: #FFF;
+    width: 250px;
+    height: calc(100vh - 69px);
+    border-right: 1px solid var(--border);
+    position: fixed;
+    left: 0;
+    top: 69px;
+    overflow-y: scroll;
+}
+
+.sidebar::-webkit-scrollbar {
+    width: 8px;
+}
+
+
+/* Track */
+
+.sidebar::-webkit-scrollbar-track {
+    background: #DDD;
+}
+
+
+/* Handle */
+
+.sidebar::-webkit-scrollbar-thumb {
+    background: var(--but);
+    border-radius: 10px;
+}
+
+
+/* Handle on hover */
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+    background: var(--sec);
+}
+
+.sidebar h3 {
+    margin: 10px
+}
+
+.sidebar a {
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    padding: 5px 10px;
+    width: 100%;
+    box-sizing: border-box;
+    color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.sidebar a:hover {
+    background-color: var(--pri);
+    color: #FFF;
+}
+
+.sidebar_links {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid var(--border);
+    padding-bottom: 50px;
+    /*so the last link isnt at the bottom*/
 }
 
 a:hover {
