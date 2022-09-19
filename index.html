@@ -32,162 +32,69 @@
             <h3>Fish</h3>
 
             <div class="sidebar_links">
-                <a href="#">Brill  <i class="fa-solid fa-caret-right"></i></a>
-                <a href="#">Cod <i class="fa-solid fa-caret-right"></i></a>
-                <a href="#">Cod Counts <i class="fa-solid fa-caret-right"></i></a>
-                <a href="#">Coley  <i class="fa-solid fa-caret-right"></i></a>
-                <a href="#">Dorade <i class="fa-solid fa-caret-right"></i></a>
-                <a href="#">Fish Pie Mix  <i class="fa-solid fa-caret-right"></i></a>
-                <a href="#">Haddock <i class="fa-solid fa-caret-right"></i></a>
-                <a href="#">Haddock Counts <i class="fa-solid fa-caret-right"></i></a>
-                <a href="#">Hake <i class="fa-solid fa-caret-right"></i></a>
-                <a href="#">Halibut <i class="fa-solid fa-caret-right"></i></a>
-                <a href="#">Lemon Sole  <i class="fa-solid fa-caret-right"></i></a>
-                <a href="#">Mackerel  <i class="fa-solid fa-caret-right"></i></a>
-                <a href="#">Monkfish <i class="fa-solid fa-caret-right"></i></a>
-                <a href="#">Plaice  <i class="fa-solid fa-caret-right"></i></a>
-                <a href="#">Octopus <i class="fa-solid fa-caret-right"></i></a>
-                <a href="#">Salmon <i class="fa-solid fa-caret-right"></i></a>
-                <a href="#">Sardines <i class="fa-solid fa-caret-right"></i></a>
-                <a href="#">Sea Bass <i class="fa-solid fa-caret-right"></i></a>
-                <a href="#">Sea Trout <i class="fa-solid fa-caret-right"></i></a>
-                <a href="#">SwordFish <i class="fa-solid fa-caret-right"></i></a>
-                <a href="#">Squid <i class="fa-solid fa-caret-right"></i></a>
-                <a href="#">Trout <i class="fa-solid fa-caret-right"></i></a>
-                <a href="#">Tuna <i class="fa-solid fa-caret-right"></i></a>
-                <a href="#">Wild Bass <i class="fa-solid fa-caret-right"></i></a>
+                <a onclick="selectFish(this)">Brill  <i class="fa-solid fa-caret-down"></i></a>
+                <a onclick="selectFish(this)">Cod <i class="fa-solid fa-caret-down"></i></a>
+                <a onclick="selectFish(this)">Cod Counts <i class="fa-solid fa-caret-down"></i></a>
+                <a onclick="selectFish(this)">Coley  <i class="fa-solid fa-caret-down"></i></a>
+                <a onclick="selectFish(this)">Dorade <i class="fa-solid fa-caret-down"></i></a>
+                <a onclick="selectFish(this)">Fish Pie Mix  <i class="fa-solid fa-caret-down"></i></a>
+                <a onclick="selectFish(this)">Haddock <i class="fa-solid fa-caret-down"></i></a>
+                <a onclick="selectFish(this)">Haddock Counts <i class="fa-solid fa-caret-down"></i></a>
+                <a onclick="selectFish(this)">Haddock - Smoked <i class="fa-solid fa-caret-down"></i></a>
+                <a onclick="selectFish(this)">Hake <i class="fa-solid fa-caret-down"></i></a>
+                <a onclick="selectFish(this)">Halibut <i class="fa-solid fa-caret-down"></i></a>
+                <a onclick="selectFish(this)">Lemon Sole  <i class="fa-solid fa-caret-down"></i></a>
+                <a onclick="selectFish(this)">Mackerel  <i class="fa-solid fa-caret-down"></i></a>
+                <a onclick="selectFish(this)">Monkfish <i class="fa-solid fa-caret-down"></i></a>
+                <a onclick="selectFish(this)">Plaice  <i class="fa-solid fa-caret-down"></i></a>
+                <a onclick="selectFish(this)">Pollock <i class="fa-solid fa-caret-down"></i></a>
+                <a onclick="selectFish(this)">Octopus <i class="fa-solid fa-caret-down"></i></a>
+                <a onclick="selectFish(this)">Salmon <i class="fa-solid fa-caret-down"></i></a>
+                <a onclick="selectFish(this)">Sardines <i class="fa-solid fa-caret-down"></i></a>
+                <a onclick="selectFish(this)">Sea Bass <i class="fa-solid fa-caret-down"></i></a>
+                <a onclick="selectFish(this)">Sea Trout <i class="fa-solid fa-caret-down"></i></a>
+                <a onclick="selectFish(this)">SwordFish <i class="fa-solid fa-caret-down"></i></a>
+                <a onclick="selectFish(this)">Shark <i class="fa-solid fa-caret-down"></i></a>
+                <a onclick="selectFish(this)">Squid <i class="fa-solid fa-caret-down"></i></a>
+                <a onclick="selectFish(this)">Trout <i class="fa-solid fa-caret-down"></i></a>
+                <a onclick="selectFish(this)">Tuna <i class="fa-solid fa-caret-down"></i></a>
+                <a onclick="selectFish(this)">Wild Bass <i class="fa-solid fa-caret-down"></i></a>
             </div>
         </div>
 
-        <!-- <div class="main_section_left">
-            <div class="main_build_section">
-                <h2>Prep Options</h2>
+        <div class="main_selections_container">
+            <h3>Selections</h3>
 
-                <div class="main_cont">                   
-
-                    <div class="section_type_main">
-                        <div class="section_title">
-                            <h3>Salmon</h3>
-
-                            <div onclick="togglePanel(this)" class="panel_expand_icon">+</div>
-                        </div>
-
-                        <div class="fish_variation_cont" style="display: none;">
-
-                            <div class="btn_options_cont">
-                                <h4>FSP</h4>
-
-                                <div class="item_selection_cont">
-                                    <div class="item_selection">
-                                        <span>Sides:</span>
-                                        <div>
-                                            <a onclick="addSidesToLocal('0.5', 'salmon')">1/2</a>
-                                            <a onclick="addSidesToLocal('1', 'salmon')">1</a>
-
-                                            <input type="number" id="salmonSidesCustomNoSkin" />
-                                            <a onclick="customAddSides('salmonSidesCustomNoSkin', 'salmon')">Confirm Custom</a>
-                                        </div>
-                                    </div>
-
-                                    <div class="item_selection">
-                                        <span>8 oz:</span>
-                                        <div>
-                                            <a>5</a>
-                                            <a>10</a>
-                                            <a>20</a>
-                                            <input type="number" id="salmon8CustomNoSkin" />
-                                        </div>
-                                    </div>
-
-                                    <div class="item_selection">
-                                        <span>200g:</span>
-                                        <div>
-                                            <a>5</a>
-                                            <a>10</a>
-                                            <a>20</a>
-                                            <input type="number" id="salmon200CustomNoSkin" />
-                                        </div>
-                                    </div>
-
-                                    <div class="item_selection">
-                                        <span>6 oz:</span>
-                                        <div>
-                                            <a>5</a>
-                                            <a>10</a>
-                                            <a>20</a>
-                                            <input type="number" id="salmon6CustomNoSkin" />
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-
-                            <div class="btn_options_cont">
-                                <h4>F+Ps</h4>
-
-                                <div class="item_selection_cont">
-
-                                    <div class="item_selection">
-                                        <span>Sides:</span>
-                                        <div>
-                                            <a>1/2</a>
-                                            <a>1</a>
-                                            <input type="number" id="salmonSidesCustomSkin" />
-                                        </div>
-                                    </div>
-
-                                    <div class="item_selection">
-                                        <span>8 oz:</span>
-                                        <div>
-                                            <a>5</a>
-                                            <a>10</a>
-                                            <a>20</a>
-                                            <input type="number" id="salmon8CustomSkin" />
-                                        </div>
-                                    </div>
-
-                                    <div class="item_selection">
-                                        <span>200g:</span>
-                                        <div>
-                                            <a>5</a>
-                                            <a>10</a>
-                                            <a>20</a>
-                                            <input type="number" id="salmon200CustomSkin" />
-                                        </div>
-                                    </div>
-
-                                    <div class="item_selection">
-                                        <span>6 oz:</span>
-                                        <div>
-                                            <a>5</a>
-                                            <a>10</a>
-                                            <a>20</a>
-                                            <input type="number" id="salmon6CustomSkin" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-
-
+            <div class="selection_item_outer">
+                <div class="selection_item_inner">
+                    <div class="selection_item_header">
+                        <h4>Salmon</h4>
+                        <a class="close_button">
+                            <i class="fa-solid fa-circle-xmark"></i>
+                        </a>
                     </div>
 
+                    <div class="selection_cont">
+                        <div class="selection_item_choices">
+                            <h5>FSP</h5>
+                            <div>
+                                <p>Sides:</p>
+                                <div class="selection_buttons">
+                                    <a href="">1/2</a>
+                                    <a href="">1</a>
+                                    <input type="number" />
+                                </div>
+                            </div>
+                        </div>
 
+                        <div class="selection_item_choices">
+                            <h5>F+Ps</h5>
+                        </div>
+                    </div>
                 </div>
             </div>
+        </div>
 
-        </div> -->
-
-        <!-- <div class="main_section_right">
-            <div class="main_section_right_top">
-                <h2>Just Added</h2>
-            </div>
-            <div class="main_section_right_bottom">
-                <h3>Added So Far</h3>
-            </div>
-
-        </div> -->
     </main>
 
     <script src="script.js" async defer></script>

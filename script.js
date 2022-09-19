@@ -13,6 +13,23 @@ function togglePanel(el) {
     }
 }
 
+function selectFish(el) {
+    // add selected class to anchor
+    var fishId = el.innerText.toLowerCase().replaceAll("- ", "").replaceAll(" ", "_");
+    console.log("inner = ", fishId);
+    var p = el.childNodes[1];
+    if (!el.classList.contains("sidebar_selected")) {
+        el.classList.add("sidebar_selected");
+        p.classList.replace("fa-caret-down", "fa-caret-right");
+        //el.className.replace("fa-caret-down", "fa-caret-right");
+    } else {
+        el.classList.remove("sidebar_selected");
+        p.classList.replace("fa-caret-right", "fa-caret-down");
+    }
+
+    // show selection options
+}
+
 function addSelectionToLocal(fish, value) {
     if (localStorage.getItem(fish) == null) {
         var local = value;
