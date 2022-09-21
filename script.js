@@ -13,6 +13,13 @@ function togglePanel(el) {
     }
 }
 
+function closeThisPanel(el) {
+
+}
+
+
+
+// plan out how this will save properly
 function selectFish(el) {
     // add selected class to anchor
     var fishId = el.innerText.toLowerCase().replaceAll("- ", "").replaceAll(" ", "_");
@@ -28,33 +35,69 @@ function selectFish(el) {
     }
 
     // show selection options
+
+    //something something - cont for the id
+
 }
 
 function addSelectionToLocal(fish, value) {
+    var selectionType;
+
+    // find fish by removing the name from any extra information
+    var fishName = fish.split("_")[0];
+    switch (fishName) {
+        // find type and other information
+        case "salmon":
+            selectionType = document.getElementById("salmon_type_select").value;
+            fish = fish + "_" + selectionType;
+            break;
+    }
+
     if (localStorage.getItem(fish) == null) {
-        var local = value;
+        var local = value + " ";
         localStorage.setItem(fish, local);
     } else {
         var local = localStorage.getItem(fish);
         local = local.split(" ");
-        local += value;
+        local += value + " ";
 
         window.localStorage.setItem(fish, local);
     }
 
+    console.log("Local = ", localStorage);
     //CHANGING THE FISH PASSED IN WILL SAVE THE NEW FISH TO LOCAL STORAGE
     // split the local storage into the array
     //localStorage.salmon.trim().split(",");
 }
 
-function addSidesToLocal(count, fish) {
-    var value = count + " "; // add space to split
+function addPortionsToLocal(fish, value) {
+    var spec = document.getElementById(`${fish}_portion_spec`).value;
+    var porSize = document.getElementById(`${fish}_portion_weight`).value
+
+    fish = fish + "_" + porSize;
+    if (spec != "normal")
+        value = value + "-" + spec;
 
     addSelectionToLocal(fish, value);
 }
 
-function customAddSides(inputId, fish) {
+function addCustomToLocal(inputId) {
+    var fish = inputId.split("_")[0];
     var value = document.getElementById(`${inputId}`).value + " "; // add space so there it can be split
     addSelectionToLocal(fish, value);
     document.getElementById(`${inputId}`).value = "";
+}
+
+function addCustomPortions(inputId) {
+    var fish = inputId.split("_")[0];
+
+    var value = document.getElementById(`${fish}_custom_por`).value;
+    var spec = document.getElementById(`${fish}_portion_spec`).value;
+    var porSize = document.getElementById(`${fish}_portion_weight`).value
+
+    fish = fish + "_" + porSize;
+    if (spec != "normal")
+        value = value + "-" + spec;
+
+    addSelectionToLocal(fish, value);
 }

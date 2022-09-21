@@ -137,6 +137,7 @@ a {
     text-decoration: none;
     box-sizing: content-box;
     display: inline-flex;
+    cursor: pointer;
 }
 
 label {
@@ -362,6 +363,10 @@ a.close_button:hover {
     background: #F5F5F7;
     width: fit-content;
     border-radius: 5px;
+}
+
+.fish_selection_cuts p {
+    margin-bottom: 5px;
 }
 
 .custom_selection,

@@ -64,11 +64,11 @@
         <div class="main_selections_container">
             <h3>Selections</h3>
 
-            <div class="selection_item_outer">
+            <div class="selection_item_outer" id="salmon-cont">
                 <div class="selection_item_inner">
                     <div class="selection_item_header">
                         <h4>Salmon</h4>
-                        <a class="close_button">
+                        <a class="close_button" onclick="closeThisPanel(this)">
                             <i class="fa-solid fa-circle-xmark"></i>
                         </a>
                     </div>
@@ -77,26 +77,24 @@
                         <div class="selection_item_choices">
                             <div class="cut_choice_container">
                                 <div class="fish_selection_cuts">
-                                    <p>Skin on/off?</p>
-                                    <select id="salmon-skin-select" class="spec_select">
-                                        <option value="on">F+Ps</option>
-                                        <option value="off">FSP</option>
+                                    <p>Type:</p>
+                                    <select id="salmon_type_select" class="spec_select">
+                                        <option value="F+P">F+Ps</option>
+                                        <option value="FSP">FSP</option>
+                                        <option value="whole">Whole</option>
                                     </select>
                                 </div>
 
                                 <div class="fish_selection_cuts">
                                     <p>Sides:</p>
                                     <div class="selection_buttons">
-                                        <a href="">1/2</a>
-                                        <a href="">1</a>
+                                        <a onclick="addSelectionToLocal('salmon', '0.5')">1/2</a>
+                                        <a onclick="addSelectionToLocal('salmon', '1')">1</a>
 
                                         <div class="custom_selection">
-                                            <label for="">Custom:</label>
-                                            <input type="number" />
-                                        </div>
-
-                                        <div class="complete_btn_cont">
-                                            <a href="">+ Add</a>
+                                            <label for="salmon_custom">Custom:</label>
+                                            <input id="salmon_custom" type="number" />
+                                            <a onclick="addCustomToLocal('salmon_custom')">Custom</a>
                                         </div>
                                     </div>
                                 </div>
@@ -104,17 +102,17 @@
                                 <div class="fish_selection_cuts">
                                     <p>Portions:</p>
                                     <div class="selection_buttons">
-                                        <select name="portion_weight" id="salmon-portion-weight">
-                                            <option value="6oz">6oz</option>
-                                            <option value="7oz">7oz</option>
-                                            <option value="8oz">8oz</option>
-                                            <option value="9oz">9oz</option>
-                                            <option value="10oz">10oz</option>
-                                            <option value="5oz">5oz</option>
-                                            <option value="4oz">4oz</option>
+                                        <select name="portion_weight" id="salmon_portion_weight">
+                                            <option value="6">6oz</option>
+                                            <option value="7">7oz</option>
+                                            <option value="8">8oz</option>
+                                            <option value="9">9oz</option>
+                                            <option value="10">10oz</option>
+                                            <option value="5">5oz</option>
+                                            <option value="4">4oz</option>
                                         </select>
 
-                                        <select class="spec_select" id="salmon-extra-options">
+                                        <select class="spec_select" id="salmon_portion_spec">
                                             <option value="normal">Normal</option>
                                             <option value="square">Square</option>
                                             <option value="salted">Salted</option>
@@ -123,19 +121,17 @@
                                             <option value="tail">Tail</option>
                                         </select>
 
-                                        <a href="">5</a>
-                                        <a href="">10</a>
-                                        <a href="">15</a>
-                                        <a href="">20</a>
+                                        <a onclick="addPortionsToLocal('salmon', '5')">5</a>
+                                        <a onclick="addPortionsToLocal('salmon', '10')">10</a>
+                                        <a onclick="addPortionsToLocal('salmon', '15')">15</a>
+                                        <a onclick="addPortionsToLocal('salmon', '20')">20</a>
 
                                         <div class="custom_selection">
-                                            <label for="">Custom:</label>
-                                            <input type="number" />
+                                            <label for="salmon_custom_por">Custom:</label>
+                                            <input id="salmon_custom_por" type="number" />
+                                            <a onclick="addCustomPortions('salmon_custom_por')">Custom</a>
                                         </div>
 
-                                        <div class="complete_btn_cont">
-                                            <a href="">+ Add</a>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -145,7 +141,7 @@
 
             </div>
 
-            <div class="selection_item_outer">
+            <div class="selection_item_outer" id="sea-bass-cont">
                 <div class="selection_item_inner">
                     <div class="selection_item_header">
                         <h4>Sea Bass</h4>
@@ -157,51 +153,38 @@
                     <div class="selection_cont">
                         <div class="selection_item_choices">
                             <div class="cut_choice_container">
-                                <div class="fish_selection_cuts">
-                                    <p>Skin on/off?</p>
-                                    <select id="salmon-skin-select" class="spec_select">
-                                        <option value="on">F+Ps</option>
-                                        <option value="off">FSP</option>
-                                    </select>
-                                </div>
 
                                 <div class="fish_selection_cuts">
-                                    <p>Sides:</p>
+                                    <p>Fillets (Fish):</p>
                                     <div class="selection_buttons">
-                                        <a href="">1/2</a>
-                                        <a href="">1</a>
+                                        <a href="">5</a>
+                                        <a href="">10</a>
+                                        <a href="">15</a>
+                                        <a href="">20</a>
+
+                                        <select class="spec_select" id="bass-fillet-options">
+                                            <option value="normal">Normal</option>
+                                            <option value="butterfly">Butterfly</option>
+                                            <option value="skinned">Skinned</option>                                            
+                                        </select>
 
                                         <div class="custom_selection">
                                             <label for="">Custom:</label>
                                             <input type="number" />
+                                            <a href="">Custom</a>
                                         </div>
 
-                                        <div class="complete_btn_cont">
-                                            <a href="">+ Add</a>
-                                        </div>
                                     </div>
                                 </div>
 
                                 <div class="fish_selection_cuts">
-                                    <p>Portions:</p>
+                                    <p>Gutted:</p>
                                     <div class="selection_buttons">
-                                        <select name="portion_weight" id="salmon-portion-weight">
-                                            <option value="6oz">6oz</option>
-                                            <option value="7oz">7oz</option>
-                                            <option value="8oz">8oz</option>
-                                            <option value="9oz">9oz</option>
-                                            <option value="10oz">10oz</option>
-                                            <option value="5oz">5oz</option>
-                                            <option value="4oz">4oz</option>
-                                        </select>
 
-                                        <select class="spec_select" id="salmon-extra-options">
+                                        <select class="spec_select" id="bass-extra-options">
                                             <option value="normal">Normal</option>
-                                            <option value="square">Square</option>
-                                            <option value="salted">Salted</option>
-                                            <option value="delice">Delice</option>
-                                            <option value="loin">Loin</option>
-                                            <option value="tail">Tail</option>
+                                            <option value="scale-on">Scale On</option>
+                                            <option value="canoe">Canoe</option>                                            
                                         </select>
 
                                         <a href="">5</a>
@@ -212,11 +195,9 @@
                                         <div class="custom_selection">
                                             <label for="">Custom:</label>
                                             <input type="number" />
+                                            <a href="">Custom</a>
                                         </div>
 
-                                        <div class="complete_btn_cont">
-                                            <a href="">+ Add</a>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
