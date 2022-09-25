@@ -150,7 +150,7 @@ select {
     border: 1px solid var(--pri);
     height: 32px;
     border-radius: 4px;
-    padding: 0;
+    padding: 0 2px;
     font-family: 'Arvo', serif;
 }
 
@@ -200,7 +200,7 @@ nav a {
 
 main {
     display: flex;
-    height: calc(100vh - 61px);
+    height: calc(100% - 61px);
 }
 
 .main_cont {
@@ -273,6 +273,20 @@ main {
     border-top: 1px solid var(--border);
     padding-bottom: 50px;
     /*so the last link isnt at the bottom*/
+}
+
+
+/* HIDE ALL CONTS ON OPEN */
+
+#salmon_cont,
+#seabass_cont,
+#cod_cont,
+#hake_cont,
+#coley_cont,
+#seatrout_cont,
+#pollock_cont,
+#wildbass_cont {
+    display: none;
 }
 
 a:hover {
