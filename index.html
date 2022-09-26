@@ -34,12 +34,11 @@
             <div class="sidebar_links">
                 <a onclick="selectFish(this)">Brill  <i class="fa-solid fa-caret-down"></i></a>
                 <a onclick="selectFish(this)">Cod <i class="fa-solid fa-caret-down"></i></a>
-                <a onclick="selectFish(this)">Cod Counts <i class="fa-solid fa-caret-down"></i></a>
+                <a onclick="selectFish(this)">Counts <i class="fa-solid fa-caret-down"></i></a>
                 <a onclick="selectFish(this)">Coley  <i class="fa-solid fa-caret-down"></i></a>
                 <a onclick="selectFish(this)">Dorade <i class="fa-solid fa-caret-down"></i></a>
-                <a onclick="selectFish(this)">Fish Pie Mix  <i class="fa-solid fa-caret-down"></i></a>
-                <a onclick="selectFish(this)">Haddock <i class="fa-solid fa-caret-down"></i></a>
-                <a onclick="selectFish(this)">Haddock Counts <i class="fa-solid fa-caret-down"></i></a>
+                <a onclick="selectFish(this)">FishPie  <i class="fa-solid fa-caret-down"></i></a>
+                <!-- <a onclick="selectFish(this)">Haddock <i class="fa-solid fa-caret-down"></i></a> -->
                 <a onclick="selectFish(this)">Haddock - Smoked <i class="fa-solid fa-caret-down"></i></a>
                 <a onclick="selectFish(this)">Hake <i class="fa-solid fa-caret-down"></i></a>
                 <a onclick="selectFish(this)">Halibut <i class="fa-solid fa-caret-down"></i></a>
@@ -193,7 +192,7 @@
                                     <p>Whole:</p>
                                     <div class="selection_buttons">
 
-                                        <select class="spec_select" id="bass-extra-options">
+                                        <select class="spec_select" id="seabass-extra-options">
                                             <option value="normal">Normal</option>
                                             <option value="scale-on">Scale On</option>
                                             <option value="canoe">Canoe</option> 
@@ -209,6 +208,85 @@
                                             <label for="seaBassWhole_custom">Custom:</label>
                                             <input id="seaBassWhole_custom" type="number" />
                                             <a onclick="addCustomToLocal('seaBassWhole_custom')">Custom</a>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="selection_item_outer" id="dorade_cont">
+                <div class="selection_item_inner">
+                    <div class="selection_item_header">
+                        <h4>Dorade</h4>
+                        <a class="close_button" onclick="closeThisPanel('dorade')">
+                            <i class="fa-solid fa-circle-xmark"></i>
+                        </a>
+                    </div>
+
+                    <div class="selection_cont">
+                        <div class="selection_item_choices">
+                            <div class="cut_choice_container">
+
+                                <div class="fish_selection_cuts">
+                                    <p>Size:</p>
+                                    <select id="dorade_portion_weight" class="spec_select">
+                                        <option value="4-6">400-600</option>
+                                        <option value="550">550</option>
+                                        <option value="6-8">600-800</option>
+                                        <option value="<400">< 400</option>
+                                        <option value="800+">800+</option>
+                                    </select>
+                                </div>
+
+                                <div class="fish_selection_cuts">
+                                    <p>Fillets (Fish):</p>
+                                    <div class="selection_buttons">
+
+                                        <select class="spec_select" id="dorade_portion_spec">
+                                            <option value="normal">Normal</option>
+                                            <option value="butterfly">Butterfly</option>
+                                            <option value="skinned">Skinned</option>                                            
+                                        </select>
+
+                                        <a onclick="addPortionsToLocal('dorade', '5')">5</a>
+                                        <a onclick="addPortionsToLocal('dorade', '10')">10</a>
+                                        <a onclick="addPortionsToLocal('dorade', '15')">15</a>
+                                        <a onclick="addPortionsToLocal('dorade', '20')">20</a>
+
+                                        <div class="custom_selection">
+                                            <label for="dorade_custom_por">Custom:</label>
+                                            <input id="dorade_custom_por" type="number" />
+                                            <a onclick="addCustomPortions('dorade_custom_por')">Custom</a>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="fish_selection_cuts">
+                                    <p>Whole:</p>
+                                    <div class="selection_buttons">
+
+                                        <select class="spec_select" id="dorade-extra-options">
+                                            <option value="normal">Normal</option>
+                                            <option value="scale-on">Scale On</option>
+                                            <option value="canoe">Canoe</option> 
+                                            <option value="not-gutted">Not Gutted</option>                                           
+                                        </select>
+
+                                        <a onclick="addSelectionToLocal('doradeWhole', '5')">5</a>
+                                        <a onclick="addSelectionToLocal('doradeWhole', '10')">10</a>
+                                        <a onclick="addSelectionToLocal('doradeWhole', '15')">15</a>
+                                        <a onclick="addSelectionToLocal('doradeWhole', '20')">20</a>
+
+                                        <div class="custom_selection">
+                                            <label for="doradeWhole_custom">Custom:</label>
+                                            <input id="doradeWhole_custom" type="number" />
+                                            <a onclick="addCustomToLocal('doradeWhole_custom')">Custom</a>
                                         </div>
 
                                     </div>
@@ -289,6 +367,145 @@
 
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="selection_item_outer" id="counts_cont">
+                <div class="selection_item_inner">
+                    <div class="selection_item_header">
+                        <h4>Counts</h4>
+                        <a class="close_button" onclick="closeThisPanel('counts')">
+                            <i class="fa-solid fa-circle-xmark"></i>
+                        </a>
+                    </div>
+
+                    <div class="selection_cont">
+                        <div class="selection_item_choices">
+                            <div class="cut_choice_container">
+                                <div class="fish_selection_cuts">
+                                    <p>Fish:</p>
+                                    <div class="selection_buttons">
+                                        <select name="fish_type" id="counts_fish">
+                                            <option value="haddock">Haddock</option>
+                                            <option value="cod">Cod</option>
+                                            <option value="whiting">Whiting</option>                                            
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="fish_selection_cuts">
+                                    <p>Size:</p>
+                                    <select id="counts_type_select" class="spec_select">
+                                        <option value="8-10">8/10</option>
+                                        <option value="10-12">10/12</option>
+                                        <option value="12-16">12/16</option>
+                                        <option value="20">20s</option>
+                                        <option value="25">25s</option>
+                                        <option value="30">30s</option>
+                                        <option value="35">35s</option>
+                                        <option value="40">40s</option>
+                                        <option value="45">45s</option>
+                                        <option value="50">50s</option>
+                                    </select>
+                                </div>
+
+                                <div class="fish_selection_cuts">
+                                    <p>Restaurant:</p>
+                                    <div class="selection_buttons">
+                                        <select name="portion_weight" id="counts_cust">
+                                            <option value="Sparrowhawk">Sparrowhawk</option>
+                                            <option value="Carlos">Carlos</option>
+                                            <option value="Alma">Alma</option>
+                                            <option value="San_Marcos">San Marcos</option>
+                                            <option value="Cherry_Tree">Cherry Tree</option>
+                                            <option value="Shooters">Shooters</option>
+                                            <option value="Thatch">Thatch</option>
+                                        </select>
+
+                                        <div class="custom_selection">
+                                            <label for="counts_custom_rest">Custom?</label>
+                                            <input id="counts_custom_rest" type="text" />
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="fish_selection_cuts">
+                                    <p>Count:</p>
+                                    <div class="selection_buttons">
+                                        <a onclick="addSelectionToLocal('counts', '5')">5</a>
+                                        <a onclick="addSelectionToLocal('counts', '10')">10</a>
+                                        <a onclick="addSelectionToLocal('counts', '15')">15</a>
+                                        <a onclick="addSelectionToLocal('counts', '20')">20</a>
+                                        <a onclick="addSelectionToLocal('counts', '25')">25</a>
+                                        <a onclick="addSelectionToLocal('counts', '30')">30</a>
+                                        <a onclick="addSelectionToLocal('counts', '40')">40</a>
+                                        <a onclick="addSelectionToLocal('counts', '50')">50</a>
+                                        <a onclick="addSelectionToLocal('counts', '60')">60</a>
+                                        
+                                        <div class="custom_selection">
+                                            <label for="counts_custom">Custom:</label>
+                                            <input id="counts_custom" type="number" />
+                                            <a onclick="addCustomToLocal('counts_custom')">Custom</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="selection_item_outer" id="fishpie_cont">
+                <div class="selection_item_inner">
+                    <div class="selection_item_header">
+                        <h4>Fish Pie</h4>
+                        <a class="close_button" onclick="closeThisPanel('fishpie')">
+                            <i class="fa-solid fa-circle-xmark"></i>
+                        </a>
+                    </div>
+
+                    <div class="selection_cont">
+                        <div class="selection_item_choices">
+                            <div class="cut_choice_container">
+                                <div class="fish_selection_cuts">
+                                    <p>Type:</p>
+                                    <div class="selection_buttons">
+                                        <select name="piemix_type" id="piemix_type">
+                                            <option value="">Mixed</option>
+                                            <option value="salmon">Salmon</option>
+                                            <option value="white">White</option>                                            
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="fish_selection_cuts">
+                                    <p>Weight(kg):</p>
+                                    <div class="selection_buttons">
+                                        <a onclick="addSelectionToLocal('fishpie', '1')">1</a>
+                                        <a onclick="addSelectionToLocal('fishpie', '2')">2</a>
+                                        <a onclick="addSelectionToLocal('fishpie', '3')">3</a>
+                                        <a onclick="addSelectionToLocal('fishpie', '4')">4</a>
+                                        <a onclick="addSelectionToLocal('fishpie', '5')">5</a>
+                                        <a onclick="addSelectionToLocal('fishpie', '6')">6</a>
+                                        <a onclick="addSelectionToLocal('fishpie', '7')">7</a>
+                                        <a onclick="addSelectionToLocal('fishpie', '8')">8</a>
+                                        <a onclick="addSelectionToLocal('fishpie', '9')">9</a>
+                                        <a onclick="addSelectionToLocal('fishpie', '10')">10</a>
+
+
+                                        <div class="custom_selection">
+                                            <label for="fishpie_custom">Custom:</label>
+                                            <input id="fishpie_custom" type="number" />
+                                            <a onclick="addCustomToLocal('fishpie_custom')">Custom</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                           
                             </div>
                         </div>
                     </div>
@@ -665,6 +882,83 @@
                                             <label for="wildbass_custom_por">Custom:</label>
                                             <input id="wildbass_custom_por" type="number" />
                                             <a onclick="addCustomPortions('wildbass_custom_por')">Custom</a>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="selection_item_outer" id="brill_cont">
+                <div class="selection_item_inner">
+                    <div class="selection_item_header">
+                        <h4>Brill</h4>
+                        <a class="close_button" onclick="closeThisPanel('brill')">
+                            <i class="fa-solid fa-circle-xmark"></i>
+                        </a>
+                    </div>
+
+                    <div class="selection_cont">
+                        <div class="selection_item_choices">
+                            <div class="cut_choice_container">
+                                <div class="fish_selection_cuts">
+                                    <p>Type:</p>
+                                    <select id="brill_type_select" class="spec_select">
+                                        <option value="F+P">Filleted</option>
+                                        <option value="whole">Whole</option>
+                                    </select>
+                                </div>
+
+                                <div class="fish_selection_cuts">
+                                    <p>Fish:</p>
+                                    <div class="selection_buttons">
+                                        <a onclick="addSelectionToLocal('brill', '1')">1</a>
+                                        <a onclick="addSelectionToLocal('brill', '2')">2</a>
+                                        <a onclick="addSelectionToLocal('brill', '3')">3</a>
+                                        <a onclick="addSelectionToLocal('brill', '5')">5</a>
+                                        <a onclick="addSelectionToLocal('brill', '10')">10</a>
+                                        <a onclick="addSelectionToLocal('brill', '15')">15</a>
+                                        <a onclick="addSelectionToLocal('brill', '20')">20</a>
+
+                                        <div class="custom_selection">
+                                            <label for="brill_custom">Custom:</label>
+                                            <input id="brill_custom" type="number" />
+                                            <a onclick="addCustomToLocal('brill_custom')">Custom</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="fish_selection_cuts">
+                                    <p>Portions:</p>
+                                    <div class="selection_buttons">
+                                        <select name="portion_weight" id="brill_portion_weight">
+                                            <option value="6">6oz</option>
+                                            <option value="7">7oz</option>
+                                            <option value="8">8oz</option>
+                                            <option value="9">9oz</option>
+                                            <option value="10">10oz</option>
+                                            <option value="5">5oz</option>
+                                            <option value="4">4oz</option>
+                                        </select>
+
+                                        <select class="spec_select" id="brill_portion_spec">
+                                            <option value="normal">Normal</option>
+                                            <option value="square">Square</option>                                            
+                                        </select>
+
+                                        <a onclick="addPortionsToLocal('brill', '5')">5</a>
+                                        <a onclick="addPortionsToLocal('brill', '10')">10</a>
+                                        <a onclick="addPortionsToLocal('brill', '15')">15</a>
+                                        <a onclick="addPortionsToLocal('brill', '20')">20</a>
+
+                                        <div class="custom_selection">
+                                            <label for="brill_custom_por">Custom:</label>
+                                            <input id="brill_custom_por" type="number" />
+                                            <a onclick="addCustomPortions('brill_custom_por')">Custom</a>
                                         </div>
 
                                     </div>

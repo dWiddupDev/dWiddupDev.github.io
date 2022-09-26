@@ -41,7 +41,7 @@ function closeThisPanel(fishId) {
 // plan out how this will save properly
 function selectFish(el) {
     // add selected class to anchor
-    var fishId = el.innerText.toLowerCase().replaceAll("- ", "").replaceAll(" ", "_");
+    var fishId = el.innerText.toLowerCase().replaceAll(" ", "");
     console.log("inner = ", fishId);
     var p = el.childNodes[1];
     if (!el.classList.contains("sidebar_selected")) {
@@ -78,6 +78,15 @@ function addSelectionToLocal(fish, value) {
             selectionType = document.getElementById("cod_type_select").value;
             fish = fish + "_" + selectionType;
             break;
+        case "counts":
+            var typeOFish = document.getElementById("counts_fish").value;
+            var restaurant = document.getElementById("counts_custom_rest").value != "" ? document.getElementById("counts_custom_rest").value : document.getElementById("counts_cust").value
+            selectionType = document.getElementById("counts_type_select").value;
+            fish = typeOFish + fish + "_" + selectionType;
+            value = value + "-" + restaurant.replaceAll(" ", "_");
+
+            document.getElementById("counts_custom_rest").value = ""
+            break;
         case "hake":
             selectionType = document.getElementById("hake_type_select").value;
             fish = fish + "_" + selectionType;
@@ -100,6 +109,25 @@ function addSelectionToLocal(fish, value) {
             break;
         case "seaBass":
             selectionType = "";
+            break;
+        case "seaBassWhole":
+            selectionType = document.getElementById("seabass-extra-options").value;
+            value = value + "-" + selectionType;
+            break;
+        case "dorade":
+            selectionType = "";
+            break;
+        case "doradeWhole":
+            selectionType = document.getElementById("dorade-extra-options").value;
+            value = value + "-" + selectionType;
+            break;
+        case "brill":
+            selectionType = document.getElementById("brill_type_select").value;
+            fish = fish + "_" + selectionType;
+            break;
+        case "fishpie":
+            selectionType = document.getElementById("piemix_type").value;
+            fish = fish  + "-"+ selectionType;
             break;
     }
 

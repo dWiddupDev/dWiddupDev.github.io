@@ -160,6 +160,13 @@ select:focus {
     background: #FFF;
 }
 
+select#counts_cust,
+#counts_custom_rest,
+#counts_fish,
+#piemix_type {
+    width: fit-content;
+}
+
 select.spec_select {
     width: fit-content;
 }
@@ -285,7 +292,11 @@ main {
 #coley_cont,
 #seatrout_cont,
 #pollock_cont,
-#wildbass_cont {
+#wildbass_cont,
+#dorade_cont,
+#brill_cont,
+#counts_cont,
+#fishpie_cont {
     display: none;
 }
 
@@ -363,6 +374,7 @@ a.close_button:hover {
     display: flex;
     align-items: center;
     gap: 5px;
+    flex-wrap: wrap;
 }
 
 .selection_buttons a {
