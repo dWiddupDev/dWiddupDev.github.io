@@ -296,7 +296,10 @@ main {
 #dorade_cont,
 #brill_cont,
 #counts_cont,
-#fishpie_cont {
+#fishpie_cont,
+#smokedhaddock_cont,
+#halibut_cont,
+#monkfish_cont {
     display: none;
 }
 

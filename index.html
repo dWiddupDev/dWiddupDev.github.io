@@ -39,7 +39,7 @@
                 <a onclick="selectFish(this)">Dorade <i class="fa-solid fa-caret-down"></i></a>
                 <a onclick="selectFish(this)">FishPie  <i class="fa-solid fa-caret-down"></i></a>
                 <!-- <a onclick="selectFish(this)">Haddock <i class="fa-solid fa-caret-down"></i></a> -->
-                <a onclick="selectFish(this)">Haddock - Smoked <i class="fa-solid fa-caret-down"></i></a>
+                <a onclick="selectFish(this)">SmokedHaddock <i class="fa-solid fa-caret-down"></i></a>
                 <a onclick="selectFish(this)">Hake <i class="fa-solid fa-caret-down"></i></a>
                 <a onclick="selectFish(this)">Halibut <i class="fa-solid fa-caret-down"></i></a>
                 <a onclick="selectFish(this)">Lemon Sole  <i class="fa-solid fa-caret-down"></i></a>
@@ -513,6 +513,70 @@
 
             </div>
 
+            <div class="selection_item_outer" id="smokedhaddock_cont">
+                <div class="selection_item_inner">
+                    <div class="selection_item_header">
+                        <h4>Smoked Haddock</h4>
+                        <a class="close_button" onclick="closeThisPanel('smokedhaddock')">
+                            <i class="fa-solid fa-circle-xmark"></i>
+                        </a>
+                    </div>
+
+                    <div class="selection_cont">
+                        <div class="selection_item_choices">
+                            <div class="cut_choice_container">
+                                <div class="fish_selection_cuts">
+                                    <p>Type:</p>
+                                    <select id="smoked-haddock_type_select" class="spec_select">
+                                        <option value="F+P">F+P</option>
+                                        <option value="FSP">FSP</option>
+                                    </select>
+                                </div>
+
+                                <div class="fish_selection_cuts">
+                                    <p>Weight (kg):</p>
+                                    <div class="selection_buttons">
+                                        <a onclick="addSelectionToLocal('smoked-haddock', '1k')">1</a>
+                                        <a onclick="addSelectionToLocal('smoked-haddock', '2k')">2</a>
+                                        <a onclick="addSelectionToLocal('smoked-haddock', '3k')">3</a>
+                                        <a onclick="addSelectionToLocal('smoked-haddock', '6k')">6</a>
+
+                                        <div class="custom_selection">
+                                            <label for="smoked-haddock_custom">Custom:</label>
+                                            <input id="smoked-haddock_custom" type="number" />
+                                            <a onclick="addCustomToLocal('smoked-haddock_custom')">Custom</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="fish_selection_cuts">
+                                    <p>Sides:</p>
+                                    <div class="selection_buttons">
+                                        
+                                        <a onclick="addSelectionToLocal('smoked-haddock', '1')">1</a>
+                                        <a onclick="addSelectionToLocal('smoked-haddock', '2')">2</a>
+                                        <a onclick="addSelectionToLocal('smoked-haddock', '3')">3</a>
+                                        <a onclick="addSelectionToLocal('smoked-haddock', '4')">4</a>
+                                        <a onclick="addSelectionToLocal('smoked-haddock', '5')">5</a>
+                                        <a onclick="addSelectionToLocal('smoked-haddock', '6')">6</a>
+                                        <a onclick="addSelectionToLocal('smoked-haddock', '7')">7</a>
+                                        <a onclick="addSelectionToLocal('smoked-haddock', '8')">8</a>
+
+                                        <div class="custom_selection">
+                                            <label for="smoked-haddock_custom_por">Custom:</label>
+                                            <input id="smoked-haddock_custom_por" type="number" />
+                                            <a onclick="addCustomToLocal('smoked-haddock_custom_por')">Custom</a>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
             <div class="selection_item_outer" id="hake_cont">
                 <div class="selection_item_inner">
                     <div class="selection_item_header">
@@ -969,6 +1033,163 @@
                 </div>
 
             </div>
+
+            <div class="selection_item_outer" id="halibut_cont">
+                <div class="selection_item_inner">
+                    <div class="selection_item_header">
+                        <h4>Halibut</h4>
+                        <a class="close_button" onclick="closeThisPanel('halibut')">
+                            <i class="fa-solid fa-circle-xmark"></i>
+                        </a>
+                    </div>
+
+                    <div class="selection_cont">
+                        <div class="selection_item_choices">
+                            <div class="cut_choice_container">
+                                <div class="fish_selection_cuts">
+                                    <p>Type:</p>
+                                    <select id="halibut_type_select" class="spec_select">
+                                        <option value="fillet">Fillet</option>
+                                        <option value="steak">On Bone</option>
+                                    </select>
+                                </div>
+
+                                <div class="fish_selection_cuts">
+                                    <p>Weight (kg):</p>
+                                    <div class="selection_buttons">
+                                        <a onclick="addSelectionToLocal('halibut', '.5k')">1/2</a>
+                                        <a onclick="addSelectionToLocal('halibut', '1k')">1</a>
+                                        <a onclick="addSelectionToLocal('halibut', '2k')">2</a>
+                                        <a onclick="addSelectionToLocal('halibut', '3k')">3</a>
+                                        <a onclick="addSelectionToLocal('halibut', '5k')">5</a>
+                                        <a onclick="addSelectionToLocal('halibut', '10k')">10</a>
+
+                                        <div class="custom_selection">
+                                            <label for="halibut_custom">Custom:</label>
+                                            <input id="halibut_custom" type="number" />
+                                            <a onclick="addCustomToLocal('halibut_custom')">Custom</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="fish_selection_cuts">
+                                    <p>Portions:</p>
+                                    <div class="selection_buttons">
+                                        <select name="portion_weight" id="halibut_portion_weight">
+                                            <option value="6">6oz</option>
+                                            <option value="7">7oz</option>
+                                            <option value="8">8oz</option>
+                                            <option value="9">9oz</option>
+                                            <option value="10">10oz</option>
+                                            <option value="5">5oz</option>
+                                            <option value="4">4oz</option>
+                                        </select>
+
+                                        <select class="spec_select" id="halibut_portion_spec">
+                                            <option value="normal">Normal</option>
+                                            <option value="square">Square</option>
+                                            <option value="delice">Delice</option>
+                                            <option value="loin">Loin</option>
+                                            <option value="tail">Tail</option>
+                                        </select>
+
+                                        <a onclick="addPortionsToLocal('halibut', '5')">5</a>
+                                        <a onclick="addPortionsToLocal('halibut', '10')">10</a>
+                                        <a onclick="addPortionsToLocal('halibut', '15')">15</a>
+                                        <a onclick="addPortionsToLocal('halibut', '20')">20</a>
+
+                                        <div class="custom_selection">
+                                            <label for="halibut_custom_por">Custom:</label>
+                                            <input id="halibut_custom_por" type="number" />
+                                            <a onclick="addCustomPortions('halibut_custom_por')">Custom</a>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="selection_item_outer" id="monkfish_cont">
+                <div class="selection_item_inner">
+                    <div class="selection_item_header">
+                        <h4>Monkfish</h4>
+                        <a class="close_button" onclick="closeThisPanel('monkfish')">
+                            <i class="fa-solid fa-circle-xmark"></i>
+                        </a>
+                    </div>
+
+                    <div class="selection_cont">
+                        <div class="selection_item_choices">
+                            <div class="cut_choice_container">
+                                <div class="fish_selection_cuts">
+                                    <p>Type:</p>
+                                    <select id="monkfish_type_select" class="spec_select">
+                                        <option value="fillet">Fillet</option>
+                                        <option value="steak">On Bone</option>
+                                    </select>
+                                </div>
+
+                                <div class="fish_selection_cuts">
+                                    <p>Weight (kg):</p>
+                                    <div class="selection_buttons">
+                                        <a onclick="addSelectionToLocal('monkfish', '.5k')">1/2</a>
+                                        <a onclick="addSelectionToLocal('monkfish', '1k')">1</a>
+                                        <a onclick="addSelectionToLocal('monkfish', '2k')">2</a>
+                                        <a onclick="addSelectionToLocal('monkfish', '3k')">3</a>
+                                        <a onclick="addSelectionToLocal('monkfish', '5k')">5</a>
+                                        <a onclick="addSelectionToLocal('monkfish', '10k')">10</a>
+
+                                        <div class="custom_selection">
+                                            <label for="monkfish_custom">Custom:</label>
+                                            <input id="monkfish_custom" type="number" />
+                                            <a onclick="addCustomToLocal('monkfish_custom')">Custom</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="fish_selection_cuts">
+                                    <p>Portions:</p>
+                                    <div class="selection_buttons">
+                                        <select name="portion_weight" id="monkfish_portion_weight">
+                                            <option value="6">6oz</option>
+                                            <option value="7">7oz</option>
+                                            <option value="8">8oz</option>
+                                            <option value="9">9oz</option>
+                                            <option value="10">10oz</option>
+                                            <option value="5">5oz</option>
+                                            <option value="4">4oz</option>
+                                        </select>
+
+                                        <select class="spec_select" id="monkfish_portion_spec">
+                                            <option value="normal">Normal</option>
+                                            <option value="square">Square</option>
+                                            <option value="delice">Delice</option>
+                                            <option value="loin">Loin</option>
+                                            <option value="tail">Tail</option>
+                                        </select>
+
+                                        <a onclick="addPortionsToLocal('monkfish', '5')">5</a>
+                                        <a onclick="addPortionsToLocal('monkfish', '10')">10</a>
+                                        <a onclick="addPortionsToLocal('monkfish', '15')">15</a>
+                                        <a onclick="addPortionsToLocal('monkfish', '20')">20</a>
+
+                                        <div class="custom_selection">
+                                            <label for="monkfish_custom_por">Custom:</label>
+                                            <input id="monkfish_custom_por" type="number" />
+                                            <a onclick="addCustomPortions('monkfish_custom_por')">Custom</a>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </main>
 

@@ -129,6 +129,19 @@ function addSelectionToLocal(fish, value) {
             selectionType = document.getElementById("piemix_type").value;
             fish = fish  + "-"+ selectionType;
             break;
+        case "smoked-haddock":
+            selectionType = document.getElementById("smoked-haddock_type_select").value;
+            fish = fish  + "_"+ selectionType;
+            break;
+        case "halibut":
+            selectionType = document.getElementById("halibut_type_select").value;
+            fish = fish  + "_"+ selectionType;
+            break;
+        case "monkfish":
+            selectionType = document.getElementById("monkfish_type_select").value;
+            fish = fish  + "_"+ selectionType;
+            break;
+
     }
 
     if (localStorage.getItem(fish) == null) {
@@ -162,6 +175,9 @@ function addPortionsToLocal(fish, value) {
 function addCustomToLocal(inputId) {
     var fish = inputId.split("_")[0];
     var value = document.getElementById(`${inputId}`).value; // add space so there it can be split
+    if (inputId == "smoked-haddock_custom" || inputId == "halibut_custom" || inputId == "monkfish_custom") {
+        value = value + "k";
+    }
     addSelectionToLocal(fish, value);
     document.getElementById(`${inputId}`).value = "";
 }
@@ -177,5 +193,6 @@ function addCustomPortions(inputId) {
     if (spec != "normal")
         value = value + "-" + spec;
 
+    document.getElementById(`${inputId}`).value = "";
     addSelectionToLocal(fish, value);
 }
