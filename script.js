@@ -129,6 +129,14 @@ function addSelectionToLocal(fish, value) {
             selectionType = document.getElementById("piemix_type").value;
             fish = fish  + "-"+ selectionType;
             break;
+        case "squid":
+            selectionType = document.getElementById("squid_type").value;
+            fish = fish  + "-"+ selectionType;
+            break;
+        case "octopus":
+            selectionType = document.getElementById("octopus_type").value;
+            fish = fish  + "-"+ selectionType;
+            break;
         case "smoked-haddock":
             selectionType = document.getElementById("smoked-haddock_type_select").value;
             fish = fish  + "_"+ selectionType;
@@ -139,6 +147,34 @@ function addSelectionToLocal(fish, value) {
             break;
         case "monkfish":
             selectionType = document.getElementById("monkfish_type_select").value;
+            fish = fish  + "_"+ selectionType;
+            break;
+        case "lemonsole":
+            selectionType = document.getElementById("lemonsole_type_select").value;
+            fish = fish  + "_"+ selectionType;
+            break;
+        case "plaice":
+            selectionType = document.getElementById("plaice_type_select").value;
+            fish = fish  + "_"+ selectionType;
+            break;
+        case "mackerel":
+            selectionType = document.getElementById("mackerel_type_select").value;
+            fish = fish  + "_"+ selectionType;  
+            break;
+        case "trout":
+            selectionType = document.getElementById("trout_type_select").value;
+            fish = fish  + "_"+ selectionType;  
+            break;
+        case "sardines":
+            selectionType = document.getElementById("sardines_type_select").value;
+            fish = fish  + "_"+ selectionType;  
+            break;
+        case "shark":
+            selectionType = document.getElementById("shark_type_select").value;
+            fish = fish  + "_"+ selectionType;
+            break;
+        case "dovers":
+            selectionType = document.getElementById("dovers_type_select").value;
             fish = fish  + "_"+ selectionType;
             break;
 
@@ -162,10 +198,22 @@ function addSelectionToLocal(fish, value) {
 }
 
 function addPortionsToLocal(fish, value) {
+    
     var spec = document.getElementById(`${fish}_portion_spec`).value;
-    var porSize = document.getElementById(`${fish}_portion_weight`).value
+    if (fish != "mackerel") {
+        var porSize = document.getElementById(`${fish}_portion_weight`).value
+        fish = fish + "_" + porSize;
+    }
+    
+    if (spec != "normal")
+        value = value + "-" + spec;
 
-    fish = fish + "_" + porSize;
+    addSelectionToLocal(fish, value);
+}
+
+function addFishToLocal(fish, value) {
+    var spec = document.getElementById(`${fish}_portion_spec`).value;    
+    
     if (spec != "normal")
         value = value + "-" + spec;
 
@@ -175,9 +223,17 @@ function addPortionsToLocal(fish, value) {
 function addCustomToLocal(inputId) {
     var fish = inputId.split("_")[0];
     var value = document.getElementById(`${inputId}`).value; // add space so there it can be split
-    if (inputId == "smoked-haddock_custom" || inputId == "halibut_custom" || inputId == "monkfish_custom") {
+
+    if (inputId == "smoked-haddock_custom" || inputId == "halibut_custom" 
+    || inputId == "monkfish_custom" || inputId == "lemonsole_custom_por"
+    || inputId == "plaice_custom_por" || inputId == "mackerel_custom"
+    || inputId == "trout_custom" || inputId == "sardines_custom"
+    || inputId == "shark_custom" || inputId == "tuna_custom" 
+    || inputId == "sword_custom" || inputId == "squid_custom"
+    || inputId == "octopus_custom") {
         value = value + "k";
     }
+    
     addSelectionToLocal(fish, value);
     document.getElementById(`${inputId}`).value = "";
 }
@@ -195,4 +251,21 @@ function addCustomPortions(inputId) {
 
     document.getElementById(`${inputId}`).value = "";
     addSelectionToLocal(fish, value);
+}
+
+function addCustomFish(inputId) {
+    var fish = inputId.split("_")[0];
+
+    var spec = document.getElementById(`${fish}_portion_spec`).value;
+    var value = document.getElementById(`${inputId}`).value;
+
+    if (inputId == "sardines_custom" || inputId == "dovers_custom")
+        value = value + "k";
+    
+    if (spec != "normal")
+        value = value + "-" + spec;   
+
+    document.getElementById(`${inputId}`).value = "";
+    addSelectionToLocal(fish, value);
+
 }

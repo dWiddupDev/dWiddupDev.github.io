@@ -163,7 +163,9 @@ select:focus {
 select#counts_cust,
 #counts_custom_rest,
 #counts_fish,
-#piemix_type {
+#piemix_type,
+#squid_type,
+#octopus_type {
     width: fit-content;
 }
 
@@ -299,7 +301,18 @@ main {
 #fishpie_cont,
 #smokedhaddock_cont,
 #halibut_cont,
-#monkfish_cont {
+#monkfish_cont,
+#lemonsole_cont,
+#plaice_cont,
+#mackerel_cont,
+#trout_cont,
+#sardines_cont,
+#shark_cont,
+#tuna_cont,
+#swordfish_cont,
+#squid_cont,
+#octopus_cont,
+#dovers_cont {
     display: none;
 }
 
