@@ -430,3 +430,7 @@ a.close_button:hover {
 .complete_btn_cont a:hover {
     background-color: var(--sec);
 }
+
+.table {
+    color : red;
+}
