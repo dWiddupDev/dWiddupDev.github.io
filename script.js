@@ -1,3 +1,24 @@
+function done() {
+
+    // create pdf by creating the html first and then convert using the function below
+    // gitlink: https://github.com/eKoopmans/html2pdf.js
+
+
+    //var element = document.getElementById('element-to-print');
+    //can even build it in js FUCK YES!!!!
+    var element = '<table>' +
+    '<thead>    <th>fish</th>    <th>to</th>    <th>save</th>    <th>for</th>    <th>AO</th></thead>' +
+    '<tbody>    <tr>        <td>salmon</td>        <td>bass</td><td>Trout</td><td>Halibut</td><td>shit</td> ' +
+    '    </tr>    <tr>        <td>salmon</td>        <td>bass</td>        <td>Trout</td>        <td>Halibut</td>' +
+    '        <td>shit</td>    </tr>    <tr>        <td>salmon</td>        <td>bass</td>        <td>Trout</td>        <td>Halibut</td> '+
+    '        <td>shit</td>    </tr>    <tr>        <td>salmon</td>        <td>bass</td>        <td>Trout</td>        <td>Halibut</td> ' +
+    '        <td>shit</td>    </tr>                  </tbody></table>';
+
+    // remember to name and date pdfs
+
+    html2pdf(element);
+}
+
 function togglePanel(el) {
 
     var thisId = el.parentNode.parentNode;
