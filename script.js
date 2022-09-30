@@ -3,6 +3,24 @@ function done() {
     // create pdf by creating the html first and then convert using the function below
     // gitlink: https://github.com/eKoopmans/html2pdf.js
 
+    // do salmon
+    var local = window.localStorage;
+    var salmon = [];
+    for (var i = 0; local.length; i ++) {
+        if (window.localStorage.key(i) != null){
+            
+            salmon.push({
+                type: window.localStorage.key(i),
+                qty: window.localStorage.getItem(window.localStorage.key(i))
+            });
+            console.log(window.localStorage.key(i));
+            console.log("Salmon = ", salmon);
+        }
+        else 
+            return;
+    }
+    
+
 
     var element = document.getElementById('element-to-print');
     //can even build it in js FUCK YES!!!!
@@ -18,7 +36,7 @@ function done() {
 
     // remember to name and date pdfs
 
-    html2pdf(element);
+    //html2pdf(element);
 }
 
 function togglePanel(el) {
@@ -84,6 +102,8 @@ function selectFish(el) {
     else
         fishCont.style.display = "flex";
 
+    //scroll to position  
+          
 }
 
 function addSelectionToLocal(fish, value) {
