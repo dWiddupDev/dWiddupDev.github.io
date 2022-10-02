@@ -6,22 +6,43 @@ function done() {
     // do salmon
     var local = window.localStorage;
     var salmon = [];
+    var miscFish = [];
+    var seabass = [];
+    var counts = [];
     for (var i = 0; local.length; i ++) {
-        if (window.localStorage.key(i) != null){
+        var fishType = window.localStorage.key(i);
+
+        if (fishType != null){
+            var orders = window.localStorage.getItem(fishType)
+            var typeObj = {
+                type: fishType,
+                qty: orders
+            }
+            debugger;
             
-            salmon.push({
-                type: window.localStorage.key(i),
-                qty: window.localStorage.getItem(window.localStorage.key(i))
-            });
-            console.log(window.localStorage.key(i));
+            if (fishType.includes("salmon"))       
+                salmon.push(typeObj);
+            
+            else if (fishType.includes("seaBass"))   
+                seabass.push(typeObj);
+                
+            else if (fishType.split("_")[0].includes("counts"))
+                counts.push(typeObj);
+                
+            else   
+                miscFish.push(typeObj);
+                    
+            
+            
             console.log("Salmon = ", salmon);
+            console.log("seabass = ", seabass);
+            console.log("counts = ", counts);
+            console.log("miscFish = ", miscFish);
         }
         else 
             return;
     }
     
-
-
     var element = document.getElementById('element-to-print');
     //can even build it in js FUCK YES!!!!
     // must do the styling inline

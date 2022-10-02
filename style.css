@@ -336,7 +336,7 @@ a:hover {
 }
 
 .selection_item_outer {
-    width: max-content;
+    width: 100%;
     background-color: #FFF;
     border-radius: 4px;
     padding: 10px;
