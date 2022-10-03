@@ -41,7 +41,10 @@ function done() {
             break;
     }
 
-    printSalmon(salmon)
+    printSalmon(salmon);
+    // printSeabass(seabass);
+    // printCounts(counts);
+    // printMisc(miscFish);
 }
 
 function printSalmon(salmonObj) {
@@ -162,9 +165,25 @@ function printSalmon(salmonObj) {
 
     element.innerHTML += fishAndOrders;
     fishAndOrders = "";
+    var date = new Date().toLocaleDateString();
+    html2pdf(element, {filename: "salmon-" + date + ".pdf"});
+}
 
-    // remember to name and date pdfs
-    html2pdf(element);
+function printSeabass() {
+
+    var date = new Date().toLocaleDateString();
+    html2pdf(element, {filename: "seabass-" + date + ".pdf"});
+}
+
+function printCounts() {
+
+    var date = new Date().toLocaleDateString();
+    html2pdf(element, {filename: "counts-" + date + ".pdf"});
+}
+
+function printMisc() {
+    var date = new Date().toLocaleDateString();
+    html2pdf(element, {filename: "miscFish-" + date + ".pdf"});
 }
 
 function togglePanel(el) {
