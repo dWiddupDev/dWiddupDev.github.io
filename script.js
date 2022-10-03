@@ -35,46 +35,85 @@ function done() {
             console.log("seabass = ", seabass);
             console.log("counts = ", counts);
             console.log("miscFish = ", miscFish);
-            debugger;
+            
         }
         else 
             break;
     }
 
-    var element = document.getElementById("element-to-print");
-    // var itemContStyling = 'style="' + 
-    //     'display: flex; ' +
-    //     'align-items: center; ' + 
-    //     'gap: 10px;' +
-    //     'border-bottom: 1px solid #000; ' +
-    //     'padding: 5px;'+
-    //     'margin: 20px;' +
-    //     '"';
-    // var valueStyling = 'border: 1px solid #ddd; ' +
-    // 'border-radius: 50%; ' +
-    // 'padding: 2px 5px;';
+    printSalmon(salmon)
+}
+
+function printSalmon(salmonObj) {
+    var element = document.getElementById("element-to-print");    
 
     element.innerHTML = "<h1>Salmon</h1>";
-    var fishAndOrders;
-    for (var i = 0; i < salmon.length; i ++) {
+    var fishAndOrders = "";
 
-        fishAndOrders += "<div><pdfItem>" +
-         "<h4>" + salmon[i].type + "</h4>";
-        
-        var indOrders = salmon[i].qty.split(",");
-        for (var o = 0; o < indOrders.length; o++) {
+    var whole = [];
+    var fsp = [];
+    var fp = [];
 
-            fishAndOrders += '<span> ' + salmon[i].qty[o] + ' </span>';
-        }
+    for (var i = 0; i < salmonObj.length; i ++) {
+        if (salmonObj[i].type.includes("whole"))
+            whole.push(salmonObj[i]);
+        if (salmonObj[i].type.includes("FSP"))
+            fsp.push(salmonObj[i]);
+        if (salmonObj[i].type.includes("F+P"))
+            fp.push(salmonObj[i]);
     }
 
-    fishAndOrders += "</div></pdfItem></div>";
+    // seperate the types into sections
+    for (var w = 0; w < whole.length; w++) {
+        var type = whole[w].type.split("_");
+        switch(type.length) {
+            case 3:
+                fis
+                break;
+        }
+
+
+        fishAndOrders += "<pdfItem>" +
+         "<h4>" + whole[w].type.split("_")[0] + "</h4>";
+        
+        var indOrders = whole[w].qty.trim().split(",");
+
+        fishAndOrders += "<values>";
+        for (var o = 0; o < indOrders.length; o++) {
+            var value = indOrders[o];
+            if (value == "0.5")
+                value = "1/2";
+            fishAndOrders += '<span> ' + value + ' </span>';
+        }
+        fishAndOrders += "</values>";
+        fishAndOrders += "</pdfItem>";
+    }
+
+    // for (var i = 0; i < salmonObj.length; i ++) {
+
+    //     fishAndOrders += "<pdfItem>" +
+    //      "<h4>" + salmonObj[i].type + "</h4>";
+        
+    //     var indOrders = salmonObj[i].qty.trim().split(",");
+
+    //     fishAndOrders += "<values>";
+    //     for (var o = 0; o < indOrders.length; o++) {
+    //         var value = indOrders[o];
+    //         if (value == "0.5")
+    //             value = "1/2";
+    //         fishAndOrders += '<span> ' + value + ' </span>';
+    //     }
+    //     fishAndOrders += "</values>";
+    //     fishAndOrders += "</pdfItem>";
+    // }
+
+    
 
     element.innerHTML += fishAndOrders;
     fishAndOrders = "";
 
     // remember to name and date pdfs
-    //html2pdf(element);
+    html2pdf(element);
 }
 
 function togglePanel(el) {

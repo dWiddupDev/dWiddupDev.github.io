@@ -345,17 +345,35 @@ a:hover {
 
 #element-to-print span {
     border: 1px solid #ddd;
-    border-radius: 50%;
+    border-radius: 10px;
     padding: 2px 5px;
 }
 
 #element-to-print pdfItem {
     display: flex; 
-    align-items: center; 
-    gap: 10px;
+    flex-wrap: nowrap;
+    gap: 5px;
     border-bottom: 1px solid #000; 
-    padding: 5px;
+    padding-bottom: 10px;
     margin: 20px;
+}
+
+#element-to-print h1 {
+    margin: 10px 0 0 10px;
+    text-decoration: underline;
+}
+
+#element-to-print pdfItem h4 {
+    border-right: 2px solid #000;
+    padding-right: 5px;
+    min-width: 200px;
+    text-transform: capitalize;
+}
+
+#element-to-print values {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
 }
 
 .selection_item_inner {}
