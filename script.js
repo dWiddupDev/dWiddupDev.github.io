@@ -17,8 +17,7 @@ function done() {
             var typeObj = {
                 type: fishType,
                 qty: orders
-            }
-            debugger;
+            }           
             
             if (fishType.includes("salmon"))       
                 salmon.push(typeObj);
@@ -32,31 +31,49 @@ function done() {
             else   
                 miscFish.push(typeObj);
                     
-            
-            
             console.log("Salmon = ", salmon);
             console.log("seabass = ", seabass);
             console.log("counts = ", counts);
             console.log("miscFish = ", miscFish);
+            debugger;
         }
         else 
-            return;
+            break;
     }
-    
-    var element = document.getElementById('element-to-print');
-    //can even build it in js FUCK YES!!!!
-    // must do the styling inline
-    
-    // var element = '<table style="color: red">' +
-    // '<thead>    <th>fish</th>    <th>to</th>    <th>save</th>    <th>for</th>    <th>AO</th></thead>' +
-    // '<tbody>    <tr>        <td>salmon</td>        <td>bass</td><td>Trout</td><td>Halibut</td><td>shit</td> ' +
-    // '    </tr>    <tr>        <td>salmon</td>        <td>bass</td>        <td>Trout</td>        <td>Halibut</td>' +
-    // '        <td>shit</td>    </tr>    <tr>        <td>salmon</td>        <td>bass</td>        <td>Trout</td>        <td>Halibut</td> '+
-    // '        <td>shit</td>    </tr>    <tr>        <td>salmon</td>        <td>bass</td>        <td>Trout</td>        <td>Halibut</td> ' +
-    // '        <td>shit</td>    </tr>                  </tbody></table>';
+
+    var element = document.getElementById("element-to-print");
+    // var itemContStyling = 'style="' + 
+    //     'display: flex; ' +
+    //     'align-items: center; ' + 
+    //     'gap: 10px;' +
+    //     'border-bottom: 1px solid #000; ' +
+    //     'padding: 5px;'+
+    //     'margin: 20px;' +
+    //     '"';
+    // var valueStyling = 'border: 1px solid #ddd; ' +
+    // 'border-radius: 50%; ' +
+    // 'padding: 2px 5px;';
+
+    element.innerHTML = "<h1>Salmon</h1>";
+    var fishAndOrders;
+    for (var i = 0; i < salmon.length; i ++) {
+
+        fishAndOrders += "<div><pdfItem>" +
+         "<h4>" + salmon[i].type + "</h4>";
+        
+        var indOrders = salmon[i].qty.split(",");
+        for (var o = 0; o < indOrders.length; o++) {
+
+            fishAndOrders += '<span> ' + salmon[i].qty[o] + ' </span>';
+        }
+    }
+
+    fishAndOrders += "</div></pdfItem></div>";
+
+    element.innerHTML += fishAndOrders;
+    fishAndOrders = "";
 
     // remember to name and date pdfs
-
     //html2pdf(element);
 }
 
