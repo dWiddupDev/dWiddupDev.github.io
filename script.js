@@ -68,7 +68,8 @@ function printSalmon(salmonObj) {
         var type = whole[w].type.split("_");
         switch(type.length) {
             case 3:
-                fis
+                var fish = type[0];
+                
                 break;
         }
 
