@@ -67,15 +67,21 @@ function printSalmon(salmonObj) {
     for (var w = 0; w < whole.length; w++) {
         var type = whole[w].type.split("_");
         switch(type.length) {
+            case 2:
+                var fish = type[0];
+                var cut = type[1];
+                type = `${fish} ${cut}`
+                break;
             case 3:
                 var fish = type[0];
-                
+                var size = type[1] + "oz";
+                var cut = type[2];
+                type = `${fish} ${size} ${cut}`
                 break;
         }
 
-
         fishAndOrders += "<pdfItem>" +
-         "<h4>" + whole[w].type.split("_")[0] + "</h4>";
+         "<h4>" + type + "</h4>";
         
         var indOrders = whole[w].qty.trim().split(",");
 
@@ -90,25 +96,69 @@ function printSalmon(salmonObj) {
         fishAndOrders += "</pdfItem>";
     }
 
-    // for (var i = 0; i < salmonObj.length; i ++) {
+    for (var w = 0; w < fsp.length; w++) {
+        var type = fsp[w].type.split("_");
+        switch(type.length) {
+            case 2:
+                var fish = type[0];
+                var cut = type[1];
+                type = `${fish} ${cut}`
+                break;
+            case 3:
+                var fish = type[0];
+                var size = type[1] + "oz";
+                var cut = type[2];
+                type = `${fish} ${size} ${cut}`
+                break;
+        }
 
-    //     fishAndOrders += "<pdfItem>" +
-    //      "<h4>" + salmonObj[i].type + "</h4>";
+        fishAndOrders += "<pdfItem>" +
+         "<h4>" + type.replaceAll(",", " ") + "</h4>";
         
-    //     var indOrders = salmonObj[i].qty.trim().split(",");
+        var indOrders = fsp[w].qty.trim().split(",");
 
-    //     fishAndOrders += "<values>";
-    //     for (var o = 0; o < indOrders.length; o++) {
-    //         var value = indOrders[o];
-    //         if (value == "0.5")
-    //             value = "1/2";
-    //         fishAndOrders += '<span> ' + value + ' </span>';
-    //     }
-    //     fishAndOrders += "</values>";
-    //     fishAndOrders += "</pdfItem>";
-    // }
+        fishAndOrders += "<values>";
+        for (var o = 0; o < indOrders.length; o++) {
+            var value = indOrders[o];
+            if (value == "0.5")
+                value = "1/2";
+            fishAndOrders += '<span> ' + value + ' </span>';
+        }
+        fishAndOrders += "</values>";
+        fishAndOrders += "</pdfItem>";
+    }
+    // F+P
+    for (var w = 0; w < fp.length; w++) {
+        var type = fp[w].type.split("_");
+        switch(type.length) {
+            case 2:
+                var fish = type[0];
+                var cut = type[1];
+                type = `${fish} ${cut}`
+                break;
+            case 3:
+                var fish = type[0];
+                var size = type[1] + "oz";
+                var cut = type[2];
+                type = `${fish} ${size} ${cut}`
+                break;
+        }
+        
+        fishAndOrders += "<pdfItem>" +
+         "<h4>" + type.replaceAll(",", " ") + "</h4>";
+        
+        var indOrders = fp[w].qty.trim().split(",");
 
-    
+        fishAndOrders += "<values>";
+        for (var o = 0; o < indOrders.length; o++) {
+            var value = indOrders[o];
+            if (value == "0.5")
+                value = "1/2";
+            fishAndOrders += '<span> ' + value + ' </span>';
+        }
+        fishAndOrders += "</values>";
+        fishAndOrders += "</pdfItem>";
+    }
 
     element.innerHTML += fishAndOrders;
     fishAndOrders = "";
