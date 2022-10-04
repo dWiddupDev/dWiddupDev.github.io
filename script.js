@@ -27,7 +27,7 @@ function done() {
             else if (fishType.includes("seaBass"))   
                 seabass.push(typeObj);
                 
-            else if (fishType.split("_")[1].includes("counts"))
+            else if (fishType.includes("counts"))
                 counts.push(typeObj);
                 
             else   
