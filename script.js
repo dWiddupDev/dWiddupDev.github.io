@@ -1,4 +1,6 @@
 function done() {
+    document.getElementById("fishSelectionCont").style.display = "none";
+    document.getElementById("elementsToPrint").style.display = "block";
 
     // create pdf by creating the html first and then convert using the function below
     // gitlink: https://github.com/eKoopmans/html2pdf.js
@@ -25,7 +27,7 @@ function done() {
             else if (fishType.includes("seaBass"))   
                 seabass.push(typeObj);
                 
-            else if (fishType.split("_")[0].includes("counts"))
+            else if (fishType.split("_")[1].includes("counts"))
                 counts.push(typeObj);
                 
             else   
@@ -43,7 +45,7 @@ function done() {
 
     printSalmon(salmon);
     printSeabass(seabass);
-    // printCounts(counts);
+    printCounts(counts);
     // printMisc(miscFish);
 }
 
@@ -166,7 +168,11 @@ function printSalmon(salmonObj) {
     element.innerHTML += fishAndOrders;
     fishAndOrders = "";
     var date = new Date().toLocaleDateString();
-    html2pdf(element, {filename: "salmon-" + date + ".pdf"});
+    html2pdf(element, {
+        filename: "salmon_" + date + ".pdf", 
+        html2canvas: { scale: 5},
+        pagebreak: { mode: 'css', avoid: ['.count_label', 'span', 'h3' ] }
+    });
 }
 
 function printSeabass(seabassObj) {
@@ -395,18 +401,160 @@ function printSeabass(seabassObj) {
     fishAndOrders = "";
 
     var date = new Date().toLocaleDateString();
-    html2pdf(element, {filename: "seabass-" + date + ".pdf"});
+    html2pdf(element, {
+        filename: "seabass_" + date + ".pdf", 
+        html2canvas: { scale: 5},
+        pagebreak: { mode: 'css', avoid: ['.count_label', 'span', 'h3' ] }
+    });
 }
 
 function printCounts(countsObj) {
 
+    var element = document.getElementById("element-to-print-counts");   
+    element.innerHTML = "<h1>Counts</h1>";
+
+    var fishAndOrders = "";  
+    var cod = [];
+    var haddock = [];  
+    var whiting = [];
+
+    for (var i = 0; i < countsObj.length; i ++) {
+        if (countsObj[i].type.includes("cod"))
+            cod.push(countsObj[i]);
+        if (countsObj[i].type.includes("haddock"))
+            haddock.push(countsObj[i]);  
+        if (countsObj[i].type.includes("whiting"))
+            whiting.push(countsObj[i]);        
+    }
+
+    var eightTens = [];
+    var tenTwelves = [];
+    var twelvesSixteens = [];
+    var twenties = [];
+    var twentyFives = [];
+    var thirties = [];
+    var thirtyFives = [];
+    var forties = [];
+    var fortyfives = [];
+    var fifties = [];
+    
+    for (var i = 0; i < cod.length; i ++) {
+        if (cod[i].type.includes("8-10"))
+            eightTens.push(cod[i]);
+        if (cod[i].type.includes("10-12"))
+            tenTwelves.push(cod[i]);
+        if (cod[i].type.includes("12-16"))
+            twelvesSixteens.push(cod[i]);
+        if (cod[i].type.includes("20"))
+            twenties.push(cod[i]);
+        if (cod[i].type.includes("25"))
+            twentyFives.push(cod[i]);
+        if (cod[i].type.includes("30"))
+            thirties.push(cod[i]);
+        if (cod[i].type.includes("35"))
+            thirtyFives.push(cod[i]);
+        if (cod[i].type.includes("40"))
+            forties.push(cod[i]);
+        if (cod[i].type.includes("45"))
+            fortyfives.push(cod[i]);
+        if (cod[i].type.includes("50"))
+            fifties.push(cod[i]);
+    }
+
+    for (var i = 0; i < haddock.length; i ++) {
+        if (haddock[i].type.includes("8-10"))
+            eightTens.push(haddock[i]);
+        if (haddock[i].type.includes("10-12"))
+            tenTwelves.push(haddock[i]);
+        if (haddock[i].type.includes("12-16"))
+            twelvesSixteens.push(haddock[i]);
+        if (haddock[i].type.includes("20"))
+            twenties.push(haddock[i]);
+        if (haddock[i].type.includes("25"))
+            twentyFives.push(haddock[i]);
+        if (haddock[i].type.includes("30"))
+            thirties.push(haddock[i]);
+        if (haddock[i].type.includes("35"))
+            thirtyFives.push(haddock[i]);
+        if (haddock[i].type.includes("40"))
+            forties.push(haddock[i]);
+        if (haddock[i].type.includes("45"))
+            fortyfives.push(haddock[i]);
+        if (haddock[i].type.includes("50"))
+            fifties.push(haddock[i]);
+    }
+
+    for (var i = 0; i < whiting.length; i ++) {
+        if (whiting[i].type.includes("8-10"))
+            eightTens.push(whiting[i]);
+        if (whiting[i].type.includes("10-12"))
+            tenTwelves.push(whiting[i]);
+        if (whiting[i].type.includes("12-16"))
+            twelvesSixteens.push(whiting[i]);
+        if (whiting[i].type.includes("20"))
+            twenties.push(whiting[i]);
+        if (whiting[i].type.includes("25"))
+            twentyFives.push(whiting[i]);
+        if (whiting[i].type.includes("30"))
+            thirties.push(whiting[i]);
+        if (whiting[i].type.includes("35"))
+            thirtyFives.push(whiting[i]);
+        if (whiting[i].type.includes("40"))
+            forties.push(whiting[i]);
+        if (whiting[i].type.includes("45"))
+            fortyfives.push(whiting[i]);
+        if (whiting[i].type.includes("50"))
+            fifties.push(whiting[i]);
+    }
+
+    console.log("cod = ", cod);
+    console.log("haddock = ", haddock);
+    console.log("8/10 = ", eightTens);
+
+    var countSizes = [eightTens, tenTwelves, twelvesSixteens, twenties, twentyFives, thirties, thirtyFives, forties, fortyfives, fifties];
+    // seperate the types into sections
+    for (var c = 0; c < countSizes.length; c++) {
+
+        for (var w = 0; w < countSizes[c].length; w++) {
+            var type = countSizes[c][w].type.split("_");
+            var fish = type[0];
+            var size = type[2];
+            type = `${fish} ${size}`;                
+    
+            fishAndOrders += "<pdfItem>";
+            fishAndOrders += `<h3>${fish} ${size}s</h3>`;
+            
+            var indOrders = countSizes[c][w].qty.trim().split(",");
+    
+            fishAndOrders += "<values>";
+            for (var o = 0; o < indOrders.length; o++) {
+                var value = indOrders[o].split("-")[0];
+                var rest = indOrders[o].split("-")[1].replaceAll("_", " ");
+    
+                fishAndOrders += '<div class="count_label">' +
+                `<span>${rest}</span>` +
+                `<span>${value} x ${size}s</span>` +
+                '</div>';
+            }
+            fishAndOrders += "</values>";
+            fishAndOrders += "</pdfItem>";
+        }
+    }    
+
+    element.innerHTML += fishAndOrders;
+    fishAndOrders = "";
+
     var date = new Date().toLocaleDateString();
-    html2pdf(element, {filename: "counts-" + date + ".pdf"});
+    html2pdf(element, {
+        filename: "counts_" + date + ".pdf", 
+        html2canvas: { scale: 5}, 
+        pagebreak: { mode: 'css', avoid: ['.count_label', 'span', 'h3' ] }
+    });
 }
 
 function printMisc(miscObj) {
     var date = new Date().toLocaleDateString();
-    html2pdf(element, {filename: "miscFish-" + date + ".pdf"});
+    html2pdf(element, {filename: "miscFish-" + date + ".pdf", html2canvas: { scale: 5}});
 }
 
 function togglePanel(el) {
@@ -495,7 +643,7 @@ function addSelectionToLocal(fish, value) {
             var typeOFish = document.getElementById("counts_fish").value;
             var restaurant = document.getElementById("counts_custom_rest").value != "" ? document.getElementById("counts_custom_rest").value : document.getElementById("counts_cust").value
             selectionType = document.getElementById("counts_type_select").value;
-            fish = typeOFish + fish + "_" + selectionType;
+            fish = typeOFish + "_" + fish + "_" + selectionType;
             value = value + "-" + restaurant.replaceAll(" ", "_");
 
             document.getElementById("counts_custom_rest").value = ""
@@ -600,6 +748,7 @@ function addSelectionToLocal(fish, value) {
     if (localStorage.getItem(fish) == null) {
         var local = value + " ";
         localStorage.setItem(fish, local);
+        
     } else {
         var local = localStorage.getItem(fish);
         local = local.split(" ");
@@ -608,6 +757,12 @@ function addSelectionToLocal(fish, value) {
         window.localStorage.setItem(fish, local);
     }
 
+    document.getElementById("itemAddedText").innerHTML = value.replaceAll("_", " ").replaceAll("-", " ")  + "<br /> " + fish.replaceAll("_", " ");
+    document.getElementById("selectSuccess").style.display = "flex";
+
+    setTimeout(function() {
+        document.getElementById("selectSuccess").style.display = "none";
+    }, 2500);
     console.log("Local = ", localStorage);
     //CHANGING THE FISH PASSED IN WILL SAVE THE NEW FISH TO LOCAL STORAGE
     // split the local storage into the array
