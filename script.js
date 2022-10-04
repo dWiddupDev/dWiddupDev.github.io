@@ -41,8 +41,8 @@ function done() {
             break;
     }
 
-    printSalmon(salmon);
-    // printSeabass(seabass);
+    //printSalmon(salmon);
+    printSeabass(seabass);
     // printCounts(counts);
     // printMisc(miscFish);
 }
@@ -169,19 +169,242 @@ function printSalmon(salmonObj) {
     html2pdf(element, {filename: "salmon-" + date + ".pdf"});
 }
 
-function printSeabass() {
+function printSeabass(seabassObj) {
+    // change to specific element to show in UI
+    var element = document.getElementById("element-to-print");   
+    element.innerHTML = "<h1>SeaBass</h1>";
+
+    var fishAndOrders = "";
+
+    var whole = [];
+    var xsmall = [];
+    var small = [];
+    var medium = [];
+    var large = [];
+    var xlarge = [];
+
+    for (var i = 0; i < seabassObj.length; i ++) {
+        if (seabassObj[i].type.includes("Whole"))
+            whole.push(seabassObj[i]);
+        if (seabassObj[i].type.includes("<400"))
+            xsmall.push(seabassObj[i]);
+        if (seabassObj[i].type.includes("4-6"))
+            small.push(seabassObj[i]);
+        if (seabassObj[i].type.includes("550"))
+            medium.push(seabassObj[i]);
+        if (seabassObj[i].type.includes("6-8"))
+            large.push(seabassObj[i]);
+        if (seabassObj[i].type.includes("800+"))
+            xlarge.push(seabassObj[i]);
+    }
+
+    // seperate the types into sections
+    for (var w = 0; w < whole.length; w++) {
+        var type = whole[w].type.split("_");
+        switch(type.length) {
+            case 2:
+                var fish = type[0];
+                var cut = type[1];
+                type = `${fish} ${cut}`
+                break;
+            case 3:
+                var fish = type[0];
+                var size = type[1] + "oz";
+                var cut = type[2];
+                type = `${fish} ${size} ${cut}`
+                break;
+        }
+
+        fishAndOrders += "<pdfItem>" +
+         "<h4>" + type + "</h4>";
+        
+        var indOrders = whole[w].qty.trim().split(",");
+
+        fishAndOrders += "<values>";
+        for (var o = 0; o < indOrders.length; o++) {
+            var value = indOrders[o];
+            if (value == "0.5")
+                value = "1/2";
+            fishAndOrders += '<span> ' + value + ' </span>';
+        }
+        fishAndOrders += "</values>";
+        fishAndOrders += "</pdfItem>";
+    }
+
+    for (var w = 0; w < xsmall.length; w++) {
+        var type = xsmall[w].type.split("_");
+        switch(type.length) {
+            case 2:
+                var fish = type[0];
+                var cut = type[1];
+                type = `${fish} ${cut}`
+                break;
+            case 3:
+                var fish = type[0];
+                var size = type[1] + "oz";
+                var cut = type[2];
+                type = `${fish} ${size} ${cut}`
+                break;
+        }
+
+        fishAndOrders += "<pdfItem>" +
+         "<h4>" + type.replaceAll(",", " ") + "</h4>";
+        
+        var indOrders = xsmall[w].qty.trim().split(",");
+
+        fishAndOrders += "<values>";
+        for (var o = 0; o < indOrders.length; o++) {
+            var value = indOrders[o];
+            if (value == "0.5")
+                value = "1/2";
+            fishAndOrders += '<span> ' + value + ' </span>';
+        }
+        fishAndOrders += "</values>";
+        fishAndOrders += "</pdfItem>";
+    }
+    // F+P
+    for (var w = 0; w < small.length; w++) {
+        var type = small[w].type.split("_");
+        switch(type.length) {
+            case 2:
+                var fish = type[0];
+                var cut = type[1];
+                type = `${fish} ${cut}`
+                break;
+            case 3:
+                var fish = type[0];
+                var size = type[1] + "oz";
+                var cut = type[2];
+                type = `${fish} ${size} ${cut}`
+                break;
+        }
+        
+        fishAndOrders += "<pdfItem>" +
+         "<h4>" + type.replaceAll(",", " ") + "</h4>";
+        
+        var indOrders = small[w].qty.trim().split(",");
+
+        fishAndOrders += "<values>";
+        for (var o = 0; o < indOrders.length; o++) {
+            var value = indOrders[o];
+            if (value == "0.5")
+                value = "1/2";
+            fishAndOrders += '<span> ' + value + ' </span>';
+        }
+        fishAndOrders += "</values>";
+        fishAndOrders += "</pdfItem>";
+    }
+
+    for (var w = 0; w < medium.length; w++) {
+        var type = medium[w].type.split("_");
+        switch(type.length) {
+            case 2:
+                var fish = type[0];
+                var cut = type[1];
+                type = `${fish} ${cut}`
+                break;
+            case 3:
+                var fish = type[0];
+                var size = type[1] + "oz";
+                var cut = type[2];
+                type = `${fish} ${size} ${cut}`
+                break;
+        }
+        
+        fishAndOrders += "<pdfItem>" +
+         "<h4>" + type.replaceAll(",", " ") + "</h4>";
+        
+        var indOrders = medium[w].qty.trim().split(",");
+
+        fishAndOrders += "<values>";
+        for (var o = 0; o < indOrders.length; o++) {
+            var value = indOrders[o];
+            if (value == "0.5")
+                value = "1/2";
+            fishAndOrders += '<span> ' + value + ' </span>';
+        }
+        fishAndOrders += "</values>";
+        fishAndOrders += "</pdfItem>";
+    }
+
+    for (var w = 0; w < large.length; w++) {
+        var type = large[w].type.split("_");
+        switch(type.length) {
+            case 2:
+                var fish = type[0];
+                var cut = type[1];
+                type = `${fish} ${cut}`
+                break;
+            case 3:
+                var fish = type[0];
+                var size = type[1] + "oz";
+                var cut = type[2];
+                type = `${fish} ${size} ${cut}`
+                break;
+        }
+        
+        fishAndOrders += "<pdfItem>" +
+         "<h4>" + type.replaceAll(",", " ") + "</h4>";
+        
+        var indOrders = large[w].qty.trim().split(",");
+
+        fishAndOrders += "<values>";
+        for (var o = 0; o < indOrders.length; o++) {
+            var value = indOrders[o];
+            if (value == "0.5")
+                value = "1/2";
+            fishAndOrders += '<span> ' + value + ' </span>';
+        }
+        fishAndOrders += "</values>";
+        fishAndOrders += "</pdfItem>";
+    }
+
+    for (var w = 0; w < xlarge.length; w++) {
+        var type = xlarge[w].type.split("_");
+        switch(type.length) {
+            case 2:
+                var fish = type[0];
+                var cut = type[1];
+                type = `${fish} ${cut}`
+                break;
+            case 3:
+                var fish = type[0];
+                var size = type[1] + "oz";
+                var cut = type[2];
+                type = `${fish} ${size} ${cut}`
+                break;
+        }
+        
+        fishAndOrders += "<pdfItem>" +
+         "<h4>" + type.replaceAll(",", " ") + "</h4>";
+        
+        var indOrders = xlarge[w].qty.trim().split(",");
+
+        fishAndOrders += "<values>";
+        for (var o = 0; o < indOrders.length; o++) {
+            var value = indOrders[o];
+            if (value == "0.5")
+                value = "1/2";
+            fishAndOrders += '<span> ' + value + ' </span>';
+        }
+        fishAndOrders += "</values>";
+        fishAndOrders += "</pdfItem>";
+    }
+
+    element.innerHTML += fishAndOrders;
+    fishAndOrders = "";
 
     var date = new Date().toLocaleDateString();
     html2pdf(element, {filename: "seabass-" + date + ".pdf"});
 }
 
-function printCounts() {
+function printCounts(countsObj) {
 
     var date = new Date().toLocaleDateString();
     html2pdf(element, {filename: "counts-" + date + ".pdf"});
 }
 
-function printMisc() {
+function printMisc(miscObj) {
     var date = new Date().toLocaleDateString();
     html2pdf(element, {filename: "miscFish-" + date + ".pdf"});
 }
@@ -302,7 +525,11 @@ function addSelectionToLocal(fish, value) {
             break;
         case "seaBassWhole":
             selectionType = document.getElementById("seabass-extra-options").value;
-            value = value + "-" + selectionType;
+            var size = document.getElementById("seaBass_portion_weight").value;
+            fish = fish + "_" + size;
+            if (selectionType != "normal")
+                value = value + "-" + selectionType;          
+            
             break;
         case "dorade":
             selectionType = "";
