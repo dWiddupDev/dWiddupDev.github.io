@@ -343,13 +343,13 @@ a:hover {
     margin-top: 10px;
 }
 
-#element-to-print span {
+.element-to-print span {
     border: 1px solid rgb(170, 170, 170);
     border-radius: 10px;
     padding: 2px 5px;
 }
 
-#element-to-print pdfItem {
+.element-to-print pdfItem {
     display: flex; 
     align-items: center;
     flex-wrap: nowrap;
@@ -359,17 +359,17 @@ a:hover {
     margin: 20px;
 }
 
-#element-to-print h1 {
+.element-to-print h1 {
     margin: 10px 0 0 10px;
     text-decoration: underline;
 }
 
-#element-to-print pdfItem h4 {
+.element-to-print pdfItem h4 {
     min-width: 200px;
     text-transform: capitalize;
 }
 
-#element-to-print values {
+.element-to-print values {
     display: flex;
     flex-wrap: wrap;
     gap: 5px;

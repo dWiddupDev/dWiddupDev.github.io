@@ -41,14 +41,14 @@ function done() {
             break;
     }
 
-    //printSalmon(salmon);
+    printSalmon(salmon);
     printSeabass(seabass);
     // printCounts(counts);
     // printMisc(miscFish);
 }
 
 function printSalmon(salmonObj) {
-    var element = document.getElementById("element-to-print");    
+    var element = document.getElementById("element-to-print-salmon");    
 
     element.innerHTML = "<h1>Salmon</h1>";
     var fishAndOrders = "";
@@ -171,7 +171,7 @@ function printSalmon(salmonObj) {
 
 function printSeabass(seabassObj) {
     // change to specific element to show in UI
-    var element = document.getElementById("element-to-print");   
+    var element = document.getElementById("element-to-print-seabass");   
     element.innerHTML = "<h1>SeaBass</h1>";
 
     var fishAndOrders = "";
