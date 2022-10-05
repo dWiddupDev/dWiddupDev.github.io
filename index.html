@@ -26,10 +26,10 @@
             <div>
                 <h1>AO Prep List builder</h1>
             </div>                       
-            <a onclick="localStorage.clear(); console.log('cleared')">Clear storage</a>
-            <a id="seeListBtn" onclick="seeList()"; console.log('cleared')">See List</a>
+            <a onclick="localStorage.clear(); console.log('cleared')">Clear</a>
+            <a id="seeListBtn" onclick="seeList()"; console.log('cleared')">See Lists</a>
         </div>
-        <a onclick="done()">Done</a>
+        <a onclick="done()">Generate Lists</a>
     </nav>
 
     <main>
@@ -37,6 +37,8 @@
             <h3>Fish</h3>
 
             <div class="sidebar_links">
+                <a onclick="selectFish(this)">Salmon <i class="fa-solid fa-caret-down"></i></a>
+                <a onclick="selectFish(this)">SeaBass <i class="fa-solid fa-caret-down"></i></a>
                 <a onclick="selectFish(this)">Brill  <i class="fa-solid fa-caret-down"></i></a>
                 <a onclick="selectFish(this)">Cod <i class="fa-solid fa-caret-down"></i></a>
                 <a onclick="selectFish(this)">Counts <i class="fa-solid fa-caret-down"></i></a>
@@ -53,9 +55,7 @@
                 <a onclick="selectFish(this)">Plaice  <i class="fa-solid fa-caret-down"></i></a>
                 <a onclick="selectFish(this)">Pollock <i class="fa-solid fa-caret-down"></i></a>
                 <a onclick="selectFish(this)">Octopus <i class="fa-solid fa-caret-down"></i></a>
-                <a onclick="selectFish(this)">Salmon <i class="fa-solid fa-caret-down"></i></a>
                 <a onclick="selectFish(this)">Sardines <i class="fa-solid fa-caret-down"></i></a>
-                <a onclick="selectFish(this)">SeaBass <i class="fa-solid fa-caret-down"></i></a>
                 <a onclick="selectFish(this)">SeaTrout <i class="fa-solid fa-caret-down"></i></a>
                 <a onclick="selectFish(this)">Shark <i class="fa-solid fa-caret-down"></i></a>
                 <a onclick="selectFish(this)">SmokedHaddock <i class="fa-solid fa-caret-down"></i></a>
@@ -75,7 +75,7 @@
             </a>
             
             <div class="element-to-print" id="element-to-print-salmon" >
-                <!-- design table now see if varaible stored classes work -->    
+                <!-- design table now see if variable stored classes work -->    
             </div> 
 
             <div class="element-to-print" id="element-to-print-seabass" >
@@ -83,15 +83,16 @@
             </div> 
 
             <div class="element-to-print-counts" id="element-to-print-counts" >
-                <!-- design table now see if varaible stored classes work -->    
+                <!-- design table now see if variable stored classes work -->    
             </div> 
 
             <div class="element-to-print" id="element-to-print-misc" >
-                <!-- design table now see if varaible stored classes work -->    
+                <!-- design table now see if variable stored classes work -->    
             </div> 
         </div>
 
         <div class="main_selections_container" id="fishSelectionCont">
+
             <div class="selection_successful" id="selectSuccess" style="display: none;">
                 <i class="fa-solid fa-circle-check"></i>
                 <div class="selection_info">
@@ -119,7 +120,9 @@
                                     <select id="salmon_type_select" class="spec_select">
                                         <option value="F+P">F+Ps</option>
                                         <option value="FSP">FSP</option>
-                                        <option value="whole">Whole</option>
+                                        <option value="g+s">G+S</option>
+                                        <option value="gutted">Gutted</option>
+                                        <option value="whole">Whole</option>                                        
                                     </select>
                                 </div>
 
@@ -171,6 +174,17 @@
                                         </div>
 
                                     </div>
+                                </div>
+
+                                <div class="fish_selection_cuts">
+                                    <p>Vacced?</p>
+                                    <select id="salmon_vac" class="spec_select">
+                                        <option value="">Not Vacced</option>
+                                        <option value="(v-1)">Vac in 1s</option>
+                                        <option value="(v-2)">Vac in 2s</option>
+                                        <option value="(v-5)">Vac in 5s</option>
+                                        <option value="(v-10)">Vac in 10s</option>                                        
+                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -231,7 +245,7 @@
                                     <div class="selection_buttons">
 
                                         <select class="spec_select" id="seabass-extra-options">
-                                            <option value="normal">Normal</option>
+                                            <option value="gutted">Gutted</option>
                                             <option value="scale-on">Scale On</option>
                                             <option value="canoe">Canoe</option> 
                                             <option value="not-gutted">Not Gutted</option>                                           
@@ -249,6 +263,17 @@
                                         </div>
 
                                     </div>
+                                </div>
+
+                                <div class="fish_selection_cuts">
+                                    <p>Vacced?</p>
+                                    <select id="bass_vac" class="spec_select">
+                                        <option value="">Not Vacced</option>
+                                        <option value="(v-1)">Vac in 1s</option>
+                                        <option value="(v-2)">Vac in 2s</option>
+                                        <option value="(v-5)">Vac in 5s</option>
+                                        <option value="(v-10)">Vac in 10s</option>                                         
+                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -327,6 +352,17 @@
 
                                     </div>
                                 </div>
+
+                                <div class="fish_selection_cuts">
+                                    <p>Vacced?</p>
+                                    <select id="brill_vac" class="spec_select">
+                                        <option value="">Not Vacced</option>
+                                        <option value="(v-1)">Vac in 1s</option>
+                                        <option value="(v-2)">Vac in 2s</option>
+                                        <option value="(v-5)">Vac in 5s</option>
+                                        <option value="(v-10)">Vac in 10s</option>                                         
+                                    </select>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -402,6 +438,17 @@
                                         </div>
 
                                     </div>
+                                </div>
+
+                                <div class="fish_selection_cuts">
+                                    <p>Vacced?</p>
+                                    <select id="cod_vac" class="spec_select">
+                                        <option value="">Not Vacced</option>
+                                        <option value="(v-1)">Vac in 1s</option>
+                                        <option value="(v-2)">Vac in 2s</option>
+                                        <option value="(v-5)">Vac in 5s</option>
+                                        <option value="(v-10)">Vac in 10s</option>                                       
+                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -490,6 +537,17 @@
                                         </div>
                                     </div>
                                 </div>
+
+                                <div class="fish_selection_cuts">
+                                    <p>Vacced?</p>
+                                    <select id="counts_vac" class="spec_select">
+                                        <option value="">Not Vacced</option>
+                                        <option value="(v-1)">Vac in 1s</option>
+                                        <option value="(v-2)">Vac in 2s</option>
+                                        <option value="(v-5)">Vac in 5s</option>
+                                        <option value="(v-10)">Vac in 10s</option>                                         
+                                    </select>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -566,6 +624,17 @@
 
                                     </div>
                                 </div>
+
+                                <div class="fish_selection_cuts">
+                                    <p>Vacced?</p>
+                                    <select id="coley_vac" class="spec_select">
+                                        <option value="">Not Vacced</option>
+                                        <option value="(v-1)">Vac in 1s</option>
+                                        <option value="(v-2)">Vac in 2s</option>
+                                        <option value="(v-5)">Vac in 5s</option>
+                                        <option value="(v-10)">Vac in 10s</option>                                         
+                                    </select>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -626,7 +695,7 @@
                                     <div class="selection_buttons">
 
                                         <select class="spec_select" id="dorade-extra-options">
-                                            <option value="normal">Normal</option>
+                                            <option value="gutted">Gutted</option>
                                             <option value="scale-on">Scale On</option>
                                             <option value="canoe">Canoe</option> 
                                             <option value="not-gutted">Not Gutted</option>                                           
@@ -644,6 +713,17 @@
                                         </div>
 
                                     </div>
+                                </div>
+
+                                <div class="fish_selection_cuts">
+                                    <p>Vacced?</p>
+                                    <select id="dorade_vac" class="spec_select">
+                                        <option value="">Not Vacced</option>
+                                        <option value="(v-1)">Vac in 1s</option>
+                                        <option value="(v-2)">Vac in 2s</option>
+                                        <option value="(v-5)">Vac in 5s</option>
+                                        <option value="(v-10)">Vac in 10s</option>                                         
+                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -717,6 +797,17 @@
 
                                     </div>
                                 </div>
+
+                                <div class="fish_selection_cuts">
+                                    <p>Vacced?</p>
+                                    <select id="dover_vac" class="spec_select">
+                                        <option value="">Not Vacced</option>
+                                        <option value="(v-1)">Vac in 1s</option>
+                                        <option value="(v-2)">Vac in 2s</option>
+                                        <option value="(v-5)">Vac in 5s</option>
+                                        <option value="(v-10)">Vac in 10s</option>                                         
+                                    </select>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -768,7 +859,17 @@
                                         </div>
                                     </div>
                                 </div>
-                                           
+                                      
+                                <div class="fish_selection_cuts">
+                                    <p>Vacced?</p>
+                                    <select id="fishpie_vac" class="spec_select">
+                                        <option value="">Not Vacced</option>
+                                        <option value="(v-1)">Vac in 1s</option>
+                                        <option value="(v-2)">Vac in 2s</option>
+                                        <option value="(v-5)">Vac in 5s</option>
+                                        <option value="(v-10)">Vac in 10s</option>                                        
+                                    </select>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -844,6 +945,17 @@
                                         </div>
 
                                     </div>
+                                </div>
+
+                                <div class="fish_selection_cuts">
+                                    <p>Vacced?</p>
+                                    <select id="hake_vac" class="spec_select">
+                                        <option value="">Not Vacced</option>
+                                        <option value="(v-1)">Vac in 1s</option>
+                                        <option value="(v-2)">Vac in 2s</option>
+                                        <option value="(v-5)">Vac in 5s</option>
+                                        <option value="(v-10)">Vac in 10s</option>                                        
+                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -924,6 +1036,17 @@
 
                                     </div>
                                 </div>
+
+                                <div class="fish_selection_cuts">
+                                    <p>Vacced?</p>
+                                    <select id="halibut_vac" class="spec_select">
+                                        <option value="">Not Vacced</option>
+                                        <option value="(v-1)">Vac in 1s</option>
+                                        <option value="(v-2)">Vac in 2s</option>
+                                        <option value="(v-5)">Vac in 5s</option>
+                                        <option value="(v-10)">Vac in 10s</option>                                         
+                                    </select>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -988,6 +1111,17 @@
 
                                     </div>
                                 </div>
+
+                                <div class="fish_selection_cuts">
+                                    <p>Vacced?</p>
+                                    <select id="lemonsole_vac" class="spec_select">
+                                        <option value="">Not Vacced</option>
+                                        <option value="(v-1)">Vac in 1s</option>
+                                        <option value="(v-2)">Vac in 2s</option>
+                                        <option value="(v-5)">Vac in 5s</option>
+                                        <option value="(v-10)">Vac in 10s</option>                                         
+                                    </select>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1026,6 +1160,7 @@
                                             <option value="skinned">Skinned</option> 
                                             <option value="scale-on">Scale On</option>
                                             <option value="canoe">Canoe</option> 
+                                            <option value="gutted">Gutted</option> 
                                             <option value="not-gutted">Not Gutted</option>                                           
                                         </select>
 
@@ -1061,6 +1196,17 @@
                                         </div>
 
                                     </div>
+                                </div>
+
+                                <div class="fish_selection_cuts">
+                                    <p>Vacced?</p>
+                                    <select id="mackerel_vac" class="spec_select">
+                                        <option value="">Not Vacced</option>
+                                        <option value="(v-1)">Vac in 1s</option>
+                                        <option value="(v-2)">Vac in 2s</option>
+                                        <option value="(v-5)">Vac in 5s</option>
+                                        <option value="(v-10)">Vac in 10s</option>                                         
+                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -1141,6 +1287,17 @@
 
                                     </div>
                                 </div>
+
+                                <div class="fish_selection_cuts">
+                                    <p>Vacced?</p>
+                                    <select id="monkfish_vac" class="spec_select">
+                                        <option value="">Not Vacced</option>
+                                        <option value="(v-1)">Vac in 1s</option>
+                                        <option value="(v-2)">Vac in 2s</option>
+                                        <option value="(v-5)">Vac in 5s</option>
+                                        <option value="(v-10)">Vac in 10s</option>                                         
+                                    </select>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1204,6 +1361,17 @@
                                         </div>
 
                                     </div>
+                                </div>
+
+                                <div class="fish_selection_cuts">
+                                    <p>Vacced?</p>
+                                    <select id="plaice_vac" class="spec_select">
+                                        <option value="">Not Vacced</option>
+                                        <option value="(v-1)">Vac in 1s</option>
+                                        <option value="(v-2)">Vac in 2s</option>
+                                        <option value="(v-5)">Vac in 5s</option>
+                                        <option value="(v-10)">Vac in 10s</option>                                         
+                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -1281,6 +1449,17 @@
 
                                     </div>
                                 </div>
+
+                                <div class="fish_selection_cuts">
+                                    <p>Vacced?</p>
+                                    <select id="pollock_vac" class="spec_select">
+                                        <option value="">Not Vacced</option>
+                                        <option value="(v-1)">Vac in 1s</option>
+                                        <option value="(v-2)">Vac in 2s</option>
+                                        <option value="(v-5)">Vac in 5s</option>
+                                        <option value="(v-10)">Vac in 10s</option>                                         
+                                    </select>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1331,6 +1510,17 @@
                                         </div>
                                     </div>
                                 </div>
+
+                                <div class="fish_selection_cuts">
+                                    <p>Vacced?</p>
+                                    <select id="octopus_vac" class="spec_select">
+                                        <option value="">Not Vacced</option>
+                                        <option value="(v-1)">Vac in 1s</option>
+                                        <option value="(v-2)">Vac in 2s</option>
+                                        <option value="(v-5)">Vac in 5s</option>
+                                        <option value="(v-10)">Vac in 10s</option>                                         
+                                    </select>
+                                </div>
                                            
                             </div>
                         </div>
@@ -1369,7 +1559,7 @@
                                             <option value="butterfly">Butterfly</option>
                                             <option value="skinned">Skinned</option> 
                                             <option value="scale-on">Scale On</option>
-                                            <option value="canoe">Canoe</option> 
+                                            <option value="gutted">Gutted</option> 
                                             <option value="not-gutted">Not Gutted</option>                                           
                                         </select>
 
@@ -1405,6 +1595,17 @@
                                         </div>
 
                                     </div>
+                                </div>
+
+                                <div class="fish_selection_cuts">
+                                    <p>Vacced?</p>
+                                    <select id="sardines_vac" class="spec_select">
+                                        <option value="">Not Vacced</option>
+                                        <option value="(v-1)">Vac in 1s</option>
+                                        <option value="(v-2)">Vac in 2s</option>
+                                        <option value="(v-5)">Vac in 5s</option>
+                                        <option value="(v-10)">Vac in 10s</option>                                        
+                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -1481,6 +1682,17 @@
                                         </div>
 
                                     </div>
+                                </div>
+
+                                <div class="fish_selection_cuts">
+                                    <p>Vacced?</p>
+                                    <select id="seatrout_vac" class="spec_select">
+                                        <option value="">Not Vacced</option>
+                                        <option value="(v-1)">Vac in 1s</option>
+                                        <option value="(v-2)">Vac in 2s</option>
+                                        <option value="(v-5)">Vac in 5s</option>
+                                        <option value="(v-10)">Vac in 10s</option>                                        
+                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -1561,6 +1773,17 @@
 
                                     </div>
                                 </div>
+
+                                <div class="fish_selection_cuts">
+                                    <p>Vacced?</p>
+                                    <select id="shark_vac" class="spec_select">
+                                        <option value="">Not Vacced</option>
+                                        <option value="(v-1)">Vac in 1s</option>
+                                        <option value="(v-2)">Vac in 2s</option>
+                                        <option value="(v-5)">Vac in 5s</option>
+                                        <option value="(v-10)">Vac in 10s</option>                                         
+                                    </select>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1623,6 +1846,17 @@
                                         </div>
 
                                     </div>
+                                </div>
+
+                                <div class="fish_selection_cuts">
+                                    <p>Vacced?</p>
+                                    <select id="smokedhaddock_vac" class="spec_select">
+                                        <option value="">Not Vacced</option>
+                                        <option value="(v-1)">Vac in 1s</option>
+                                        <option value="(v-2)">Vac in 2s</option>
+                                        <option value="(v-5)">Vac in 5s</option>
+                                        <option value="(v-10)">Vac in 10s</option>                                         
+                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -1694,6 +1928,17 @@
 
                                     </div>
                                 </div>
+
+                                <div class="fish_selection_cuts">
+                                    <p>Vacced?</p>
+                                    <select id="sword_vac" class="spec_select">
+                                        <option value="">Not Vacced</option>
+                                        <option value="(v-1)">Vac in 1s</option>
+                                        <option value="(v-2)">Vac in 2s</option>
+                                        <option value="(v-5)">Vac in 5s</option>
+                                        <option value="(v-10)">Vac in 10s</option>                                         
+                                    </select>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1744,7 +1989,18 @@
                                         </div>
                                     </div>
                                 </div>
-                                           
+                                    
+                                <div class="fish_selection_cuts">
+                                    <p>Vacced?</p>
+                                    <select id="squid_vac" class="spec_select">
+                                        <option value="">Not Vacced</option>
+                                        <option value="(v-1)">Vac in 1s</option>
+                                        <option value="(v-2)">Vac in 2s</option>
+                                        <option value="(v-5)">Vac in 5s</option>
+                                        <option value="(v-10)">Vac in 10s</option> 
+                                        <option value="(v-tubbs)">Tubbs</option>                                        
+                                    </select>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1783,6 +2039,7 @@
                                             <option value="skinned">Skinned</option> 
                                             <option value="scale-on">Scale On</option>
                                             <option value="canoe">Canoe</option> 
+                                            <option value="gutted">Gutted</option>
                                             <option value="not-gutted">Not Gutted</option>                                           
                                         </select>
 
@@ -1819,6 +2076,14 @@
 
                                     </div>
                                 </div>
+
+                                <select id="trout_vac" class="spec_select">
+                                    <option value="">Not Vacced</option>
+                                    <option value="(v-1)">Vac in 1s</option>
+                                    <option value="(v-2)">Vac in 2s</option>
+                                    <option value="(v-5)">Vac in 5s</option>
+                                    <option value="(v-10)">Vac in 10s</option> 
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -1889,6 +2154,14 @@
 
                                     </div>
                                 </div>
+
+                                <select id="tuna_vac" class="spec_select">
+                                    <option value="">Not Vacced</option>
+                                    <option value="(v-1)">Vac in 1s</option>
+                                    <option value="(v-2)">Vac in 2s</option>
+                                    <option value="(v-5)">Vac in 5s</option>
+                                    <option value="(v-10)">Vac in 10s</option> 
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -1912,6 +2185,7 @@
                                     <select id="wildbass_type_select" class="spec_select">
                                         <option value="F+P">F+Ps</option>
                                         <option value="FSP">FSP</option>
+                                        <option value="whole">Whole</option>
                                     </select>
                                 </div>
 
@@ -1964,6 +2238,14 @@
 
                                     </div>
                                 </div>
+
+                                <select id="wildbass_vac" class="spec_select">
+                                    <option value="">Not Vacced</option>
+                                    <option value="(v-1)">Vac in 1s</option>
+                                    <option value="(v-2)">Vac in 2s</option>
+                                    <option value="(v-5)">Vac in 5s</option>
+                                    <option value="(v-10)">Vac in 10s</option> 
+                                </select>
                             </div>
                         </div>
                     </div>

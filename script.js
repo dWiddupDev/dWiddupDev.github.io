@@ -43,12 +43,36 @@ function done() {
             break;
     }
 
-    printSalmon(salmon);
-    printSeabass(seabass);
-    printCounts(counts);
-    printMisc(miscFish);
-
+    if (salmon.length == 0) {   
     
+        document.getElementById("elementsToPrint").innerHTML += "<h2>No Salmon Selected</h2>";
+        
+    } else {
+        printSalmon(salmon);
+    }
+        
+    if (seabass.length == 0) {
+        document.getElementById("elementsToPrint").innerHTML += "<h2>No Sea Bass Selected</h2>";
+       
+    }else {
+        printSeabass(seabass);
+    }
+
+    if (counts.length == 0) {
+        document.getElementById("elementsToPrint").innerHTML += "<h2>No Counts Selected</h2>";
+        
+    } else {
+        printCounts(counts);
+    }
+
+    if (miscFish.length == 0) {
+        document.getElementById("elementsToPrint").innerHTML += "<h2>No Other Fish Selected</h2>";
+    } else {
+        printMisc(miscFish); 
+    }
+        
+    
+    localStorage.clear(); 
 }
 
 function seeList() {
@@ -77,7 +101,7 @@ function printSalmon(salmonObj) {
     var fp = [];
 
     for (var i = 0; i < salmonObj.length; i ++) {
-        if (salmonObj[i].type.includes("whole"))
+        if (salmonObj[i].type.includes("whole") || salmonObj[i].type.includes("gutted") || salmonObj[i].type.includes("g+s"))
             whole.push(salmonObj[i]);
         if (salmonObj[i].type.includes("FSP"))
             fsp.push(salmonObj[i]);
@@ -211,7 +235,7 @@ function printSeabass(seabassObj) {
             whole.push(seabassObj[i]);
         if (seabassObj[i].type.includes("<400"))
             xsmall.push(seabassObj[i]);
-        if (seabassObj[i].type.includes("4-6"))
+        if (seabassObj[i].type.split("_")[1].includes("4-6") && seabassObj[i].type.split("_")[0].includes("Whole") == false)
             small.push(seabassObj[i]);
         if (seabassObj[i].type.includes("550"))
             medium.push(seabassObj[i]);
@@ -781,121 +805,171 @@ function addSelectionToLocal(fish, value) {
     switch (fishName) {
         // find type and other information
         case "salmon":
+            var vac = document.getElementById("salmon_vac").value;
             selectionType = document.getElementById("salmon_type_select").value;
             fish = fish + "_" + selectionType;
+            value = value + vac;
             break;
         case "cod":
+            var vac = document.getElementById("cod_vac").value;
             selectionType = document.getElementById("cod_type_select").value;
             fish = fish + "_" + selectionType;
+            value = value + vac;
             break;
         case "counts":
+            var vac = document.getElementById("counts_vac").value;
             var typeOFish = document.getElementById("counts_fish").value;
             var restaurant = document.getElementById("counts_custom_rest").value != "" ? document.getElementById("counts_custom_rest").value : document.getElementById("counts_cust").value
             selectionType = document.getElementById("counts_type_select").value;
             fish = typeOFish + "_" + fish + "_" + selectionType;
-            value = value + "-" + restaurant.replaceAll(" ", "_");
+            value = value + "-" + restaurant.replaceAll(" ", "_") + vac;
 
             document.getElementById("counts_custom_rest").value = ""
             break;
         case "hake":
+            var vac = document.getElementById("hake_vac").value;
             selectionType = document.getElementById("hake_type_select").value;
             fish = fish + "_" + selectionType;
+            value = value + vac;
             break;
         case "coley":
+            var vac = document.getElementById("coley_vac").value;
             selectionType = document.getElementById("coley_type_select").value;
             fish = fish + "_" + selectionType;
+            value += vac;
             break;
         case "seatrout":
+            var vac = document.getElementById("seatrout_vac").value;
             selectionType = document.getElementById("seatrout_type_select").value;
             fish = fish + "_" + selectionType;
+            value += vac;
             break;
         case "pollock":
+            var vac = document.getElementById("pollock_vac").value;
             selectionType = document.getElementById("pollock_type_select").value;
             fish = fish + "_" + selectionType;
+            value += vac;
             break;
         case "wildbass":
+            var vac = document.getElementById("wildbass_vac").value;
             selectionType = document.getElementById("wildbass_type_select").value;
             fish = fish + "_" + selectionType;
+            value += vac;
             break;
         case "seaBass":
+            var vac = document.getElementById("bass_vac").value;
             selectionType = "";
+            value += value;
             break;
         case "seaBassWhole":
+            var vac = document.getElementById("bass_vac").value;
             selectionType = document.getElementById("seabass-extra-options").value;
             var size = document.getElementById("seaBass_portion_weight").value;
             fish = fish + "_" + size;
             if (selectionType != "normal")
                 value = value + "-" + selectionType;          
-            
+            value += vac;
             break;
         case "dorade":
+            var vac = document.getElementById("dorade_vac").value;
             selectionType = "";
+            value += vac;
             break;
         case "doradeWhole":      
+            var vac = document.getElementById("dorade_vac").value;
             selectionType = document.getElementById("dorade-extra-options").value;
             var size = document.getElementById("dorade_portion_weight").value;
             fish = fish + "_" + size;
             if (selectionType != "normal")
                 value = value + "-" + selectionType; 
+            value += vac;
             break;
         case "brill":
+            var vac = document.getElementById("brill_vac").value;
             selectionType = document.getElementById("brill_type_select").value;
             fish = fish + "_" + selectionType;
+            value += vac;
             break;
 
         case "fishpie":
+            var vac = document.getElementById("fishpie_vac").value;
             selectionType = document.getElementById("piemix_type").value;
             if (selectionType != "")
                 fish = fish + "-"+ selectionType;
+            value += value;
             break;
             
         case "squid":
+            var vac = document.getElementById("squid_vac").value;
             selectionType = document.getElementById("squid_type").value;
             fish = fish  + "-"+ selectionType;
+            value += vac;
             break;
         case "octopus":
+            var vac = document.getElementById("octopus_vac").value;
             selectionType = document.getElementById("octopus_type").value;
             fish = fish  + "-"+ selectionType;
+            value += vac;
             break;
         case "smoked-haddock":
+            var vac = document.getElementById("smokedhaddock_vac").value;
             selectionType = document.getElementById("smoked-haddock_type_select").value;
             fish = fish  + "_"+ selectionType;
+            value += vac;
             break;
         case "halibut":
+            var vac = document.getElementById("halibut_vac").value;
             selectionType = document.getElementById("halibut_type_select").value;
             fish = fish  + "_"+ selectionType;
+            value += vac;
             break;
         case "monkfish":
+            var vac = document.getElementById("monkfish_vac").value;
             selectionType = document.getElementById("monkfish_type_select").value;
             fish = fish  + "_"+ selectionType;
+            value += vac;
             break;
         case "lemonsole":
+            var vac = document.getElementById("lemonsole_vac").value;
             selectionType = document.getElementById("lemonsole_type_select").value;
             fish = fish  + "_"+ selectionType;
+            value += vac;
             break;
         case "plaice":
+            var vac = document.getElementById("plaice_vac").value;
             selectionType = document.getElementById("plaice_type_select").value;
             fish = fish  + "_"+ selectionType;
+            value += vac;
             break;
         case "mackerel":
+            var vac = document.getElementById("mackerel_vac").value;
             selectionType = document.getElementById("mackerel_type_select").value;
             fish = fish  + "_"+ selectionType;  
+            value += vac;
             break;
         case "trout":
+            var vac = document.getElementById("trout_vac").value;
             selectionType = document.getElementById("trout_type_select").value;
             fish = fish  + "_"+ selectionType;  
+            value += vac;
             break;
         case "sardines":
+            var vac = document.getElementById("sardines_vac").value;
             selectionType = document.getElementById("sardines_type_select").value;
             fish = fish  + "_"+ selectionType;  
+            value += vac;
             break;
         case "shark":
+            var vac = document.getElementById("shark_vac").value;
             selectionType = document.getElementById("shark_type_select").value;
             fish = fish  + "_"+ selectionType;
+            value += vac;
             break;
         case "dovers":
+            var vac = document.getElementById("dover_vac").value;
             selectionType = document.getElementById("dovers_type_select").value;
             fish = fish  + "_"+ selectionType;
+            value += vac;
             break;
 
     }
