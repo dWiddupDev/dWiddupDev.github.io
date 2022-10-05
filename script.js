@@ -46,7 +46,7 @@ function done() {
     printSalmon(salmon);
     printSeabass(seabass);
     printCounts(counts);
-    // printMisc(miscFish);
+    printMisc(miscFish);
 }
 
 function printSalmon(salmonObj) {
@@ -147,10 +147,10 @@ function printSalmon(salmonObj) {
                 var cut = type[2];
                 type = `${fish} ${size} ${cut}`
                 break;
-        }
+        }       
         
         fishAndOrders += "<pdfItem>" +
-         "<h4>" + type.replaceAll(",", " ") + "</h4>";
+         "<h4>" + type.replaceAll(",", " ").replaceAll("-", " ") + "</h4>";
         
         var indOrders = fp[w].qty.trim().split(",");
 
@@ -553,8 +553,140 @@ function printCounts(countsObj) {
 }
 
 function printMisc(miscObj) {
+    console.log("misc = ", miscObj)
+
+    var brill = [];
+    var cod = [];
+    var coley = [];
+    var dorade = [];
+    var dovers = [];
+    var fishpie = [];
+    var hake = [];
+    var halibut = [];
+    var lemonsole = [];
+    var mackerel = [];
+    var monkfish = [];
+    var plaice = [];
+    var pollock = [];
+    var octopus = [];
+    var sardines = [];
+    var seatrout = [];
+    var shark = [];
+    var smokedhaddock = [];
+    var sword = [];
+    var squid = [];
+    var trout = [];
+    var tuna = [];
+    var wildbass = [];
+
+    for (var f = 0; f < miscObj.length; f++) {
+        if (miscObj[f].type.includes("brill"))
+            brill.push(miscObj[f]);
+        if (miscObj[f].type.includes("cod"))
+            cod.push(miscObj[f]);
+        if (miscObj[f].type.includes("coley"))
+            coley.push(miscObj[f]);
+        if (miscObj[f].type.includes("dorade"))
+            dorade.push(miscObj[f]);
+        if (miscObj[f].type.includes("dovers"))
+            dovers.push(miscObj[f]);
+        if (miscObj[f].type.includes("fishpie"))
+            fishpie.push(miscObj[f]);
+        if (miscObj[f].type.includes("hake"))
+            hake.push(miscObj[f]);
+        if (miscObj[f].type.includes("halibut"))
+            halibut.push(miscObj[f]);
+        if (miscObj[f].type.includes("lemonsole"))
+            lemonsole.push(miscObj[f]);
+        if (miscObj[f].type.includes("mackerel"))
+            mackerel.push(miscObj[f]);
+        if (miscObj[f].type.includes("monkfish"))
+            monkfish.push(miscObj[f]);
+        if (miscObj[f].type.includes("plaice"))
+            plaice.push(miscObj[f]);
+        if (miscObj[f].type.includes("pollock"))
+            pollock.push(miscObj[f]);
+        if (miscObj[f].type.includes("octopus"))
+            octopus.push(miscObj[f]);
+        if (miscObj[f].type.includes("sardines"))
+            sardines.push(miscObj[f]);
+        if (miscObj[f].type.includes("seatrout"))
+            seatrout.push(miscObj[f]);
+        if (miscObj[f].type.includes("shark"))
+            shark.push(miscObj[f]);
+        if (miscObj[f].type.includes("smoked-haddock"))
+            smokedhaddock.push(miscObj[f]);
+        if (miscObj[f].type.includes("sword"))
+            sword.push(miscObj[f]);
+        if (miscObj[f].type.includes("squid"))
+            squid.push(miscObj[f]);
+        if (miscObj[f].type.includes("trout"))
+            trout.push(miscObj[f]);
+        if (miscObj[f].type.includes("tuna"))
+            tuna.push(miscObj[f]);
+        if (miscObj[f].type.includes("wildbass"))
+            wildbass.push(miscObj[f]);        
+    }
+    
+    var fishObj = [brill, cod, coley, dorade, dovers, fishpie, hake, halibut, lemonsole, 
+        mackerel, monkfish, plaice, pollock, octopus, sardines, seatrout, shark, smokedhaddock,
+        sword, squid, trout, tuna, wildbass];
+
+    var element = document.getElementById("element-to-print-misc");    
+
+    element.innerHTML = "<h1>Misc</h1>";
+    var fishAndOrders = "";    
+
+    for (var x = 0; x < fishObj.length; x ++) {
+    // seperate the types into sections
+        for (var w = 0; w < fishObj[x].length; w++) {
+            var type = fishObj[x][w].type.split("_");
+            switch(type.length) {
+                case 2:
+                    var fish = type[0];
+                    var cut = type[1];
+                    if (type[0].includes("tuna") || type[0].includes("sword")) {
+                        
+                        type = type[0] + " " + type[1] + "oz";
+                    } else {
+                        type = `${fish} ${cut}`;
+                    }
+
+                    break;
+                case 3:
+                    var fish = type[0];
+                    var size = type[1] + "oz";
+                    var cut = type[2];
+                    type = `${fish} ${size} ${cut}`
+                    break;            
+            }
+
+            fishAndOrders += "<pdfItem>" +
+            "<h4>" + type + "</h4>";
+            
+            var indOrders = fishObj[x][w].qty.trim().split(",");
+
+            fishAndOrders += "<values>";
+            for (var o = 0; o < indOrders.length; o++) {
+                var value = indOrders[o];
+                if (value == "0.5")
+                    value = "1/2";
+                fishAndOrders += '<span> ' + value + ' </span>';
+            }
+            fishAndOrders += "</values>";
+            fishAndOrders += "</pdfItem>";
+        }
+    }    
+
+    element.innerHTML += fishAndOrders;
+    fishAndOrders = "";
+
     var date = new Date().toLocaleDateString();
-    html2pdf(element, {filename: "miscFish-" + date + ".pdf", html2canvas: { scale: 5}});
+    html2pdf(element, {
+        filename: "miscFish-" + date + ".pdf", 
+        html2canvas: { scale: 5},
+        pagebreak: { mode: 'css', avoid: ['.count_label', 'span', 'h3' ] }
+    });
 }
 
 function togglePanel(el) {
@@ -682,9 +814,12 @@ function addSelectionToLocal(fish, value) {
         case "dorade":
             selectionType = "";
             break;
-        case "doradeWhole":
+        case "doradeWhole":      
             selectionType = document.getElementById("dorade-extra-options").value;
-            value = value + "-" + selectionType;
+            var size = document.getElementById("dorade_portion_weight").value;
+            fish = fish + "_" + size;
+            if (selectionType != "normal")
+                value = value + "-" + selectionType; 
             break;
         case "brill":
             selectionType = document.getElementById("brill_type_select").value;
@@ -692,7 +827,8 @@ function addSelectionToLocal(fish, value) {
             break;
         case "fishpie":
             selectionType = document.getElementById("piemix_type").value;
-            fish = fish  + "-"+ selectionType;
+            if (selectionType != "")
+                fish = fish + "-"+ selectionType;
             break;
         case "squid":
             selectionType = document.getElementById("squid_type").value;
@@ -762,7 +898,7 @@ function addSelectionToLocal(fish, value) {
 
     setTimeout(function() {
         document.getElementById("selectSuccess").style.display = "none";
-    }, 2500);
+    }, 3000);
     console.log("Local = ", localStorage);
     //CHANGING THE FISH PASSED IN WILL SAVE THE NEW FISH TO LOCAL STORAGE
     // split the local storage into the array
