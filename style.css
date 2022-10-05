@@ -316,7 +316,8 @@ main {
 #swordfish_cont,
 #squid_cont,
 #octopus_cont,
-#dovers_cont {
+#dovers_cont,
+#elementsToPrint {
     display: none;
 }
 
@@ -355,12 +356,13 @@ a:hover {
     flex-wrap: nowrap;
     gap: 5px;
     border-bottom: 1px solid #000; 
-    padding-bottom: 10px;
-    margin: 20px;
+    box-sizing: content-box;
+    padding: 3px 0;
+    margin: 0 10px;
 }
 
 .element-to-print h1 {
-    margin: 10px 0 0 10px;
+    margin: 10px 0 15px 10px;
     text-decoration: underline;
 }
 
@@ -375,7 +377,48 @@ a:hover {
     gap: 5px;
     border-left: 2px solid #000;
     padding-left: 10px;
+}
 
+.element-to-print-counts h1 {
+    margin: 10px 0 15px 0px;
+    text-decoration: underline;
+}
+
+.element-to-print-counts {
+    padding: 10px;
+}
+
+.element-to-print-counts pdfItem{
+    padding: 20px 0 ;
+}
+
+.element-to-print-counts span:first-child {
+    text-transform: capitalize;
+    font-weight: bold;
+}
+
+.element-to-print-counts h3 {
+    margin-top: 10px;
+    text-transform: capitalize;
+}
+
+.element-to-print-counts values {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.count_label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 15px;
+    width: 30%;
+    font-size: 2rem;
 }
 
 .selection_item_inner {}
@@ -470,6 +513,35 @@ a.close_button:hover {
     background-color: var(--sec);
 }
 
-.table {
-    color : red;
+#selectSuccess {
+    display: flex;
+}
+
+.selection_successful {
+    position: fixed;
+    right: 0;
+    top: 100px;
+    width: fit-content;
+    background-color: var(--sec);
+    color: var(--pri);
+    border-radius: 10px 0 0 10px;
+    padding: 5px;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.selection_successful i {
+    color: var(--pri);
+    font-size: 20px;
+}
+
+.selection_info {
+    display: flex;
+    flex-direction: column;
+}
+
+#itemAddedText {
+    text-transform: capitalize;
 }

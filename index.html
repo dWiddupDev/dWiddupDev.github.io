@@ -62,15 +62,10 @@
                 <a onclick="selectFish(this)">Tuna <i class="fa-solid fa-caret-down"></i></a>
                 <a onclick="selectFish(this)">WildBass <i class="fa-solid fa-caret-down"></i></a>
             </div>
-        </div>
-
+        </div>        
         
         <!-- DELETE ABOVE AFTER TESTING! THIS SHOULDNT TAKE LONG AT ALL -->
-        
-
-        <div class="main_selections_container">
-            <h3>Selections</h3>
-
+        <div class="main_selections_container" id="elementsToPrint">
             <div class="element-to-print" id="element-to-print-salmon" >
                 <!-- design table now see if varaible stored classes work -->    
             </div> 
@@ -78,6 +73,22 @@
             <div class="element-to-print" id="element-to-print-seabass" >
                 <!-- design table now see if variable stored classes work -->    
             </div> 
+
+            <div class="element-to-print-counts" id="element-to-print-counts" >
+                <!-- design table now see if varaible stored classes work -->    
+            </div> 
+        </div>
+
+        <div class="main_selections_container" id="fishSelectionCont">
+            <div class="selection_successful" id="selectSuccess" style="display: none;">
+                <i class="fa-solid fa-circle-check"></i>
+                <div class="selection_info">
+                    <p style="font-weight:bold;">Item Added!</p>
+                    <p id="itemAddedText">some fish</p>
+                </div>
+            </div>
+
+            <h3>Selections</h3>            
 
             <div class="selection_item_outer" id="salmon_cont">
                 <div class="selection_item_inner">
