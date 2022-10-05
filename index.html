@@ -22,10 +22,13 @@
 
 <body>
     <nav>
-        <div>
-            <h1>AO Prep List builder</h1>
+        <div class="header_logo_btns">
+            <div>
+                <h1>AO Prep List builder</h1>
+            </div>                       
+            <a onclick="localStorage.clear(); console.log('cleared')">Clear storage</a>
+            <a id="seeListBtn" onclick="seeList()"; console.log('cleared')">See List</a>
         </div>
-        <a onclick="localStorage.clear(); console.log('cleared')">Clear storage</a>
         <a onclick="done()">Done</a>
     </nav>
 
@@ -66,6 +69,11 @@
         
         <!-- DELETE ABOVE AFTER TESTING! THIS SHOULDNT TAKE LONG AT ALL -->
         <div class="main_selections_container" id="elementsToPrint">
+            
+            <a onclick="listHide()" title="Back to Selection" id="closeBtn">
+                <i class="fa fa-times" aria-hidden="true"></i>
+            </a>
+            
             <div class="element-to-print" id="element-to-print-salmon" >
                 <!-- design table now see if varaible stored classes work -->    
             </div> 
@@ -88,7 +96,7 @@
                 <i class="fa-solid fa-circle-check"></i>
                 <div class="selection_info">
                     <p style="font-weight:bold;">Item Added!</p>
-                    <p id="itemAddedText">some fish</p>
+                    <p id="itemAddedText"></p>
                 </div>
             </div>
 

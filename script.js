@@ -47,6 +47,23 @@ function done() {
     printSeabass(seabass);
     printCounts(counts);
     printMisc(miscFish);
+
+    
+}
+
+function seeList() {
+    document.getElementById("elementsToPrint").style.display = "block";
+    document.getElementById("fishSelectionCont").style.display = "none ";
+
+    document.getElementById("seeListBtn").style.display = "none";
+
+}
+
+function listHide() {
+    document.getElementById("elementsToPrint").style.display = "none";
+    document.getElementById("fishSelectionCont").style.display = "block";
+
+    document.getElementById("seeListBtn").style.display = "block";
 }
 
 function printSalmon(salmonObj) {
@@ -825,11 +842,13 @@ function addSelectionToLocal(fish, value) {
             selectionType = document.getElementById("brill_type_select").value;
             fish = fish + "_" + selectionType;
             break;
+
         case "fishpie":
             selectionType = document.getElementById("piemix_type").value;
             if (selectionType != "")
                 fish = fish + "-"+ selectionType;
             break;
+            
         case "squid":
             selectionType = document.getElementById("squid_type").value;
             fish = fish  + "-"+ selectionType;

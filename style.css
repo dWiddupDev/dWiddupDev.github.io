@@ -199,6 +199,7 @@ nav {
     position: sticky;
     top: 0;
     width: 100%;
+    z-index: 2;
 }
 
 nav a {
@@ -317,7 +318,8 @@ main {
 #squid_cont,
 #octopus_cont,
 #dovers_cont,
-#elementsToPrint {
+#elementsToPrint,
+#seeListBtn {
     display: none;
 }
 
@@ -367,7 +369,7 @@ a:hover {
 }
 
 .element-to-print pdfItem h4 {
-    min-width: 200px;
+    min-width: 175px;
     text-transform: capitalize;
 }
 
@@ -544,4 +546,34 @@ a.close_button:hover {
 
 #itemAddedText {
     text-transform: capitalize;
+}
+
+.header_logo_btns {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+#elementsToPrint {
+    position: relative;
+}
+
+#closeBtn {
+    font-size: 40px;
+    width: 50px;
+    height: 50px;
+    color: #FFF;
+    background: var(--but);
+    border-radius: 50%;
+    position: absolute;
+    right: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;    
+}
+
+#closeBtn:hover {
+    color: var(--but);
+    background: #DDD;
 }
