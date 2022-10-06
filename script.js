@@ -167,7 +167,7 @@ function createStockList() {
           
         if (fishQty[i].type.includes("salmon"))
             salmonSides.push(fishQty[i]);        
-        if (fishQty[i].type.includes("cod"))
+        if (fishQty[i].type.includes("cod") && fishQty[i].type.includes("counts") == false)
             cod.push(fishQty[i]);   
         if (fishQty[i].type.includes("seatrout"))
             seatrout.push(fishQty[i]);        
@@ -300,9 +300,17 @@ function createStockList() {
         wildbass,
         wildBassWeight
     ]
+    var fishTotals = [];
     for (var f = 0; f < fishArrays.length; f++) {
-        if (fishArrays[f].length > 0)            
-            console.log(fishArrays.key ,fishArrays[f]);
+        if (fishArrays[f].length > 0) {
+            console.log(fishArrays[f]);
+            for (var a = 0; a < fishArrays[f].length; a++) {
+                fishTotals.push({
+                    type: fishArrays[f].type[a]
+                })
+            }
+        }
+        console.log(fishTotals);            
     }    
 }
 
