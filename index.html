@@ -26,7 +26,7 @@
             <div>
                 <h1>AO Prep List builder</h1>
             </div>                       
-            <a onclick="localStorage.clear(); console.log('cleared')">Clear</a>
+            <a onclick="localStorage.clear(); console.log('cleared')">Clear Lists</a>
             <a id="seeListBtn" onclick="seeList()"; console.log('cleared')">See Lists</a>
         </div>
         <a onclick="done()">Generate Lists</a>
@@ -37,6 +37,7 @@
             <h3>Fish</h3>
 
             <div class="sidebar_links">
+                
                 <a onclick="selectFish(this)">Salmon <i class="fa-solid fa-caret-down"></i></a>
                 <a onclick="selectFish(this)">SeaBass <i class="fa-solid fa-caret-down"></i></a>
                 <a onclick="selectFish(this)">Brill  <i class="fa-solid fa-caret-down"></i></a>
@@ -400,6 +401,24 @@
                                             <label for="cod_custom">Custom:</label>
                                             <input id="cod_custom" type="number" />
                                             <a onclick="addCustomToLocal('cod_custom')">Custom</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="fish_selection_cuts">
+                                    <p>Weight (kg):</p>
+                                    <div class="selection_buttons">
+                                        <a onclick="addSelectionToLocal('cod', '.5k')">1/2</a>
+                                        <a onclick="addSelectionToLocal('cod', '1k')">1</a>
+                                        <a onclick="addSelectionToLocal('cod', '2k')">2</a>
+                                        <a onclick="addSelectionToLocal('cod', '3k')">3</a>
+                                        <a onclick="addSelectionToLocal('cod', '5k')">5</a>
+                                        <a onclick="addSelectionToLocal('cod', '10k')">10</a>
+
+                                        <div class="custom_selection">
+                                            <label for="cod_custom_weight">Custom:</label>
+                                            <input id="cod_custom_weight" type="number" />
+                                            <a onclick="addCustomToLocal('cod_custom_weight')">Custom</a>
                                         </div>
                                     </div>
                                 </div>
@@ -907,6 +926,24 @@
                                             <label for="hake_custom">Custom:</label>
                                             <input id="hake_custom" type="number" />
                                             <a onclick="addCustomToLocal('hake_custom')">Custom</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="fish_selection_cuts">
+                                    <p>Weight (kg):</p>
+                                    <div class="selection_buttons">
+                                        <a onclick="addSelectionToLocal('hake', '.5k')">1/2</a>
+                                        <a onclick="addSelectionToLocal('hake', '1k')">1</a>
+                                        <a onclick="addSelectionToLocal('hake', '2k')">2</a>
+                                        <a onclick="addSelectionToLocal('hake', '3k')">3</a>
+                                        <a onclick="addSelectionToLocal('hake', '5k')">5</a>
+                                        <a onclick="addSelectionToLocal('hake', '10k')">10</a>
+
+                                        <div class="custom_selection">
+                                            <label for="hake_custom_weight">Custom:</label>
+                                            <input id="hake_custom_weight" type="number" />
+                                            <a onclick="addCustomToLocal('hake_custom_weight')">Custom</a>
                                         </div>
                                     </div>
                                 </div>

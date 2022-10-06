@@ -1,3 +1,117 @@
+function createStockList() {
+//#fishArrays 
+    var salmonWeight = [];
+    var salmonSides = [];
+    var seabassXsmall = [];
+    var seabassSmall = [];
+    var seabassMedium = [];
+    var seabassLarge = [];
+    var seabassXlarge = [];
+    var brillWeight = [];
+    var brillFish = [];
+    var codWeight = [];
+    var codSides = [];
+    var countsEightTens = [];
+    var countsTentwelves = [];
+    var countsTwelveSixteens = [];
+    var countsTwenties = [];
+    var countsTwentyFives = [];
+    var countsThirties = [];
+    var countsThirtyFives = [];
+    var countsForties = [];
+    var countsFortyFives = [];
+    var countsFifties = [];
+    var doradeXsmall = [];
+    var doradeSmall = [];
+    var doradeMedium = [];
+    var doradeLarge = [];
+    var doradeXlarge = [];
+    var dovers = [];
+    var doversWeight = [];
+    var fishpie = [];
+    var fishpieWhite = [];
+    var fishpieSalmon = [];
+    var hake = [];
+    var hakeWeight = [];
+    var halibutWeight = [];
+    var lemonsole = [];
+    var lemonWeight = [];
+    var mackerel = [];
+    var mackerelWeight = [];
+    var monkfishWeight = [];
+    var plaice = [];
+    var plaiceWeight = [];
+    var pollock = [];
+    var pollockWeight = [];
+    var octopusWeight = [];
+    var sardines = [];
+    var sardinesWeight = [];
+    var seatrout = [];
+    var seatroutWeight = [];
+    var shark = [];
+    var smokedhaddock = [];
+    var smokedhaddockWeight = [];
+    var sword = [];
+    var squid = [];
+    var trout = [];
+    var troutWeight = [];
+    var tuna = [];
+    var wildbass = [];
+    var wildBassWeight = [];
+//#endregion
+    var fishWeight = [];
+    var fishQty = [];
+    var local = window.localStorage;
+    for (var i = 0; local.length; i ++) {
+        var fishType = window.localStorage.key(i);
+
+        if (fishType != null){
+            var typeLength = fishType.split("_").length;
+            var value = window.localStorage.getItem(fishType);
+            switch (typeLength){
+                case 3:
+                    if (fishType.includes("counts")) {
+                        fishQty.push({
+                            type: fishType,
+                            value: value
+                        });
+                    } else {
+                        fishWeight.push({
+                            type: fishType,
+                            value: value
+                        });
+                    }
+                    break;
+                case 2:
+                    if (fishType.includes("tuna") || fishType.includes("sword") || fishType.includes("fishpie") || fishType.includes("shark") 
+                    || fishType.includes("monkfish") || fishType.includes("halibut")) {
+                        fishWeight.push({
+                            type: fishType,
+                            value: value
+                        });
+                    } else {
+                        fishQty.push({
+                            type: fishType,
+                            value: value
+                        });
+                    }
+                    break;
+                case 1 :                    
+                    fishWeight.push({
+                        type: fishType,
+                        value: value
+                    }); 
+                    break;
+            }
+        } else {
+            break;
+        }
+    }
+
+    console.log("fishWeight = ", fishWeight);
+    console.log("fishQty = ", fishQty);
+}
+
 function done() {
     document.getElementById("fishSelectionCont").style.display = "none";
     document.getElementById("elementsToPrint").style.display = "block";
@@ -21,7 +135,7 @@ function done() {
                 qty: orders
             }           
             
-            if (fishType.includes("salmon"))       
+            if (fishType.includes("salmon") && fishType.includes("fishpie") == false)       
                 salmon.push(typeObj);
             
             else if (fishType.includes("seaBass"))   
@@ -43,36 +157,36 @@ function done() {
             break;
     }
 
-    if (salmon.length == 0) {   
+    // if (salmon.length == 0) {   
     
-        document.getElementById("elementsToPrint").innerHTML += "<h2>No Salmon Selected</h2>";
+    //     document.getElementById("elementsToPrint").innerHTML += "<h2>No Salmon Selected</h2>";
         
-    } else {
-        printSalmon(salmon);
-    }
+    // } else {
+    //     printSalmon(salmon);
+    // }
         
-    if (seabass.length == 0) {
-        document.getElementById("elementsToPrint").innerHTML += "<h2>No Sea Bass Selected</h2>";
+    // if (seabass.length == 0) {
+    //     document.getElementById("elementsToPrint").innerHTML += "<h2>No Sea Bass Selected</h2>";
        
-    }else {
-        printSeabass(seabass);
-    }
+    // }else {
+    //     printSeabass(seabass);
+    // }
 
-    if (counts.length == 0) {
-        document.getElementById("elementsToPrint").innerHTML += "<h2>No Counts Selected</h2>";
+    // if (counts.length == 0) {
+    //     document.getElementById("elementsToPrint").innerHTML += "<h2>No Counts Selected</h2>";
         
-    } else {
-        printCounts(counts);
-    }
+    // } else {
+    //     printCounts(counts);
+    // }
 
-    if (miscFish.length == 0) {
-        document.getElementById("elementsToPrint").innerHTML += "<h2>No Other Fish Selected</h2>";
-    } else {
-        printMisc(miscFish); 
-    }
+    // if (miscFish.length == 0) {
+    //     document.getElementById("elementsToPrint").innerHTML += "<h2>No Other Fish Selected</h2>";
+    // } else {
+    //     printMisc(miscFish); 
+    // }
+
+    createStockList();
         
-    
-    localStorage.clear(); 
 }
 
 function seeList() {
@@ -631,7 +745,7 @@ function printMisc(miscObj) {
             dorade.push(miscObj[f]);
         if (miscObj[f].type.includes("dovers"))
             dovers.push(miscObj[f]);
-        if (miscObj[f].type.includes("fishpie"))
+        if (miscObj[f].type.includes("fishpie"))        
             fishpie.push(miscObj[f]);
         if (miscObj[f].type.includes("hake"))
             hake.push(miscObj[f]);
@@ -859,7 +973,7 @@ function addSelectionToLocal(fish, value) {
         case "seaBass":
             var vac = document.getElementById("bass_vac").value;
             selectionType = "";
-            value += value;
+            value += vac;
             break;
         case "seaBassWhole":
             var vac = document.getElementById("bass_vac").value;
@@ -895,8 +1009,8 @@ function addSelectionToLocal(fish, value) {
             var vac = document.getElementById("fishpie_vac").value;
             selectionType = document.getElementById("piemix_type").value;
             if (selectionType != "")
-                fish = fish + "-"+ selectionType;
-            value += value;
+                fish = fish + "_"+ selectionType;
+            value += "k" + vac;
             break;
             
         case "squid":
@@ -1031,7 +1145,7 @@ function addCustomToLocal(inputId) {
     || inputId == "trout_custom" || inputId == "sardines_custom"
     || inputId == "shark_custom" || inputId == "tuna_custom" 
     || inputId == "sword_custom" || inputId == "squid_custom"
-    || inputId == "octopus_custom") {
+    || inputId == "octopus_custom" || inputId == "cod_custom_weight" || inputId == "hake_custom_weight") {
         value = value + "k";
     }
     
