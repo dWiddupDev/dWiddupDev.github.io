@@ -59,9 +59,12 @@ function createStockList() {
     var wildbass = [];
     var wildBassWeight = [];
 //#endregion
+
     var fishWeight = [];
     var fishQty = [];
     var local = window.localStorage;
+
+//#region separate weighted from sides
     for (var i = 0; local.length; i ++) {
         var fishType = window.localStorage.key(i);
 
@@ -107,6 +110,7 @@ function createStockList() {
             break;
         }
     }
+    //#endregion 
 
     console.log("fishWeight = ", fishWeight);
     console.log("fishQty = ", fishQty);
