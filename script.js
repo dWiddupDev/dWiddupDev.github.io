@@ -8,9 +8,9 @@ function createStockList() {
     var seabassLarge = [];
     var seabassXlarge = [];
     var brillWeight = [];
-    var brillFish = [];
+    var brill = [];
     var codWeight = [];
-    var codSides = [];
+    var cod = [];
     var countsEightTens = [];
     var countsTentwelves = [];
     var countsTwelveSixteens = [];
@@ -21,6 +21,8 @@ function createStockList() {
     var countsForties = [];
     var countsFortyFives = [];
     var countsFifties = [];
+    var coley = [];
+    var coleyWeight = [];
     var doradeXsmall = [];
     var doradeSmall = [];
     var doradeMedium = [];
@@ -38,12 +40,12 @@ function createStockList() {
     var lemonWeight = [];
     var mackerel = [];
     var mackerelWeight = [];
-    var monkfishWeight = [];
+    var monkfish = [];
     var plaice = [];
     var plaiceWeight = [];
     var pollock = [];
     var pollockWeight = [];
-    var octopusWeight = [];
+    var octopus = [];
     var sardines = [];
     var sardinesWeight = [];
     var seatrout = [];
@@ -112,6 +114,61 @@ function createStockList() {
     }
     //#endregion 
 
+    for (var i = 0; i < fishQty.length; i++) {
+        if (fishQty[i].type.includes("salmon"))
+            salmonWeight.push(fishQty[i]);        
+        if (fishQty[i].type.includes("cod"))
+            cod.push(fishQty[i]);   
+        if (fishQty[i].type.includes("seatrout"))
+            seatrout.push(fishQty[i]);        
+        if (fishQty[i].type.includes("brill"))
+            brill.push(fishQty[i]);
+        if (fishQty[i].type.includes("pollock"))
+            pollockWeight.push(fishQty[i]);
+        if (fishQty[i].type.includes("hake"))
+            hakeWeight.push(fishQty[i]);   
+        if (fishWeight[i].type == "coley")
+            coley.push(fishWeight[i]);      
+            
+            //fill this out
+    }
+
+    for (var i = 0; i < fishWeight.length; i++) {
+        if (fishWeight[i].type.includes("salmon") && fishWeight[i].type.includes("fishpie") == false)
+            salmonWeight.push(fishWeight[i]);
+        if (fishWeight[i].type.includes("tuna"))
+            tuna.push(fishWeight[i]);
+        if (fishWeight[i].type.includes("cod"))
+            codWeight.push(fishWeight[i]);
+        if (fishWeight[i].type.includes("octopus"))
+            octopus.push(fishWeight[i]);
+        if (fishWeight[i].type.includes("shark"))
+            shark.push(fishWeight[i]);
+        if (fishWeight[i].type.includes("squid"))
+            squid.push(fishWeight[i]);
+        if (fishWeight[i].type.includes("seatrout"))
+            seatroutWeight.push(fishWeight[i]);
+        if (fishWeight[i].type.includes("sword"))
+            sword.push(fishWeight[i]);
+        if (fishWeight[i].type.includes("monkfish"))
+            monkfish.push(fishWeight[i]);
+        if (fishWeight[i].type.includes("brill"))
+            brillWeight.push(fishWeight[i]);
+        if (fishWeight[i].type.includes("pollock"))
+            pollockWeight.push(fishWeight[i]);
+        if (fishWeight[i].type.includes("hake"))
+            hakeWeight.push(fishWeight[i]);
+        if (fishWeight[i].type.includes("halibut"))
+            halibutWeight.push(fishWeight[i]);
+        if (fishWeight[i].type == "fishpie")
+            fishpie.push(fishWeight[i]);
+        if (fishWeight[i].type == "fishpie_salmon")
+            fishpieSalmon.push(fishWeight[i]);
+        if (fishWeight[i].type == "fishpie_white")
+            fishpieWhite.push(fishWeight[i]);   
+        if (fishWeight[i].type == "coley")
+            coleyWeight.push(fishWeight[i]);        
+    }
     console.log("fishWeight = ", fishWeight);
     console.log("fishQty = ", fishQty);
 }
@@ -1149,7 +1206,8 @@ function addCustomToLocal(inputId) {
     || inputId == "trout_custom" || inputId == "sardines_custom"
     || inputId == "shark_custom" || inputId == "tuna_custom" 
     || inputId == "sword_custom" || inputId == "squid_custom"
-    || inputId == "octopus_custom" || inputId == "cod_custom_weight" || inputId == "hake_custom_weight") {
+    || inputId == "octopus_custom" || inputId == "cod_custom_weight" || inputId == "hake_custom_weight"
+    || inputId == "coley_custom_weight") {
         value = value + "k";
     }
     
