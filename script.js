@@ -1,318 +1,379 @@
-function createStockList() {
-//#fishArrays 
-    var salmonWeight = [];
-    var salmonSides = [];
-    var seabassXsmall = [];
-    var seabassSmall = [];
-    var seabassMedium = [];
-    var seabassLarge = [];
-    var seabassXlarge = [];
-    var brillWeight = [];
-    var brill = [];
-    var codWeight = [];
-    var cod = [];
-    var countsEightTens = [];
-    var countsTentwelves = [];
-    var countsTwelveSixteens = [];
-    var countsTwenties = [];
-    var countsTwentyFives = [];
-    var countsThirties = [];
-    var countsThirtyFives = [];
-    var countsForties = [];
-    var countsFortyFives = [];
-    var countsFifties = [];
-    var coley = [];
-    var coleyWeight = [];
-    var doradeXsmall = [];
-    var doradeSmall = [];
-    var doradeMedium = [];
-    var doradeLarge = [];
-    var doradeXlarge = [];
-    var dovers = [];
-    var doversWeight = [];
-    var fishpie = [];
-    var fishpieWhite = [];
-    var fishpieSalmon = [];
-    var hake = [];
-    var hakeWeight = [];
-    var halibutWeight = [];
-    var lemonsole = [];
-    var lemonWeight = [];
-    var mackerel = [];
-    var mackerelWeight = [];
-    var monkfish = [];
-    var plaice = [];
-    var plaiceWeight = [];
-    var pollock = [];
-    var pollockWeight = [];
-    var octopus = [];
-    var sardines = [];
-    var sardinesWeight = [];
-    var seatrout = [];
-    var seatroutWeight = [];
-    var shark = [];
-    var smokedhaddock = [];
-    var smokedhaddockWeight = [];
-    var sword = [];
-    var squid = [];
-    var trout = [];
-    var troutWeight = [];
-    var tuna = [];
-    var wildbass = [];
-    var wildBassWeight = [];
-//#endregion
+var salmonWeight = 0;
+var salmonSides = 0;
+var seabassXsmall = [];
+var seabassSmall = [];
+var seabassMedium = [];
+var seabassLarge = [];
+var seabassXlarge = [];
+var brillWeight = [];
+var brill = [];
+var codWeight = [];
+var cod = [];
+var countsEightTens = [];
+var countsTentwelves = [];
+var countsTwelveSixteens = [];
+var countsTwenties = [];
+var countsTwentyFives = [];
+var countsThirties = [];
+var countsThirtyFives = [];
+var countsForties = [];
+var countsFortyFives = [];
+var countsFifties = [];
+var coley = [];
+var coleyWeight = [];
+var doradeXsmall = [];
+var doradeSmall = [];
+var doradeMedium = [];
+var doradeLarge = [];
+var doradeXlarge = [];
+var dovers = [];
+var doversWeight = [];
+var fishpie = [];
+var fishpieWhite = [];
+var fishpieSalmon = [];
+var hake = [];
+var hakeWeight = [];
+var halibutWeight = [];
+var lemonsole = [];
+var lemonWeight = [];
+var mackerel = [];
+var mackerelWeight = [];
+var monkfish = [];
+var plaice = [];
+var plaiceWeight = [];
+var pollock = [];
+var pollockWeight = [];
+var octopus = [];
+var sardines = [];
+var sardinesWeight = [];
+var seatrout = [];
+var seatroutWeight = [];
+var shark = [];
+var smokedhaddock = [];
+var smokedhaddockWeight = [];
+var sword = [];
+var squid = [];
+var trout = [];
+var troutWeight = [];
+var tuna = [];
+var wildbass = [];
+var wildBassWeight = [];
 
-    var fishWeight = [];
-    var fishQty = [];
-    var local = window.localStorage;
+// function createStockList() {
+// //#fishArrays 
+//     var salmonWeight = [];
+//     var salmonSides = [];
+//     var seabassXsmall = [];
+//     var seabassSmall = [];
+//     var seabassMedium = [];
+//     var seabassLarge = [];
+//     var seabassXlarge = [];
+//     var brillWeight = [];
+//     var brill = [];
+//     var codWeight = [];
+//     var cod = [];
+//     var countsEightTens = [];
+//     var countsTentwelves = [];
+//     var countsTwelveSixteens = [];
+//     var countsTwenties = [];
+//     var countsTwentyFives = [];
+//     var countsThirties = [];
+//     var countsThirtyFives = [];
+//     var countsForties = [];
+//     var countsFortyFives = [];
+//     var countsFifties = [];
+//     var coley = [];
+//     var coleyWeight = [];
+//     var doradeXsmall = [];
+//     var doradeSmall = [];
+//     var doradeMedium = [];
+//     var doradeLarge = [];
+//     var doradeXlarge = [];
+//     var dovers = [];
+//     var doversWeight = [];
+//     var fishpie = [];
+//     var fishpieWhite = [];
+//     var fishpieSalmon = [];
+//     var hake = [];
+//     var hakeWeight = [];
+//     var halibutWeight = [];
+//     var lemonsole = [];
+//     var lemonWeight = [];
+//     var mackerel = [];
+//     var mackerelWeight = [];
+//     var monkfish = [];
+//     var plaice = [];
+//     var plaiceWeight = [];
+//     var pollock = [];
+//     var pollockWeight = [];
+//     var octopus = [];
+//     var sardines = [];
+//     var sardinesWeight = [];
+//     var seatrout = [];
+//     var seatroutWeight = [];
+//     var shark = [];
+//     var smokedhaddock = [];
+//     var smokedhaddockWeight = [];
+//     var sword = [];
+//     var squid = [];
+//     var trout = [];
+//     var troutWeight = [];
+//     var tuna = [];
+//     var wildbass = [];
+//     var wildBassWeight = [];
+// //#endregion
 
-//#region separate weighted from sides
-    for (var i = 0; local.length; i ++) {
-        var fishType = window.localStorage.key(i);
+//     var fishWeight = [];
+//     var fishQty = [];
+//     var local = window.localStorage;
 
-        if (fishType != null){
-            var typeLength = fishType.split("_").length;
-            var value = window.localStorage.getItem(fishType);
-            switch (typeLength){
-                case 3:
-                    if (fishType.includes("counts")) {
-                        fishQty.push({
-                            type: fishType,
-                            value: value
-                        });
-                    } else {
-                        fishWeight.push({
-                            type: fishType,
-                            value: value
-                        });
-                    }
-                    break;
-                case 2:
-                    if (fishType.includes("tuna") || fishType.includes("sword") || fishType.includes("fishpie") || fishType.includes("shark") 
-                    || fishType.includes("monkfish") || fishType.includes("halibut")) {
-                        fishWeight.push({
-                            type: fishType,
-                            value: value
-                        });
-                    } else {
-                        fishQty.push({
-                            type: fishType,
-                            value: value
-                        });
-                    }
-                    break;
-                case 1 :                    
-                    fishWeight.push({
-                        type: fishType,
-                        value: value
-                    }); 
-                    break;
-            }
-        } else {
-            break;
-        }
-    }
-    //#endregion 
+// //#region separate weighted from sides
+//     for (var i = 0; local.length; i ++) {
+//         var fishType = window.localStorage.key(i);
 
-//#region assign into main array
-    for (var i = 0; i < fishQty.length; i++) {
-        if (fishQty[i].type.includes("counts")){
-            if (fishQty[i].type.includes("8-10"))
-                countsEightTens.push(fishQty[i]);
-            if (fishQty[i].type.includes("10-12"))
-                countsTentwelves.push(fishQty[i]);
-            if (fishQty[i].type.includes("12-16"))
-                countsTwelveSixteens.push(fishQty[i]);
-            if (fishQty[i].type.includes("20"))
-                countsTwenties.push(fishQty[i]);
-            if (fishQty[i].type.includes("25"))
-                countsTwentyFives.push(fishQty[i]);
-            if (fishQty[i].type.includes("30"))
-                countsThirties.push(fishQty[i]);
-            if (fishQty[i].type.includes("35"))
-                countsThirtyFives.push(fishQty[i]);
-            if (fishQty[i].type.includes("40"))
-                countsForties.push(fishQty[i]);
-            if (fishQty[i].type.includes("45"))
-                countsFortyFives.push(fishQty[i]);
-            if (fishQty[i].type.includes("50"))
-                countsFifties.push(fishQty[i]);
-        }
+//         if (fishType != null){
+//             var typeLength = fishType.split("_").length;
+//             var value = window.localStorage.getItem(fishType);
+//             switch (typeLength){
+//                 case 3:
+//                     if (fishType.includes("counts")) {
+//                         fishQty.push({
+//                             type: fishType,
+//                             value: value
+//                         });
+//                     } else {
+//                         fishWeight.push({
+//                             type: fishType,
+//                             value: value
+//                         });
+//                     }
+//                     break;
+//                 case 2:
+//                     if (fishType.includes("tuna") || fishType.includes("sword") || fishType.includes("fishpie") || fishType.includes("shark") 
+//                     || fishType.includes("monkfish") || fishType.includes("halibut")) {
+//                         fishWeight.push({
+//                             type: fishType,
+//                             value: value
+//                         });
+//                     } else {
+//                         fishQty.push({
+//                             type: fishType,
+//                             value: value
+//                         });
+//                     }
+//                     break;
+//                 case 1 :                    
+//                     fishWeight.push({
+//                         type: fishType,
+//                         value: value
+//                     }); 
+//                     break;
+//             }
+//         } else {
+//             break;
+//         }
+//     }
+//     //#endregion 
 
-        if (fishQty[i].type.includes("seabass") || fishQty[i].type.includes("seabassWhole")) {
-            if (fishQty[i].type.includes("<400"))
-                seabassXsmall.push(fishQty[i]); 
-            if (fishQty[i].type.includes("4-6"))
-                seabassSmall.push(fishQty[i]); 
-            if (fishQty[i].type.includes("550"))
-                seabassMedium.push(fishQty[i]); 
-            if (fishQty[i].type.includes("6-8"))
-                seabassLarge.push(fishQty[i]); 
-            if (fishQty[i].type.includes("800+"))
-                seabassXlarge.push(fishQty[i]); 
-        }
+// //#region assign into main array
+//     for (var i = 0; i < fishQty.length; i++) {
+//         if (fishQty[i].type.includes("counts")){
+//             if (fishQty[i].type.includes("8-10"))
+//                 countsEightTens.push(fishQty[i]);
+//             if (fishQty[i].type.includes("10-12"))
+//                 countsTentwelves.push(fishQty[i]);
+//             if (fishQty[i].type.includes("12-16"))
+//                 countsTwelveSixteens.push(fishQty[i]);
+//             if (fishQty[i].type.includes("20"))
+//                 countsTwenties.push(fishQty[i]);
+//             if (fishQty[i].type.includes("25"))
+//                 countsTwentyFives.push(fishQty[i]);
+//             if (fishQty[i].type.includes("30"))
+//                 countsThirties.push(fishQty[i]);
+//             if (fishQty[i].type.includes("35"))
+//                 countsThirtyFives.push(fishQty[i]);
+//             if (fishQty[i].type.includes("40"))
+//                 countsForties.push(fishQty[i]);
+//             if (fishQty[i].type.includes("45"))
+//                 countsFortyFives.push(fishQty[i]);
+//             if (fishQty[i].type.includes("50"))
+//                 countsFifties.push(fishQty[i]);
+//         }
 
-        if (fishQty[i].type.includes("dorade") || fishQty[i].type.includes("doradeWhole")) {
-            if (fishQty[i].type.includes("<400"))
-                doradeXsmall.push(fishQty[i]); 
-            if (fishQty[i].type.includes("4-6"))
-                doradeSmall.push(fishQty[i]); 
-            if (fishQty[i].type.includes("550"))
-                doradeMedium.push(fishQty[i]); 
-            if (fishQty[i].type.includes("6-8"))
-                doradeLarge.push(fishQty[i]); 
-            if (fishQty[i].type.includes("800+"))
-                doradeXlarge.push(fishQty[i]); 
-        }
+//         if (fishQty[i].type.includes("seabass") || fishQty[i].type.includes("seabassWhole")) {
+//             if (fishQty[i].type.includes("<400"))
+//                 seabassXsmall.push(fishQty[i]); 
+//             if (fishQty[i].type.includes("4-6"))
+//                 seabassSmall.push(fishQty[i]); 
+//             if (fishQty[i].type.includes("550"))
+//                 seabassMedium.push(fishQty[i]); 
+//             if (fishQty[i].type.includes("6-8"))
+//                 seabassLarge.push(fishQty[i]); 
+//             if (fishQty[i].type.includes("800+"))
+//                 seabassXlarge.push(fishQty[i]); 
+//         }
+
+//         if (fishQty[i].type.includes("dorade") || fishQty[i].type.includes("doradeWhole")) {
+//             if (fishQty[i].type.includes("<400"))
+//                 doradeXsmall.push(fishQty[i]); 
+//             if (fishQty[i].type.includes("4-6"))
+//                 doradeSmall.push(fishQty[i]); 
+//             if (fishQty[i].type.includes("550"))
+//                 doradeMedium.push(fishQty[i]); 
+//             if (fishQty[i].type.includes("6-8"))
+//                 doradeLarge.push(fishQty[i]); 
+//             if (fishQty[i].type.includes("800+"))
+//                 doradeXlarge.push(fishQty[i]); 
+//         }
           
-        if (fishQty[i].type.includes("salmon"))
-            salmonSides.push(fishQty[i]);        
-        if (fishQty[i].type.includes("cod") && fishQty[i].type.includes("counts") == false)
-            cod.push(fishQty[i]);   
-        if (fishQty[i].type.includes("seatrout"))
-            seatrout.push(fishQty[i]);        
-        if (fishQty[i].type.includes("brill"))
-            brill.push(fishQty[i]);
-        if (fishQty[i].type.includes("pollock"))
-            pollock.push(fishQty[i]);
-        if (fishQty[i].type.includes("hake"))
-            hake.push(fishQty[i]);   
-        if (fishQty[i].type == "coley")
-            coley.push(fishQty[i]);      
-        if (fishQty[i].type == "dovers")
-            dovers.push(fishQty[i]); 
-        if (fishQty[i].type == "lemonsole")
-            lemonsole.push(fishQty[i]); 
-        if (fishQty[i].type == "mackerel")
-            mackerel.push(fishQty[i]); 
-        if (fishQty[i].type == "plaice")
-            plaice.push(fishQty[i]); 
-        if (fishQty[i].type == "sardines")
-            sardines.push(fishQty[i]); 
-        if (fishQty[i].type == "smokedhaddock")
-            smokedhaddock.push(fishQty[i]); 
-        if (fishQty[i].type == "trout")
-            trout.push(fishQty[i]); 
-        if (fishQty[i].type == "wildbass")
-            wildbass.push(fishQty[i]); 
-            //fill this out
-    }
+//         if (fishQty[i].type.includes("salmon"))
+//             salmonSides.push(fishQty[i]);        
+//         if (fishQty[i].type.includes("cod") && fishQty[i].type.includes("counts") == false)
+//             cod.push(fishQty[i]);   
+//         if (fishQty[i].type.includes("seatrout"))
+//             seatrout.push(fishQty[i]);        
+//         if (fishQty[i].type.includes("brill"))
+//             brill.push(fishQty[i]);
+//         if (fishQty[i].type.includes("pollock"))
+//             pollock.push(fishQty[i]);
+//         if (fishQty[i].type.includes("hake"))
+//             hake.push(fishQty[i]);   
+//         if (fishQty[i].type == "coley")
+//             coley.push(fishQty[i]);      
+//         if (fishQty[i].type == "dovers")
+//             dovers.push(fishQty[i]); 
+//         if (fishQty[i].type == "lemonsole")
+//             lemonsole.push(fishQty[i]); 
+//         if (fishQty[i].type == "mackerel")
+//             mackerel.push(fishQty[i]); 
+//         if (fishQty[i].type == "plaice")
+//             plaice.push(fishQty[i]); 
+//         if (fishQty[i].type == "sardines")
+//             sardines.push(fishQty[i]); 
+//         if (fishQty[i].type == "smokedhaddock")
+//             smokedhaddock.push(fishQty[i]); 
+//         if (fishQty[i].type == "trout")
+//             trout.push(fishQty[i]); 
+//         if (fishQty[i].type == "wildbass")
+//             wildbass.push(fishQty[i]); 
+//             //fill this out
+//     }
 
-    for (var i = 0; i < fishWeight.length; i++) {
-        if (fishWeight[i].type.includes("salmon") && fishWeight[i].type.includes("fishpie") == false)
-            salmonWeight.push(fishWeight[i]);
-        if (fishWeight[i].type.includes("tuna"))
-            tuna.push(fishWeight[i]);
-        if (fishWeight[i].type.includes("cod"))
-            codWeight.push(fishWeight[i]);
-        if (fishWeight[i].type.includes("octopus"))
-            octopus.push(fishWeight[i]);
-        if (fishWeight[i].type.includes("shark"))
-            shark.push(fishWeight[i]);
-        if (fishWeight[i].type.includes("squid"))
-            squid.push(fishWeight[i]);
-        if (fishWeight[i].type.includes("seatrout"))
-            seatroutWeight.push(fishWeight[i]);
-        if (fishWeight[i].type.includes("sword"))
-            sword.push(fishWeight[i]);
-        if (fishWeight[i].type.includes("monkfish"))
-            monkfish.push(fishWeight[i]);
-        if (fishWeight[i].type.includes("brill"))
-            brillWeight.push(fishWeight[i]);
-        if (fishWeight[i].type.includes("pollock"))
-            pollockWeight.push(fishWeight[i]);
-        if (fishWeight[i].type.includes("hake"))
-            hakeWeight.push(fishWeight[i]);
-        if (fishWeight[i].type.includes("halibut"))
-            halibutWeight.push(fishWeight[i]);
-        if (fishWeight[i].type == "fishpie")
-            fishpie.push(fishWeight[i]);
-        if (fishWeight[i].type == "fishpie_salmon")
-            fishpieSalmon.push(fishWeight[i]);
-        if (fishWeight[i].type == "fishpie_white")
-            fishpieWhite.push(fishWeight[i]);   
-        if (fishWeight[i].type == "coley")
-            coleyWeight.push(fishWeight[i]);        
-    }
+//     for (var i = 0; i < fishWeight.length; i++) {
+//         if (fishWeight[i].type.includes("salmon") && fishWeight[i].type.includes("fishpie") == false)
+//             salmonWeight.push(fishWeight[i]);
+//         if (fishWeight[i].type.includes("tuna"))
+//             tuna.push(fishWeight[i]);
+//         if (fishWeight[i].type.includes("cod"))
+//             codWeight.push(fishWeight[i]);
+//         if (fishWeight[i].type.includes("octopus"))
+//             octopus.push(fishWeight[i]);
+//         if (fishWeight[i].type.includes("shark"))
+//             shark.push(fishWeight[i]);
+//         if (fishWeight[i].type.includes("squid"))
+//             squid.push(fishWeight[i]);
+//         if (fishWeight[i].type.includes("seatrout"))
+//             seatroutWeight.push(fishWeight[i]);
+//         if (fishWeight[i].type.includes("sword"))
+//             sword.push(fishWeight[i]);
+//         if (fishWeight[i].type.includes("monkfish"))
+//             monkfish.push(fishWeight[i]);
+//         if (fishWeight[i].type.includes("brill"))
+//             brillWeight.push(fishWeight[i]);
+//         if (fishWeight[i].type.includes("pollock"))
+//             pollockWeight.push(fishWeight[i]);
+//         if (fishWeight[i].type.includes("hake"))
+//             hakeWeight.push(fishWeight[i]);
+//         if (fishWeight[i].type.includes("halibut"))
+//             halibutWeight.push(fishWeight[i]);
+//         if (fishWeight[i].type == "fishpie")
+//             fishpie.push(fishWeight[i]);
+//         if (fishWeight[i].type == "fishpie_salmon")
+//             fishpieSalmon.push(fishWeight[i]);
+//         if (fishWeight[i].type == "fishpie_white")
+//             fishpieWhite.push(fishWeight[i]);   
+//         if (fishWeight[i].type == "coley")
+//             coleyWeight.push(fishWeight[i]);        
+//     }
 
-//#endregion
+// //#endregion
     
 
-    var fishArrays = [
-        salmonWeight,
-        salmonSides,
-        seabassXsmall,
-        seabassSmall,
-        seabassMedium,
-        seabassLarge,
-        seabassXlarge,
-        brillWeight,
-        brill,
-        codWeight,
-        cod,
-        countsEightTens,
-        countsTentwelves,
-        countsTwelveSixteens,
-        countsTwenties,
-        countsTwentyFives,
-        countsThirties,
-        countsThirtyFives,
-        countsForties,
-        countsFortyFives,
-        countsFifties,
-        coley,
-        coleyWeight,
-        doradeXsmall,
-        doradeSmall,
-        doradeMedium,
-        doradeLarge,
-        doradeXlarge,
-        dovers,
-        doversWeight,
-        fishpie,
-        fishpieWhite,
-        fishpieSalmon,
-        hake,
-        hakeWeight,
-        halibutWeight,
-        lemonsole,
-        lemonWeight,
-        mackerel,
-        mackerelWeight,
-        monkfish,
-        plaice,
-        plaiceWeight,
-        pollock,
-        pollockWeight,
-        octopus,
-        sardines,
-        sardinesWeight,
-        seatrout,
-        seatroutWeight,
-        shark,
-        smokedhaddock,
-        smokedhaddockWeight,
-        sword,
-        squid,
-        trout,
-        troutWeight,
-        tuna,
-        wildbass,
-        wildBassWeight
-    ]
-    var fishTotals = [];
-    for (var f = 0; f < fishArrays.length; f++) {
-        if (fishArrays[f].length > 0) {
-            console.log(fishArrays[f]);
-            for (var a = 0; a < fishArrays[f].length; a++) {
-                fishTotals.push({
-                    type: fishArrays[f].type[a]
-                })
-            }
-        }
-        console.log(fishTotals);            
-    }    
-}
+//     var fishArrays = [
+//         salmonWeight,
+//         salmonSides,
+//         seabassXsmall,
+//         seabassSmall,
+//         seabassMedium,
+//         seabassLarge,
+//         seabassXlarge,
+//         brillWeight,
+//         brill,
+//         codWeight,
+//         cod,
+//         countsEightTens,
+//         countsTentwelves,
+//         countsTwelveSixteens,
+//         countsTwenties,
+//         countsTwentyFives,
+//         countsThirties,
+//         countsThirtyFives,
+//         countsForties,
+//         countsFortyFives,
+//         countsFifties,
+//         coley,
+//         coleyWeight,
+//         doradeXsmall,
+//         doradeSmall,
+//         doradeMedium,
+//         doradeLarge,
+//         doradeXlarge,
+//         dovers,
+//         doversWeight,
+//         fishpie,
+//         fishpieWhite,
+//         fishpieSalmon,
+//         hake,
+//         hakeWeight,
+//         halibutWeight,
+//         lemonsole,
+//         lemonWeight,
+//         mackerel,
+//         mackerelWeight,
+//         monkfish,
+//         plaice,
+//         plaiceWeight,
+//         pollock,
+//         pollockWeight,
+//         octopus,
+//         sardines,
+//         sardinesWeight,
+//         seatrout,
+//         seatroutWeight,
+//         shark,
+//         smokedhaddock,
+//         smokedhaddockWeight,
+//         sword,
+//         squid,
+//         trout,
+//         troutWeight,
+//         tuna,
+//         wildbass,
+//         wildBassWeight
+//     ]
+//     var fishTotals = [];
+//     for (var f = 0; f < fishArrays.length; f++) {
+//         if (fishArrays[f].length > 0) {
+//             console.log(fishArrays[f]);
+//             for (var a = 0; a < fishArrays[f].length; a++) {
+//                 fishTotals.push({
+//                     type: fishArrays[f].type[a]
+//                 })
+//             }
+//         }
+//         console.log(fishTotals);            
+//     }    
+// }
 
 function done() {
     document.getElementById("fishSelectionCont").style.display = "none";
@@ -387,7 +448,7 @@ function done() {
     //     printMisc(miscFish); 
     // }
 
-    createStockList();
+    //createStockList();
         
 }
 
@@ -1113,6 +1174,15 @@ function selectFish(el) {
           
 }
 
+function getWeight(weight, numberOfPortions) {
+    var grams = 28; // 1 oz = 28 grams
+    var weightInGrams = weight * grams;
+
+    var totalInGrams = weightInGrams * numberOfPortions;
+
+    return totalInGrams
+}
+
 function addSelectionToLocal(fish, value) {
     var selectionType;
 
@@ -1125,14 +1195,26 @@ function addSelectionToLocal(fish, value) {
             selectionType = document.getElementById("salmon_type_select").value;
             fish = fish + "_" + selectionType;
             value = value + vac;
+
+            // add to totals
+            if (fish.split("_").length == 3) {
+                var portionWeight = fish.split("_")[1];
+                var totalWeight = getWeight(portionWeight, Number(value)); // returns grams
+                salmonWeight += totalWeight;
+            } else {
+                salmonSides += Number(value);
+            }
+            console.log("salmon = ", salmonSides, salmonWeight);
             break;
         case "cod":
+            debugger;
             var vac = document.getElementById("cod_vac").value;
             selectionType = document.getElementById("cod_type_select").value;
             fish = fish + "_" + selectionType;
             value = value + vac;
             break;
         case "counts":
+            debugger;
             var vac = document.getElementById("counts_vac").value;
             var typeOFish = document.getElementById("counts_fish").value;
             var restaurant = document.getElementById("counts_custom_rest").value != "" ? document.getElementById("counts_custom_rest").value : document.getElementById("counts_cust").value
@@ -1143,41 +1225,48 @@ function addSelectionToLocal(fish, value) {
             document.getElementById("counts_custom_rest").value = ""
             break;
         case "hake":
+            debugger;
             var vac = document.getElementById("hake_vac").value;
             selectionType = document.getElementById("hake_type_select").value;
             fish = fish + "_" + selectionType;
             value = value + vac;
             break;
         case "coley":
+            debugger;
             var vac = document.getElementById("coley_vac").value;
             selectionType = document.getElementById("coley_type_select").value;
             fish = fish + "_" + selectionType;
             value += vac;
             break;
         case "seatrout":
+            debugger;
             var vac = document.getElementById("seatrout_vac").value;
             selectionType = document.getElementById("seatrout_type_select").value;
             fish = fish + "_" + selectionType;
             value += vac;
             break;
         case "pollock":
+            debugger;
             var vac = document.getElementById("pollock_vac").value;
             selectionType = document.getElementById("pollock_type_select").value;
             fish = fish + "_" + selectionType;
             value += vac;
             break;
         case "wildbass":
+            debugger;
             var vac = document.getElementById("wildbass_vac").value;
             selectionType = document.getElementById("wildbass_type_select").value;
             fish = fish + "_" + selectionType;
             value += vac;
             break;
         case "seaBass":
+            debugger;
             var vac = document.getElementById("bass_vac").value;
             selectionType = "";
             value += vac;
             break;
         case "seaBassWhole":
+            debugger;
             var vac = document.getElementById("bass_vac").value;
             selectionType = document.getElementById("seabass-extra-options").value;
             var size = document.getElementById("seaBass_portion_weight").value;
@@ -1187,11 +1276,13 @@ function addSelectionToLocal(fish, value) {
             value += vac;
             break;
         case "dorade":
+            debugger;
             var vac = document.getElementById("dorade_vac").value;
             selectionType = "";
             value += vac;
             break;
-        case "doradeWhole":      
+        case "doradeWhole":   
+            debugger;   
             var vac = document.getElementById("dorade_vac").value;
             selectionType = document.getElementById("dorade-extra-options").value;
             var size = document.getElementById("dorade_portion_weight").value;
@@ -1201,6 +1292,7 @@ function addSelectionToLocal(fish, value) {
             value += vac;
             break;
         case "brill":
+            debugger;
             var vac = document.getElementById("brill_vac").value;
             selectionType = document.getElementById("brill_type_select").value;
             fish = fish + "_" + selectionType;
@@ -1208,6 +1300,7 @@ function addSelectionToLocal(fish, value) {
             break;
 
         case "fishpie":
+            debugger;
             var vac = document.getElementById("fishpie_vac").value;
             selectionType = document.getElementById("piemix_type").value;
             if (selectionType != "")
@@ -1216,72 +1309,84 @@ function addSelectionToLocal(fish, value) {
             break;
             
         case "squid":
+            debugger;
             var vac = document.getElementById("squid_vac").value;
             selectionType = document.getElementById("squid_type").value;
             fish = fish  + "-"+ selectionType;
             value += vac;
             break;
         case "octopus":
+            debugger;
             var vac = document.getElementById("octopus_vac").value;
             selectionType = document.getElementById("octopus_type").value;
             fish = fish  + "-"+ selectionType;
             value += vac;
             break;
         case "smoked-haddock":
+            debugger;
             var vac = document.getElementById("smokedhaddock_vac").value;
             selectionType = document.getElementById("smoked-haddock_type_select").value;
             fish = fish  + "_"+ selectionType;
             value += vac;
             break;
         case "halibut":
+            debugger;
             var vac = document.getElementById("halibut_vac").value;
             selectionType = document.getElementById("halibut_type_select").value;
             fish = fish  + "_"+ selectionType;
             value += vac;
             break;
         case "monkfish":
+            debugger;
             var vac = document.getElementById("monkfish_vac").value;
             selectionType = document.getElementById("monkfish_type_select").value;
             fish = fish  + "_"+ selectionType;
             value += vac;
             break;
         case "lemonsole":
+            debugger;
             var vac = document.getElementById("lemonsole_vac").value;
             selectionType = document.getElementById("lemonsole_type_select").value;
             fish = fish  + "_"+ selectionType;
             value += vac;
             break;
         case "plaice":
+            debugger;
             var vac = document.getElementById("plaice_vac").value;
             selectionType = document.getElementById("plaice_type_select").value;
             fish = fish  + "_"+ selectionType;
             value += vac;
             break;
         case "mackerel":
+            debugger;
             var vac = document.getElementById("mackerel_vac").value;
             selectionType = document.getElementById("mackerel_type_select").value;
             fish = fish  + "_"+ selectionType;  
             value += vac;
             break;
         case "trout":
+            debugger;
             var vac = document.getElementById("trout_vac").value;
             selectionType = document.getElementById("trout_type_select").value;
             fish = fish  + "_"+ selectionType;  
             value += vac;
             break;
         case "sardines":
+            debugger;
             var vac = document.getElementById("sardines_vac").value;
             selectionType = document.getElementById("sardines_type_select").value;
             fish = fish  + "_"+ selectionType;  
             value += vac;
             break;
         case "shark":
+            debugger;
             var vac = document.getElementById("shark_vac").value;
             selectionType = document.getElementById("shark_type_select").value;
             fish = fish  + "_"+ selectionType;
             value += vac;
             break;
         case "dovers":
+            debugger;
             var vac = document.getElementById("dover_vac").value;
             selectionType = document.getElementById("dovers_type_select").value;
             fish = fish  + "_"+ selectionType;
