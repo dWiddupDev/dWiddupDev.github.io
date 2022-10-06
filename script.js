@@ -114,9 +114,59 @@ function createStockList() {
     }
     //#endregion 
 
+//#region assign into main array
     for (var i = 0; i < fishQty.length; i++) {
+        if (fishQty[i].type.includes("counts")){
+            if (fishQty[i].type.includes("8-10"))
+                countsEightTens.push(fishQty[i]);
+            if (fishQty[i].type.includes("10-12"))
+                countsTentwelves.push(fishQty[i]);
+            if (fishQty[i].type.includes("12-16"))
+                countsTwelveSixteens.push(fishQty[i]);
+            if (fishQty[i].type.includes("20"))
+                countsTwenties.push(fishQty[i]);
+            if (fishQty[i].type.includes("25"))
+                countsTwentyFives.push(fishQty[i]);
+            if (fishQty[i].type.includes("30"))
+                countsThirties.push(fishQty[i]);
+            if (fishQty[i].type.includes("35"))
+                countsThirtyFives.push(fishQty[i]);
+            if (fishQty[i].type.includes("40"))
+                countsForties.push(fishQty[i]);
+            if (fishQty[i].type.includes("45"))
+                countsFortyFives.push(fishQty[i]);
+            if (fishQty[i].type.includes("50"))
+                countsFifties.push(fishQty[i]);
+        }
+
+        if (fishQty[i].type.includes("seabass") || fishQty[i].type.includes("seabassWhole")) {
+            if (fishQty[i].type.includes("<400"))
+                seabassXsmall.push(fishQty[i]); 
+            if (fishQty[i].type.includes("4-6"))
+                seabassSmall.push(fishQty[i]); 
+            if (fishQty[i].type.includes("550"))
+                seabassMedium.push(fishQty[i]); 
+            if (fishQty[i].type.includes("6-8"))
+                seabassLarge.push(fishQty[i]); 
+            if (fishQty[i].type.includes("800+"))
+                seabassXlarge.push(fishQty[i]); 
+        }
+
+        if (fishQty[i].type.includes("dorade") || fishQty[i].type.includes("doradeWhole")) {
+            if (fishQty[i].type.includes("<400"))
+                doradeXsmall.push(fishQty[i]); 
+            if (fishQty[i].type.includes("4-6"))
+                doradeSmall.push(fishQty[i]); 
+            if (fishQty[i].type.includes("550"))
+                doradeMedium.push(fishQty[i]); 
+            if (fishQty[i].type.includes("6-8"))
+                doradeLarge.push(fishQty[i]); 
+            if (fishQty[i].type.includes("800+"))
+                doradeXlarge.push(fishQty[i]); 
+        }
+          
         if (fishQty[i].type.includes("salmon"))
-            salmonWeight.push(fishQty[i]);        
+            salmonSides.push(fishQty[i]);        
         if (fishQty[i].type.includes("cod"))
             cod.push(fishQty[i]);   
         if (fishQty[i].type.includes("seatrout"))
@@ -124,12 +174,27 @@ function createStockList() {
         if (fishQty[i].type.includes("brill"))
             brill.push(fishQty[i]);
         if (fishQty[i].type.includes("pollock"))
-            pollockWeight.push(fishQty[i]);
+            pollock.push(fishQty[i]);
         if (fishQty[i].type.includes("hake"))
-            hakeWeight.push(fishQty[i]);   
-        if (fishWeight[i].type == "coley")
-            coley.push(fishWeight[i]);      
-            
+            hake.push(fishQty[i]);   
+        if (fishQty[i].type == "coley")
+            coley.push(fishQty[i]);      
+        if (fishQty[i].type == "dovers")
+            dovers.push(fishQty[i]); 
+        if (fishQty[i].type == "lemonsole")
+            lemonsole.push(fishQty[i]); 
+        if (fishQty[i].type == "mackerel")
+            mackerel.push(fishQty[i]); 
+        if (fishQty[i].type == "plaice")
+            plaice.push(fishQty[i]); 
+        if (fishQty[i].type == "sardines")
+            sardines.push(fishQty[i]); 
+        if (fishQty[i].type == "smokedhaddock")
+            smokedhaddock.push(fishQty[i]); 
+        if (fishQty[i].type == "trout")
+            trout.push(fishQty[i]); 
+        if (fishQty[i].type == "wildbass")
+            wildbass.push(fishQty[i]); 
             //fill this out
     }
 
@@ -169,8 +234,76 @@ function createStockList() {
         if (fishWeight[i].type == "coley")
             coleyWeight.push(fishWeight[i]);        
     }
-    console.log("fishWeight = ", fishWeight);
-    console.log("fishQty = ", fishQty);
+
+//#endregion
+    
+
+    var fishArrays = [
+        salmonWeight,
+        salmonSides,
+        seabassXsmall,
+        seabassSmall,
+        seabassMedium,
+        seabassLarge,
+        seabassXlarge,
+        brillWeight,
+        brill,
+        codWeight,
+        cod,
+        countsEightTens,
+        countsTentwelves,
+        countsTwelveSixteens,
+        countsTwenties,
+        countsTwentyFives,
+        countsThirties,
+        countsThirtyFives,
+        countsForties,
+        countsFortyFives,
+        countsFifties,
+        coley,
+        coleyWeight,
+        doradeXsmall,
+        doradeSmall,
+        doradeMedium,
+        doradeLarge,
+        doradeXlarge,
+        dovers,
+        doversWeight,
+        fishpie,
+        fishpieWhite,
+        fishpieSalmon,
+        hake,
+        hakeWeight,
+        halibutWeight,
+        lemonsole,
+        lemonWeight,
+        mackerel,
+        mackerelWeight,
+        monkfish,
+        plaice,
+        plaiceWeight,
+        pollock,
+        pollockWeight,
+        octopus,
+        sardines,
+        sardinesWeight,
+        seatrout,
+        seatroutWeight,
+        shark,
+        smokedhaddock,
+        smokedhaddockWeight,
+        sword,
+        squid,
+        trout,
+        troutWeight,
+        tuna,
+        wildbass,
+        wildBassWeight
+    ]
+    for (var f = 0; f < fishArrays.length; f++) {
+        if (fishArrays[f].length > 0)            
+            console.log(fishArrays.key ,fishArrays[f]);
+    }    
 }
 
 function done() {
