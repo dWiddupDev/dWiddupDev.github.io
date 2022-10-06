@@ -7,8 +7,8 @@ var seabassLarge = [];
 var seabassXlarge = [];
 var brillWeight = [];
 var brill = [];
-var codWeight = [];
-var cod = [];
+var codWeight = 0;
+var cod = 0;
 var countsEightTens = [];
 var countsTentwelves = [];
 var countsTwelveSixteens = [];
@@ -19,8 +19,8 @@ var countsThirtyFives = [];
 var countsForties = [];
 var countsFortyFives = [];
 var countsFifties = [];
-var coley = [];
-var coleyWeight = [];
+var coley = 0;
+var coleyWeight = 0;
 var doradeXsmall = [];
 var doradeSmall = [];
 var doradeMedium = [];
@@ -31,8 +31,8 @@ var doversWeight = [];
 var fishpie = [];
 var fishpieWhite = [];
 var fishpieSalmon = [];
-var hake = [];
-var hakeWeight = [];
+var hake = 0;
+var hakeWeight = 0;
 var halibutWeight = [];
 var lemonsole = [];
 var lemonWeight = [];
@@ -41,13 +41,13 @@ var mackerelWeight = [];
 var monkfish = [];
 var plaice = [];
 var plaiceWeight = [];
-var pollock = [];
-var pollockWeight = [];
+var pollock = 0;
+var pollockWeight = 0;
 var octopus = [];
 var sardines = [];
 var sardinesWeight = [];
-var seatrout = [];
-var seatroutWeight = [];
+var seatrout = 0;
+var seatroutWeight = 0;
 var shark = [];
 var smokedhaddock = [];
 var smokedhaddockWeight = [];
@@ -1192,26 +1192,47 @@ function addSelectionToLocal(fish, value) {
         // find type and other information
         case "salmon":
             var vac = document.getElementById("salmon_vac").value;
+            var amount = Number(value.replace("k","").split("-")[0]);
             selectionType = document.getElementById("salmon_type_select").value;
             fish = fish + "_" + selectionType;
-            value = value + vac;
+            if (vac != "")
+                value = value + "-" + vac;
 
             // add to totals
             if (fish.split("_").length == 3) {
                 var portionWeight = fish.split("_")[1];
-                var totalWeight = getWeight(portionWeight, Number(value)); // returns grams
+                var totalWeight = getWeight(portionWeight, Number(amount)); // returns grams
                 salmonWeight += totalWeight;
             } else {
-                salmonSides += Number(value);
+                if (value.includes("k")) {                    
+                    salmonWeight += (amount * 1000)
+                } else {
+                salmonSides += Number(amount);
+                }
             }
             console.log("salmon = ", salmonSides, salmonWeight);
             break;
         case "cod":
-            debugger;
             var vac = document.getElementById("cod_vac").value;
+            var amount = Number(value.replace("k","").split("-")[0]);
             selectionType = document.getElementById("cod_type_select").value;
             fish = fish + "_" + selectionType;
-            value = value + vac;
+            if (vac != "")
+                value = value + "-" + vac;
+
+                // add to totals
+            if (fish.split("_").length == 3) {
+                var portionWeight = fish.split("_")[1];
+                var totalWeight = getWeight(portionWeight, amount); // returns grams
+                codWeight += totalWeight;
+            } else {
+                if (value.includes("k")) {                    
+                    codWeight += (amount * 1000)
+                } else {
+                cod += Number(amount);
+                }
+            }
+            console.log("cod = ", cod, codWeight);
             break;
         case "counts":
             debugger;
@@ -1224,34 +1245,96 @@ function addSelectionToLocal(fish, value) {
 
             document.getElementById("counts_custom_rest").value = ""
             break;
+
         case "hake":
-            debugger;
             var vac = document.getElementById("hake_vac").value;
+            var amount = Number(value.replace("k","").split("-")[0]);
             selectionType = document.getElementById("hake_type_select").value;
             fish = fish + "_" + selectionType;
-            value = value + vac;
+            if (vac != "")
+                value = value + "-" + vac;
+
+            if (fish.split("_").length == 3) {
+                var portionWeight = fish.split("_")[1];
+                var totalWeight = getWeight(portionWeight, amount); // returns grams
+                hakeWeight += totalWeight;
+            } else {
+                if (value.includes("k")) {                    
+                    hakeWeight += (amount * 1000)
+                } else {
+                hake += Number(amount);
+                }
+            }
+            console.log("cod = ", hake, hakeWeight);
             break;
-        case "coley":
-            debugger;
+
+        case "coley":            
             var vac = document.getElementById("coley_vac").value;
+            var amount = Number(value.replace("k","").split("-")[0]);
             selectionType = document.getElementById("coley_type_select").value;
             fish = fish + "_" + selectionType;
-            value += vac;
+            if (vac != "")
+                value = value + "-" + vac;
+
+            if (fish.split("_").length == 3) {
+                var portionWeight = fish.split("_")[1];
+                var totalWeight = getWeight(portionWeight, amount); // returns grams
+                coleyWeight += totalWeight;
+            } else {
+                if (value.includes("k")) {                    
+                    coleyWeight += (amount * 1000)
+                } else {
+                coley += Number(amount);
+                }
+            }
+            console.log("cod = ", coley, coleyWeight);
+
             break;
+
         case "seatrout":
-            debugger;
             var vac = document.getElementById("seatrout_vac").value;
+            var amount = Number(value.replace("k","").split("-")[0]);
             selectionType = document.getElementById("seatrout_type_select").value;
             fish = fish + "_" + selectionType;
-            value += vac;
+            if (vac != "")
+                value = value + "-" + vac;
+
+            if (fish.split("_").length == 3) {
+                var portionWeight = fish.split("_")[1];
+                var totalWeight = getWeight(portionWeight, amount); // returns grams
+                seatroutWeight += totalWeight;
+            } else {
+                if (value.includes("k")) {                    
+                    seatroutWeight += (amount * 1000)
+                } else {
+                seatrout += Number(amount);
+                }
+            }
+            console.log("cod = ", seatrout, seatroutWeight);
             break;
+
         case "pollock":
-            debugger;
             var vac = document.getElementById("pollock_vac").value;
+            var amount = Number(value.replace("k","").split("-")[0]);
             selectionType = document.getElementById("pollock_type_select").value;
             fish = fish + "_" + selectionType;
-            value += vac;
+            if (vac != "")
+                value = value + "-" + vac;
+
+            if (fish.split("_").length == 3) {
+                var portionWeight = fish.split("_")[1];
+                var totalWeight = getWeight(portionWeight, amount); // returns grams
+                pollockWeight += totalWeight;
+            } else {
+                if (value.includes("k")) {                    
+                    pollockWeight += (amount * 1000)
+                } else {
+                pollock += Number(amount);
+                }
+            }
+            console.log("cod = ", pollock, pollockWeight);
             break;
+
         case "wildbass":
             debugger;
             var vac = document.getElementById("wildbass_vac").value;
@@ -1453,7 +1536,8 @@ function addCustomToLocal(inputId) {
     || inputId == "shark_custom" || inputId == "tuna_custom" 
     || inputId == "sword_custom" || inputId == "squid_custom"
     || inputId == "octopus_custom" || inputId == "cod_custom_weight" || inputId == "hake_custom_weight"
-    || inputId == "coley_custom_weight") {
+    || inputId == "coley_custom_weight" || inputId == "salmon_custom_weight" || inputId == "seatrout_custom_weight"
+    || inputId == "pollock_custom_weight") {
         value = value + "k";
     }
     
