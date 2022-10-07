@@ -124,6 +124,7 @@ var wildbassWeight = {
 // }
 
 function done() {
+    console.log("Working.....");
     document.getElementById("fishSelectionCont").style.display = "none";
     document.getElementById("elementsToPrint").style.display = "block";
 
@@ -158,43 +159,41 @@ function done() {
             else   
                 miscFish.push(typeObj);
                     
-            console.log("Salmon = ", salmon);
-            console.log("seabass = ", seabass);
-            console.log("counts = ", counts);
-            console.log("miscFish = ", miscFish);
+            // console.log("Salmon = ", salmon);
+            // console.log("seabass = ", seabass);
+            // console.log("counts = ", counts);
+            // console.log("miscFish = ", miscFish);
             
         }
         else 
             break;
     }
 
-    // if (salmon.length == 0) {   
-    
-    //     document.getElementById("elementsToPrint").innerHTML += "<h2>No Salmon Selected</h2>";
+    if (salmon.length == 0) { 
+        document.getElementById("elementsToPrint").innerHTML += "<h2>No Salmon Selected</h2>";
+    } else {
+        printSalmon(salmon);
+    }
         
-    // } else {
-    //     printSalmon(salmon);
-    // }
-        
-    // if (seabass.length == 0) {
-    //     document.getElementById("elementsToPrint").innerHTML += "<h2>No Sea Bass Selected</h2>";
+    if (seabass.length == 0) {
+         document.getElementById("elementsToPrint").innerHTML += "<h2>No Sea Bass Selected</h2>";
        
-    // }else {
-    //     printSeabass(seabass);
-    // }
+    }else {
+         printSeabass(seabass);
+    }
 
-    // if (counts.length == 0) {
-    //     document.getElementById("elementsToPrint").innerHTML += "<h2>No Counts Selected</h2>";
+    if (counts.length == 0) {
+         document.getElementById("elementsToPrint").innerHTML += "<h2>No Counts Selected</h2>";
         
-    // } else {
-    //     printCounts(counts);
-    // }
+    } else {
+         printCounts(counts);
+    }
 
-    // if (miscFish.length == 0) {
-    //     document.getElementById("elementsToPrint").innerHTML += "<h2>No Other Fish Selected</h2>";
-    // } else {
-    //     printMisc(miscFish); 
-    // }
+    if (miscFish.length == 0) {
+         document.getElementById("elementsToPrint").innerHTML += "<h2>No Other Fish Selected</h2>";
+    } else {
+         printMisc(miscFish); 
+    }
 
     //createStockList();
         
@@ -604,6 +603,7 @@ function printCounts(countsObj) {
     var fortyfives = [];
     var fifties = [];
     
+    // create cod counts list
     for (var i = 0; i < cod.length; i ++) {
         if (cod[i].type.includes("8-10"))
             eightTens.push(cod[i]);
@@ -626,7 +626,8 @@ function printCounts(countsObj) {
         if (cod[i].type.includes("50"))
             fifties.push(cod[i]);
     }
-
+    
+    // create haddock counts list
     for (var i = 0; i < haddock.length; i ++) {
         if (haddock[i].type.includes("8-10"))
             eightTens.push(haddock[i]);
@@ -650,6 +651,7 @@ function printCounts(countsObj) {
             fifties.push(haddock[i]);
     }
 
+    // create whiting counts list
     for (var i = 0; i < whiting.length; i ++) {
         if (whiting[i].type.includes("8-10"))
             eightTens.push(whiting[i]);
@@ -673,20 +675,36 @@ function printCounts(countsObj) {
             fifties.push(whiting[i]);
     }
 
-    console.log("cod = ", cod);
-    console.log("haddock = ", haddock);
-    console.log("8/10 = ", eightTens);
+    // console.log("cod = ", cod);
+    // console.log("haddock = ", haddock);
+    // console.log("8/10 = ", eightTens);
 
     var countSizes = [eightTens, tenTwelves, twelvesSixteens, twenties, twentyFives, thirties, thirtyFives, forties, fortyfives, fifties];
     // seperate the types into sections
+
+    var countsList = "";
+    countsList = "<div class='counts_table_cont'>"
     for (var c = 0; c < countSizes.length; c++) {
 
         for (var w = 0; w < countSizes[c].length; w++) {
+
+            // create labels and list
             var type = countSizes[c][w].type.split("_");
             var fish = type[0];
             var size = type[2];
             type = `${fish} ${size}`;                
-    
+            var total = 0;
+            // start list
+            countsList += "<table>";
+            countsList += "<thead>";
+            countsList += "<th>Restaurants</th>"; // create headers
+            countsList += `<th>${fish} ${size}s</th>`;
+            countsList += "</thead>";
+
+            // start list body
+            countsList += "<tbody>"
+
+            // start labels
             fishAndOrders += "<pdfItem>";
             fishAndOrders += `<h3>${fish} ${size}s</h3>`;
             
@@ -694,32 +712,63 @@ function printCounts(countsObj) {
     
             fishAndOrders += "<values>";
             for (var o = 0; o < indOrders.length; o++) {
+                
+                var vac = "";
                 var value = indOrders[o].split("-")[0];
-                var rest = indOrders[o].split("-")[1].replaceAll("_", " ");
-    
+                var rest = indOrders[o].split("-")[1].split("/")[0].replaceAll("_", " ");
+
+                if (indOrders[o].split("/").length == 2) {
+                    vac = indOrders[o].split("/")[1];
+                }      
+
+                // for labels
                 fishAndOrders += '<div class="count_label">' +
                 `<span>${rest}</span>` +
-                `<span>${value} x ${size}s</span>` +
+                `<span>${value} x ${size}s ${vac}</span>` +
                 '</div>';
+
+                // build list
+                countsList += '<tr>' +
+                    `<td>${rest}</td>` +
+                    `<td>${value} ${vac}</td>` +
+                    '</tr>';
+
+                total += Number(value);
             }
+
+            // totals
+            countsList += '<tr class="final_row">' +
+                '<td><strong>Total</strong></td>' +
+                `<td><strong>${total}</strong></td>` +
+                '</tr>';
+
+            // end List
+            countsList += "</tbody>";
+            countsList += "</table>";
+
+            // end labels
             fishAndOrders += "</values>";
             fishAndOrders += "</pdfItem>";
         }
     }    
 
+    // close counts list
+    countsList += '</div>';
+    element.innerHTML += countsList;
     element.innerHTML += fishAndOrders;
     fishAndOrders = "";
+    countsList = "";
 
     var date = new Date().toLocaleDateString();
     html2pdf(element, {
         filename: "counts_" + date + ".pdf", 
         html2canvas: { scale: 5}, 
-        pagebreak: { mode: 'css', avoid: ['.count_label', 'span', 'h3' ] }
+        pagebreak: { mode: 'css', avoid: ['.count_label', 'span', 'h3', 'table' ] }
     });
 }
 
 function printMisc(miscObj) {
-    console.log("misc = ", miscObj)
+    //console.log("misc = ", miscObj)
 
     var brill = [];
     var cod = [];
@@ -872,7 +921,7 @@ function togglePanel(el) {
 
 function closeThisPanel(fishId) {
     document.getElementById(`${fishId}_cont`).style.display = "none";
-    console.log("inner = ", fishId);
+    //console.log("inner = ", fishId);
 
     var sideListElSelected = document.querySelectorAll(".sidebar_selected");
     var el;
@@ -899,7 +948,7 @@ function closeThisPanel(fishId) {
 function selectFish(el) {
     // add selected class to anchor
     var fishId = el.innerText.toLowerCase().replaceAll(" ", "");
-    console.log("inner = ", fishId);
+    //console.log("inner = ", fishId);
     var p = el.childNodes[1];
     if (!el.classList.contains("sidebar_selected")) {
         el.classList.add("sidebar_selected");
@@ -983,13 +1032,17 @@ function addSelectionToLocal(fish, value) {
             console.log("cod = ", cod, codWeight);
             break;
         case "counts":
-            debugger;
+            //debugger;
             var vac = document.getElementById("counts_vac").value;
             var typeOFish = document.getElementById("counts_fish").value;
             var restaurant = document.getElementById("counts_custom_rest").value != "" ? document.getElementById("counts_custom_rest").value : document.getElementById("counts_cust").value
             selectionType = document.getElementById("counts_type_select").value;
-            fish = typeOFish + "_" + fish + "_" + selectionType;
-            value = value + "-" + restaurant.replaceAll(" ", "_") + vac;
+            fish = typeOFish + "_" + fish + "_" + selectionType;            
+            if (vac != "") {
+                value = value + "-" + restaurant.replaceAll(" ", "_") + "/" + vac;
+            } else {
+                value = value + "-" + restaurant.replaceAll(" ", "_");
+            }
 
             document.getElementById("counts_custom_rest").value = ""
             break;
@@ -1105,13 +1158,13 @@ function addSelectionToLocal(fish, value) {
             console.log("cod = ", wildbass, wildbassWeight);
             break;
         case "seaBass":
-            debugger;
+           // debugger;
             var vac = document.getElementById("bass_vac").value;
             selectionType = "";
             value += vac;
             break;
         case "seaBassWhole":
-            debugger;
+            //debugger;
             var vac = document.getElementById("bass_vac").value;
             selectionType = document.getElementById("seabass-extra-options").value;
             var size = document.getElementById("seaBass_portion_weight").value;
@@ -1121,13 +1174,13 @@ function addSelectionToLocal(fish, value) {
             value += vac;
             break;
         case "dorade":
-            debugger;
+            //debugger;
             var vac = document.getElementById("dorade_vac").value;
             selectionType = "";
             value += vac;
             break;
         case "doradeWhole":   
-            debugger;   
+            //debugger;   
             var vac = document.getElementById("dorade_vac").value;
             selectionType = document.getElementById("dorade-extra-options").value;
             var size = document.getElementById("dorade_portion_weight").value;
@@ -1190,77 +1243,77 @@ function addSelectionToLocal(fish, value) {
 
             break;
         case "octopus":
-            debugger;
+            //debugger;
             var vac = document.getElementById("octopus_vac").value;
             selectionType = document.getElementById("octopus_type").value;
             fish = fish  + "-"+ selectionType;
             value += vac;
             break;
         case "smoked-haddock":
-            debugger;
+            //debugger;
             var vac = document.getElementById("smokedhaddock_vac").value;
             selectionType = document.getElementById("smoked-haddock_type_select").value;
             fish = fish  + "_"+ selectionType;
             value += vac;
             break;
         case "halibut":
-            debugger;
+           // debugger;
             var vac = document.getElementById("halibut_vac").value;
             selectionType = document.getElementById("halibut_type_select").value;
             fish = fish  + "_"+ selectionType;
             value += vac;
             break;
         case "monkfish":
-            debugger;
+           // debugger;
             var vac = document.getElementById("monkfish_vac").value;
             selectionType = document.getElementById("monkfish_type_select").value;
             fish = fish  + "_"+ selectionType;
             value += vac;
             break;
         case "lemonsole":
-            debugger;
+           // debugger;
             var vac = document.getElementById("lemonsole_vac").value;
             selectionType = document.getElementById("lemonsole_type_select").value;
             fish = fish  + "_"+ selectionType;
             value += vac;
             break;
         case "plaice":
-            debugger;
+           // debugger;
             var vac = document.getElementById("plaice_vac").value;
             selectionType = document.getElementById("plaice_type_select").value;
             fish = fish  + "_"+ selectionType;
             value += vac;
             break;
         case "mackerel":
-            debugger;
+            //debugger;
             var vac = document.getElementById("mackerel_vac").value;
             selectionType = document.getElementById("mackerel_type_select").value;
             fish = fish  + "_"+ selectionType;  
             value += vac;
             break;
         case "trout":
-            debugger;
+           // debugger;
             var vac = document.getElementById("trout_vac").value;
             selectionType = document.getElementById("trout_type_select").value;
             fish = fish  + "_"+ selectionType;  
             value += vac;
             break;
         case "sardines":
-            debugger;
+           // debugger;
             var vac = document.getElementById("sardines_vac").value;
             selectionType = document.getElementById("sardines_type_select").value;
             fish = fish  + "_"+ selectionType;  
             value += vac;
             break;
         case "shark":
-            debugger;
+           // debugger;
             var vac = document.getElementById("shark_vac").value;
             selectionType = document.getElementById("shark_type_select").value;
             fish = fish  + "_"+ selectionType;
             value += vac;
             break;
         case "dovers":
-            debugger;
+           // debugger;
             var vac = document.getElementById("dover_vac").value;
             selectionType = document.getElementById("dovers_type_select").value;
             fish = fish  + "_"+ selectionType;
@@ -1287,7 +1340,7 @@ function addSelectionToLocal(fish, value) {
     setTimeout(function() {
         document.getElementById("selectSuccess").style.display = "none";
     }, 3000);
-    console.log("Local = ", localStorage);
+    //console.log("Local = ", localStorage);
     //CHANGING THE FISH PASSED IN WILL SAVE THE NEW FISH TO LOCAL STORAGE
     // split the local storage into the array
     //localStorage.salmon.trim().split(",");

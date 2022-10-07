@@ -578,3 +578,37 @@ a.close_button:hover {
     color: var(--but);
     background: #DDD;
 }
+
+.counts_table_cont {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+table {
+    text-align: center;
+    border: 1px solid #DDD;
+    border-collapse: collapse;
+    width: 350px;
+    height: fit-content;
+}
+
+th {
+    text-transform: capitalize;
+    font-weight: bold;
+    font-size: larger;
+    padding: 10px;
+    border: 1px solid #DDD;
+    width: 50%;
+}
+
+td {
+    padding: 10px;
+    border-right: 1px solid #DDD;
+
+}
+
+.final_row {
+    border-top: 1px solid #DDD;
+    font-weight: bold;
+}
