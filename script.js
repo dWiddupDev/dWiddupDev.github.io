@@ -726,7 +726,7 @@ function printCounts(countsObj) {
                 `<span>${rest}</span>` +
                 `<span>${value} x ${size}s ${vac}</span>` +
                 '</div>';
-
+                console.log(size)
                 // build list
                 countsList += '<tr>' +
                     `<td>${rest}</td>` +
@@ -737,9 +737,25 @@ function printCounts(countsObj) {
             }
 
             // totals
+            var totalInStones;
+            switch (size) {
+                case "8-10":
+                    totalInStones = ((total * 285) / 6350).toFixed(2);
+                    break;
+                case "10-12":
+                    totalInStones = ((total * 340) / 6350).toFixed(2);
+                    break;
+                case "12-16":
+                    totalInStones = ((total * 454) / 6350).toFixed(2);
+                    break;
+                default: 
+                    totalInStones = (total / Number(size)).toFixed(2);
+                    break;
+            }
+            
             countsList += '<tr class="final_row">' +
                 '<td><strong>Total</strong></td>' +
-                `<td><strong>${total}</strong></td>` +
+                `<td><strong>${total} or ${totalInStones}st</strong></td>` +
                 '</tr>';
 
             // end List
